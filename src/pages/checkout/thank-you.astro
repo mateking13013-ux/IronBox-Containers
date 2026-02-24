@@ -1,0 +1,14 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ThankYouPage from '../../components/checkout/ThankYouPage.astro';
+---
+
+<MainLayout title="Order Confirmed – IronBox Containers" description="Review your order receipt, project next steps, and installation timeline resources.">
+  <Header />
+  <main class="pb-16">
+    <ThankYouPage />
+  </main>
+  <Footer />
+</MainLayout>

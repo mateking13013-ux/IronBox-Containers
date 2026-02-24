@@ -1,0 +1,191 @@
+/* Location Page Template Styles */
+
+/* Base Styles */
+.prose {
+  @apply max-w-none;
+}
+
+.prose h1 {
+  @apply text-3xl font-bold mb-6;
+}
+
+.prose h2 {
+  @apply text-2xl font-semibold mb-4;
+}
+
+.prose h3 {
+  @apply text-xl font-semibold mb-3;
+}
+
+.prose p {
+  @apply text-muted-foreground mb-4 leading-relaxed;
+}
+
+.prose ul {
+  @apply space-y-2 mb-4;
+}
+
+.prose li {
+  @apply text-muted-foreground;
+}
+
+/* Hero Section Enhancements */
+.hero-gradient {
+  background: linear-gradient(to right, hsl(var(--primary)/0.1), hsl(var(--primary)/0.05));
+}
+
+/* Card Enhancements */
+.product-card {
+  @apply transition-all duration-200 hover:shadow-lg;
+}
+
+.product-card:hover {
+  @apply transform scale-105;
+}
+
+/* FAQ Accordion Styling */
+.accordion-trigger {
+  @apply text-left font-semibold hover:no-underline;
+}
+
+.accordion-content {
+  @apply text-muted-foreground leading-relaxed;
+}
+
+/* Button Enhancements */
+.cta-button {
+  @apply transition-all duration-200 transform hover:scale-105;
+}
+
+/* Sidebar Styles */
+.sidebar-card {
+  @apply backdrop-blur-sm bg-background/80;
+}
+
+/* Responsive Enhancements */
+@media (max-width: 1024px) {
+  .sidebar-wrapper {
+    @apply w-full;
+  }
+  
+  .main-content {
+    @apply w-full;
+  }
+}
+
+/* Animation Classes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Loading States */
+.loading-skeleton {
+  @apply animate-pulse bg-muted rounded;
+}
+
+/* Focus Styles for Accessibility */
+.button:focus,
+.input:focus,
+.select:focus {
+  @apply outline-none ring-2 ring-primary ring-offset-2;
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    @apply hidden;
+  }
+  
+  .print-break-before {
+    page-break-before: always;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .card {
+    @apply border-2;
+  }
+  
+  .button {
+    @apply border-2 font-bold;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .hero-gradient {
+    background: linear-gradient(to right, hsl(var(--primary)/0.2), hsl(var(--primary)/0.1));
+  }
+}
+
+/* Custom Scrollbar for Long Content */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-muted;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/30 rounded-full;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/50;
+}
+
+/* SEO Structured Data Helpers */
+.schema-data {
+  @apply hidden;
+}
+
+/* Performance Optimization */
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1000px;
+}
+
+/* Mobile-First Responsive Breakpoints */
+@media (max-width: 640px) {
+  .hero-heading {
+    @apply text-3xl;
+  }
+  
+  .section-padding {
+    @apply py-12 px-4;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .section-padding {
+    @apply py-16 px-6;
+  }
+}
+
+@media (min-width: 1025px) {
+  .section-padding {
+    @apply py-20 px-8;
+  }
+}

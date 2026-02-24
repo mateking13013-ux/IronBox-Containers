@@ -1,0 +1,63 @@
+---
+interface Product {
+  product_name: string;
+  product_description: string;
+  product_price: string;
+  product_features: Array<string>;
+}
+
+interface Props {
+  products: Product[];
+  locationName: string;
+}
+
+const { products, locationName } = Astro.props;
+
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { CheckCircle, Package } from 'lucide-react';
+---
+
+<!-- Products Section -->
+<section class="py-20 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="space-y-6 mb-12">
+      <h2 class="text-3xl font-bold">Shipping Containers for Sale in {locationName}</h2>
+      <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+        Choose from our wide selection of high-quality containers perfect for storage, shipping, or custom projects. 
+        Each container is thoroughly inspected and certified to meet industry standards.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {products.map((product, index) => (
+        <Card key={index} class="h-full flex flex-col">
+          <CardHeader>
+            <div class="aspect-video bg-muted rounded-lg mb-4 flex items-center justify-center">
+              <Package className="h-16 w-16 text-muted-foreground" />
+            </div>
+            <CardTitle class="text-xl">{product.product_name}</CardTitle>
+            <CardDescription>{product.product_description}</CardDescription>
+          </CardHeader>
+          <CardContent class="flex-1 flex flex-col">
+            <div class="text-2xl font-bold text-primary mb-4">{product.product_price}</div>
+            <div class="mb-6 flex-1">
+              <h4 class="font-semibold mb-2">Key Features:</h4>
+              <ul class="space-y-1">
+                {product.product_features.map((feature, featureIndex) => (
+                  <li key={featureIndex} class="flex items-center gap-2 text-sm">
+                    <CheckCircle className="h-4 w-4 text-green-500" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <Button class="w-full">
+              Inquire About This Container
+            </Button>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </div>
+</section>

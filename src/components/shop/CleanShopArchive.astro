@@ -1,0 +1,193 @@
+---
+import { getAllProducts, getCategories, formatPrice, getProductCondition, getContainerSize } from '../../lib/woocommerce.js';
+
+// Fetch real products and categories
+const products = await getAllProducts();
+const categories = await getCategories();
+---
+
+<section class="min-h-screen bg-gray-50">
+  <!-- Header -->
+  <div class="bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="py-6">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div>
+            <h1 class="text-xl font-semibold text-gray-900">All Products</h1>
+            <p class="mt-1 text-sm text-gray-500">
+              {products.length} items available
+            </p>
+          </div>
+          <div class="relative">
+            <input
+              type="search"
+              placeholder="Search..."
+              class="w-full sm:w-64 px-3 py-2 pl-9 text-sm text-gray-700 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:bg-white"
+            />
+            <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-col-reverse lg:flex-row gap-8">
+
+      <!-- Sidebar -->
+      <aside class="w-full lg:w-56 flex-shrink-0">
+        <div class="bg-white rounded-xl border border-gray-100 sticky top-4 overflow-hidden">
+          <div class="px-4 py-3 border-b border-gray-100">
+            <h2 class="text-sm font-semibold text-gray-900">Categories</h2>
+          </div>
+          <div class="p-2">
+            <div class="space-y-0.5">
+              {categories.map((category) => (
+                <a
+                  href={`/categories/${category.slug}`}
+                  class="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors group"
+                >
+                  <span class="text-[13px] text-gray-600 group-hover:text-gray-900">{category.name}</span>
+                  <span class="text-[11px] text-gray-400 tabular-nums">{category.count}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Products Grid -->
+      <div class="flex-1">
+        <!-- Sort Bar -->
+        <div class="flex items-center justify-between mb-4">
+          <p class="text-xs text-gray-500">
+            {products.length} results
+          </p>
+          <select class="text-xs text-gray-600 bg-transparent border-0 focus:ring-0 cursor-pointer pr-6">
+            <option>Featured</option>
+            <option>Price: Low to High</option>
+            <option>Price: High to Low</option>
+            <option>Newest</option>
+            <option>Name A-Z</option>
+          </select>
+        </div>
+
+        <!-- Products Grid - Modern Compact Cards -->
+        <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
+          {products.map((product) => {
+            const condition = getProductCondition(product);
+            const size = getContainerSize(product);
+            const imageUrl = product.images?.[0]?.src || 'https://via.placeholder.com/400x300';
+            const hasSale = product.regular_price && product.regular_price !== product.price;
+
+            return (
+              <a href={`/products/${product.slug}`} class="group">
+                <div class="bg-white rounded-xl border border-gray-100 overflow-hidden hover:shadow-md hover:border-gray-200 transition-all duration-200">
+                  <div class="aspect-square relative overflow-hidden bg-gray-50">
+                    <img
+                      src={imageUrl}
+                      alt={product.name}
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                    <div class="absolute inset-x-0 top-0 flex items-start justify-between p-2">
+                      <span class={`
+                        px-2 py-0.5 text-[10px] font-semibold rounded-md backdrop-blur-sm
+                        ${condition === 'New' ? 'bg-emerald-500/90 text-white' :
+                          condition === 'Used' ? 'bg-amber-500/90 text-white' :
+                          'bg-gray-800/80 text-white'}
+                      `}>
+                        {condition}
+                      </span>
+                      {size && size !== 'Standard' && (
+                        <span class="px-2 py-0.5 text-[10px] font-semibold rounded-md bg-black/60 text-white backdrop-blur-sm">
+                          {size}
+                        </span>
+                      )}
+                    </div>
+                    {hasSale && (
+                      <div class="absolute bottom-2 left-2">
+                        <span class="px-2 py-0.5 text-[10px] font-bold rounded-md bg-red-500 text-white">SALE</span>
+                      </div>
+                    )}
+                  </div>
+                  <div class="p-3">
+                    <h3 class="text-xs sm:text-sm font-medium text-gray-900 leading-snug line-clamp-2 group-hover:text-blue-600 transition-colors">
+                      {product.name}
+                    </h3>
+                    <div class="mt-2 flex items-baseline gap-2">
+                      <span class="text-sm sm:text-base font-bold text-gray-900">{formatPrice(product.price)}</span>
+                      {hasSale && (
+                        <span class="text-[11px] text-gray-400 line-through">{formatPrice(product.regular_price)}</span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+
+        <!-- Pagination -->
+        {products.length > 12 && (
+          <div class="mt-12 flex justify-center">
+            <nav class="flex items-center gap-1">
+              <button class="px-3 py-2 text-gray-500 hover:bg-gray-100 rounded-lg">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+              </button>
+
+              <button class="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg">1</button>
+              <button class="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">2</button>
+              <button class="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">3</button>
+              <span class="px-3 py-2 text-gray-500">...</span>
+              <button class="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">8</button>
+
+              <button class="px-3 py-2 text-gray-500 hover:bg-gray-100 rounded-lg">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </button>
+            </nav>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+
+  <!-- Trust Strip -->
+  <div class="border-t border-gray-100 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs text-gray-400">
+        <span class="flex items-center gap-1.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+          ISO/CSC Certified
+        </span>
+        <span class="flex items-center gap-1.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path></svg>
+          Quality Inspected
+        </span>
+        <span class="flex items-center gap-1.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"></path></svg>
+          Nationwide Delivery
+        </span>
+        <span class="flex items-center gap-1.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          Best Prices
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

@@ -1,0 +1,111 @@
+---
+const { category } = Astro.props;
+
+const filters = {
+  priceRanges: ['Under $10k', '$10k - $25k', '$25k - $50k', '$50k+'],
+  features: ['Quick Ship', 'Financing', 'Turn-key Install'],
+};
+
+const products = category.products;
+---
+
+<section class="w-full bg-background">
+  <div class="border-b border-border bg-muted/20">
+    <div class="mx-auto max-w-7xl px-4 py-6">
+      <nav class="flex items-center gap-2 text-sm text-muted-foreground">
+        <a href="/" class="hover:text-foreground">Home</a>
+        <span>/</span>
+        <a href="/shop" class="hover:text-foreground">Shop</a>
+        <span>/</span>
+        <span class="text-foreground font-semibold">{category.title}</span>
+      </nav>
+      <div class="mt-6 grid gap-6 lg:grid-cols-[2fr_3fr] lg:gap-12">
+        <div>
+          <h1 class="text-4xl font-bold text-foreground">{category.title}</h1>
+          <p class="mt-3 text-lg text-muted-foreground">{category.description}</p>
+        </div>
+        <div class="relative hidden overflow-hidden rounded-2xl bg-gradient-to-br from-primary/20 to-accent/30 shadow-lg lg:block">
+          <img src={category.heroImage} alt={category.title} class="h-full w-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-l from-black/30 to-transparent"></div>
+          <div class="absolute bottom-6 left-6 text-white">
+            <p class="text-sm font-medium uppercase text-white/80">Featured</p>
+            <p class="text-2xl font-semibold">{category.featured}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mx-auto max-w-7xl px-4 py-10 lg:grid lg:grid-cols-[260px_1fr] lg:gap-12">
+    <aside class="mb-10 space-y-8 lg:mb-0">
+      <div class="rounded-2xl border border-border bg-card p-6">
+        <h2 class="text-sm font-semibold uppercase tracking-wide text-muted-foreground">About this category</h2>
+        <p class="mt-3 text-sm text-muted-foreground">{category.sidebarCopy}</p>
+      </div>
+      <div class="rounded-2xl border border-border bg-card p-6">
+        <h2 class="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Price Range</h2>
+        <div class="mt-4 space-y-2 text-sm text-muted-foreground">
+          {filters.priceRanges.map((range) => (
+            <label class="flex cursor-pointer items-center gap-2">
+              <input type="radio" name="price" class="h-3 w-3 rounded-full border border-border" />
+              {range}
+            </label>
+          ))}
+        </div>
+      </div>
+      <div class="rounded-2xl border border-border bg-card p-6">
+        <h2 class="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Highlights</h2>
+        <div class="mt-4 flex flex-wrap gap-2 text-xs">
+          {filters.features.map((item) => (
+            <span class="rounded-full border border-border px-3 py-1 text-muted-foreground hover:border-primary hover:text-primary">{item}</span>
+          ))}
+        </div>
+      </div>
+    </aside>
+
+    <div class="space-y-8">
+      <div class="flex flex-col gap-4 rounded-2xl border border-border bg-card p-4 shadow-sm md:flex-row md:items-center md:justify-between">
+        <div class="text-sm text-muted-foreground">
+          Showing {products.length} models
+        </div>
+        <label class="flex items-center gap-2 text-sm text-muted-foreground">
+          Sort by
+          <select class="rounded-lg border border-border bg-background px-3 py-2 text-sm">
+            <option>Featured</option>
+            <option>Price: Low to High</option>
+            <option>Price: High to Low</option>
+            <option>Newest</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {products.map((product) => (
+          <a href={product.href} class="group">
+            <div class="overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+              <div class="relative aspect-[4/3]">
+                <img src={product.image} alt={product.name} class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                {product.badge && (
+                  <div class="absolute top-3 right-3 rounded-full bg-black/60 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">{product.badge}</div>
+                )}
+              </div>
+              <div class="space-y-2 p-4">
+                <h3 class="text-base font-semibold text-foreground group-hover:text-primary">{product.name}</h3>
+                <p class="text-sm text-muted-foreground">{product.summary}</p>
+                <div class="flex items-center gap-2">
+                  <span class="text-lg font-semibold text-primary">{product.price}</span>
+                  {product.originalPrice && <span class="text-sm text-muted-foreground line-through">{product.originalPrice}</span>}
+                </div>
+                <div class="flex items-center gap-1 text-sm text-warning">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M11.48 3.499a.75.75 0 011.04 0l2.56 2.401 3.38.49a.75.75 0 01.415 1.28l-2.447 2.384.578 3.366a.75.75 0 01-1.088.79L12 12.347l-3.038 1.597a.75.75 0 01-1.088-.79l.578-3.366-2.447-2.384a.75.75 0 01.415-1.28l3.38-.49 2.56-2.401z" /></svg>
+                  <span class="font-medium text-muted-foreground">{product.rating}</span>
+                  <span class="text-xs text-muted-foreground">({product.reviews})</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

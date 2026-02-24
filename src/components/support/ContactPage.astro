@@ -1,0 +1,117 @@
+---
+const offices = [
+  {
+    title: 'Customer Support',
+    address: '15 Electron Avenue, Isando, Kempton Park, Gauteng, 1600 South Africa',
+    phone: '+27 11 234 5678',
+    email: 'support@ironboxcontainers.co.za',
+    hours: 'Mon-Fri: 8AM-6PM | Sat: 9AM-4PM',
+  },
+];
+
+const faqs = [
+  {
+    question: 'How fast is delivery?',
+    answer: 'We typically deliver standard containers within 5–10 business days nationwide.',
+  },
+  {
+    question: 'Can I inspect the container before buying?',
+    answer: 'Yes, we can provide photos of the exact unit you will receive. Contact support to request current inventory images.',
+  },
+  {
+    question: 'Do you offer delivery to residential addresses?',
+    answer: 'Yes, as long as there is sufficient space for a tilt-bed truck to maneuver and offload.',
+  },
+];
+---
+
+<section class="bg-background text-foreground">
+  <div class="border-b border-border bg-gradient-to-r from-primary/10 via-background to-accent/10">
+    <div class="mx-auto max-w-5xl px-4 py-16 text-center">
+      <span class="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">Contact our support team</span>
+      <h1 class="mt-4 text-4xl font-semibold">Let’s plan your next container project.</h1>
+      <p class="mt-3 text-base text-muted-foreground">From permit questions to crane logistics, we guide you through every step. Submit site details for a tailored project brief within 48 hours.</p>
+      <div class="mt-6 flex flex-wrap justify-center gap-4 text-sm">
+        <a href="tel:+27112345678" class="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75C2.25 5.784 3.034 5 4 5h2.25c.85 0 1.566.616 1.715 1.454l.381 2.09a1.725 1.725 0 01-.436 1.483l-1.1 1.1a16.5 16.5 0 007.542 7.542l1.1-1.1c.39-.39.956-.566 1.483-.436l2.09.381A1.725 1.725 0 0119 17.75V20c0 .966-.784 1.75-1.75 1.75H17c-8.837 0-16-7.163-16-16V6.75z" /></svg> +27 11 234 5678</a>
+        <a href="mailto:support@ironboxcontainers.co.za" class="inline-flex items-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-semibold text-foreground transition hover:bg-muted"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H4.5a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5H4.5a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-6.9 4.143a2.25 2.25 0 01-2.26 0L3.57 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg> support@ironboxcontainers.co.za</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mx-auto grid max-w-6xl gap-8 px-4 py-16 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+    <div class="space-y-6 rounded-3xl border border-border bg-card p-6 shadow-sm">
+      <h2 class="text-lg font-semibold">Project intake form</h2>
+      <p class="text-sm text-muted-foreground">Share a few details and we’ll pair you with the right specialist—pool, prefab home, hospitality suite, or custom build.</p>
+      <form class="space-y-4 text-sm">
+        <div class="grid gap-4 md:grid-cols-2">
+          <div class="space-y-2">
+            <label class="font-medium text-muted-foreground" for="name">Name</label>
+            <input id="name" type="text" placeholder="Alex Morgan" class="w-full rounded-xl border border-border bg-background px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" />
+          </div>
+          <div class="space-y-2">
+            <label class="font-medium text-muted-foreground" for="email">Email</label>
+            <input id="email" type="email" placeholder="alex.morgan@example.com" class="w-full rounded-xl border border-border bg-background px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" />
+          </div>
+          <div class="space-y-2">
+            <label class="font-medium text-muted-foreground" for="phone">Phone</label>
+            <input id="phone" type="tel" placeholder="(737) 555-8020" class="w-full rounded-xl border border-border bg-background px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" />
+          </div>
+          <div class="space-y-2">
+            <label class="font-medium text-muted-foreground" for="project">Container Type</label>
+            <select id="project" class="w-full rounded-xl border border-border bg-background px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary">
+              <option>20ft Standard Container</option>
+              <option>40ft High Cube Container</option>
+              <option>Refrigerated Container</option>
+              <option>Open Top Container</option>
+              <option>Flat Rack Container</option>
+              <option>Custom Modification</option>
+            </select>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <label class="font-medium text-muted-foreground" for="timeline">How soon do you need it?</label>
+          <select id="timeline" class="w-full rounded-xl border border-border bg-background px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary">
+            <option>Right away (ASAP)</option>
+            <option>Within the next week</option>
+            <option>Just looking around</option>
+          </select>
+        </div>
+        <div class="space-y-2">
+          <label class="font-medium text-muted-foreground" for="notes">Site details & permit status</label>
+          <textarea id="notes" rows="4" placeholder="Tell us about your site access, utilities, or permit progress." class="w-full rounded-xl border border-border bg-background px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+        </div>
+        <button type="submit" class="w-full rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90">Submit intake</button>
+        <p class="text-xs text-muted-foreground">By submitting you agree to our Privacy Policy and consent to receive project updates.</p>
+      </form>
+    </div>
+
+    <div class="space-y-6">
+      <div class="rounded-3xl border border-border bg-card p-6 shadow-sm">
+        <h2 class="text-lg font-semibold">Locations & hours</h2>
+        <div class="mt-4 space-y-5 text-sm text-muted-foreground">
+          {offices.map((office) => (
+            <div class="rounded-2xl border border-border bg-background p-4">
+              <p class="text-sm font-semibold text-foreground">{office.title}</p>
+              <p class="mt-1 text-xs uppercase tracking-wide text-primary">{office.hours}</p>
+              <p class="mt-2">{office.address}</p>
+              <p class="mt-2">{office.phone}</p>
+              <p>{office.email}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="rounded-3xl border border-border bg-muted/30 p-6 text-sm text-muted-foreground">
+        <p class="text-sm font-semibold text-foreground">Fast answers</p>
+        <div class="mt-4 space-y-3">
+          {faqs.map((faq) => (
+            <div class="rounded-2xl border border-border bg-background p-4">
+              <p class="text-sm font-semibold text-foreground">{faq.question}</p>
+              <p class="mt-2 text-xs text-muted-foreground">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

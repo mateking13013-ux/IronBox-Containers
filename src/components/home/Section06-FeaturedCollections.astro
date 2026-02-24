@@ -1,0 +1,65 @@
+---
+import { getAllProducts } from '../../lib/woocommerce.js';
+const allProducts = await getAllProducts();
+
+// Pick 3 featured products from different categories
+const featured20ftUsed = allProducts.find(p => p.slug.includes('20ft-used-shipping-containers') && !p.slug.includes('fg'));
+const featured20ftNew = allProducts.find(p => p.slug.includes('20ft-new-shipping-containers-20ft-once-u'));
+const featured40ft = allProducts.find(p => p.slug.includes('40ft-new-shipping-containers-40ft-new-is'));
+
+const collections = [
+  {
+    title: featured20ftUsed?.name || '20ft Used Shipping Container',
+    description: 'Reliable 20ft shipping container perfect for storage, conversion, or workshop space.',
+    href: `/products/${featured20ftUsed?.slug || 'conex-20ft-used-shipping-containers'}`,
+    image: featured20ftUsed?.images?.[0]?.src || '/images/product-placeholder.jpg',
+  },
+  {
+    title: featured20ftNew?.name || '20ft New Shipping Container',
+    description: 'Brand new 20ft container with pristine condition and full warranty.',
+    href: `/products/${featured20ftNew?.slug || 'conex-20ft-new-shipping-containers-20ft-once-u'}`,
+    image: featured20ftNew?.images?.[0]?.src || '/images/product-placeholder.jpg',
+  },
+  {
+    title: featured40ft?.name || '40ft New Shipping Container',
+    description: 'Extra-large 40ft container ideal for extensive storage, commercial use, or custom builds.',
+    href: `/products/${featured40ft?.slug || 'conex-40ft-new-shipping-containers-40ft-new-is'}`,
+    image: featured40ft?.images?.[0]?.src || '/images/product-placeholder.jpg',
+  },
+];
+---
+
+<section class="w-full bg-background py-16">
+  <div class="mx-auto max-w-7xl px-4">
+    <div class="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <div>
+        <h2 class="text-3xl font-bold text-foreground">Featured Collections</h2>
+        <p class="text-lg text-muted-foreground">Curated combinations ready for your property</p>
+      </div>
+      <div class="flex gap-3">
+        <button class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground transition hover:bg-muted" aria-label="Previous">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" /></svg>
+        </button>
+        <button class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground transition hover:bg-muted" aria-label="Next">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5 15.75 12l-7.5 7.5" /></svg>
+        </button>
+      </div>
+    </div>
+    <div class="grid gap-6 md:grid-cols-3">
+      {collections.map((collection) => (
+        <a href={collection.href} class="group">
+          <div class="overflow-hidden rounded-2xl border border-border bg-card">
+            <div class="relative aspect-[16/10]">
+              <img src={collection.image} alt={collection.title} class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4 text-white">
+                <h3 class="text-xl font-semibold">{collection.title}</h3>
+                <p class="text-sm opacity-90">{collection.description}</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

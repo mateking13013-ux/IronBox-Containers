@@ -1,0 +1,133 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PolicyPageLayout from '../components/policy/PolicyPageLayout.astro';
+---
+
+<MainLayout title="Return & Warranty Policy – IronBox Containers" description="Learn about warranty coverage, repairs, and return procedures for IronBox Containers container projects.">
+  <Header />
+  <PolicyPageLayout
+    title="Return & Refund Policy"
+    lastUpdated="Updated January 24, 2025"
+  >
+    <div class="space-y-6 text-base text-muted-foreground">
+      <p>At IronBox Containers, we stand behind the quality of our shipping containers. This policy outlines our return and refund procedures to ensure your complete satisfaction.</p>
+
+      <div>
+        <h2 class="text-xl font-semibold text-foreground mb-3">Return Eligibility</h2>
+        <p>We accept returns of standard, non-customized shipping containers within <strong>30 days of delivery</strong>.</p>
+        <p class="mt-2">To qualify for a return, the container must meet the following conditions:</p>
+        <ul class="mt-2 ml-6 space-y-1 list-disc">
+          <li>Container is in the same condition as delivered</li>
+          <li>Container is unmodified and unused</li>
+          <li>Container is accessible for pickup by our transport team</li>
+          <li>Original purchase documentation is provided</li>
+          <li>Return request is submitted within 30 days of delivery</li>
+        </ul>
+        <p class="mt-2"><strong>Important:</strong> Modified or customized containers are final sale once customization begins. Custom orders cannot be returned once production has started.</p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold text-foreground mb-3">How to Initiate a Return</h2>
+        <p>To start a return, please contact our customer service team:</p>
+        <ul class="mt-2 ml-6 space-y-1">
+          <li><strong>Email:</strong> <a href="mailto:support@ironboxcontainers.co.za" class="text-primary hover:underline">support@ironboxcontainers.co.za</a></li>
+          <li><strong>Phone:</strong> <a href="tel:+27112345678" class="text-primary hover:underline">+27 11 234 5678</a></li>
+          <li><strong>Business Hours:</strong> Mon-Fri: 8AM-6PM | Sat: 9AM-4PM (Central Time)</li>
+        </ul>
+        <p class="mt-2">Please include your order number, delivery date, and reason for return. Our team will provide you with a Return Authorization (RA) number and schedule a pickup.</p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold text-foreground mb-3">Return Shipping & Fees</h2>
+        <p><strong>Return Shipping:</strong> The customer is responsible for all return shipping and pickup costs. We will coordinate transportation, and shipping fees will be deducted from your refund.</p>
+        <p class="mt-2"><strong>Restocking Fee:</strong> A 15% restocking fee applies to all approved returns to cover inspection, handling, and processing costs.</p>
+        <p class="mt-2"><strong>Example:</strong> For a $5,000 container purchase, the restocking fee would be $750.</p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold text-foreground mb-3">Return Address</h2>
+        <p>All returns must be shipped to our facility at:</p>
+        <div class="mt-2 p-4 bg-muted/30 rounded-lg border border-border">
+          <p class="font-semibold text-foreground">IronBox Containers - Returns Department</p>
+          <p>15 Electron Avenue, Isando</p>
+          <p>Kempton Park, Gauteng 1600</p>
+          <p>South Africa</p>
+        </div>
+        <p class="mt-2"><strong>Note:</strong> Do not ship containers to this address without first obtaining a Return Authorization (RA) number. Unauthorized returns will be refused.</p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold text-foreground mb-3">Refund Processing</h2>
+        <p>Once we receive and inspect your returned container:</p>
+        <ul class="mt-2 ml-6 space-y-1 list-disc">
+          <li>Inspection is completed within 3-5 business days of receipt</li>
+          <li>You will receive an email confirmation of the inspection results</li>
+          <li>Approved refunds are processed within 5-10 business days</li>
+          <li>Refunds are issued to the original payment method</li>
+          <li>The refund amount equals the purchase price minus restocking fee and return shipping costs</li>
+        </ul>
+        <p class="mt-2">Please allow 5-10 business days for the refund to appear in your account after processing.</p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold text-foreground mb-3">Non-Returnable Items</h2>
+        <p>The following items cannot be returned:</p>
+        <ul class="mt-2 ml-6 space-y-1 list-disc">
+          <li>Custom-built or modified shipping containers</li>
+          <li>Containers with custom paint, windows, doors, or modifications</li>
+          <li>Used or damaged containers</li>
+          <li>Containers purchased on clearance or final sale</li>
+          <li>Accessories, parts, or add-ons (unless defective)</li>
+          <li>Containers that have been altered or modified after delivery</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold text-foreground mb-3">Damaged or Defective Containers</h2>
+        <p>If your container arrives damaged or has a manufacturing defect:</p>
+        <p class="mt-2"><strong>Report within 48 hours:</strong> Contact us immediately at <a href="mailto:support@ironboxcontainers.co.za" class="text-primary hover:underline">support@ironboxcontainers.co.za</a> with photos and a detailed description.</p>
+        <p class="mt-2"><strong>Inspection:</strong> We will schedule a virtual or in-person inspection to assess the damage.</p>
+        <p class="mt-2"><strong>Resolution:</strong> Approved claims will be resolved through repair, replacement, or full refund at no cost to you. Shipping fees for defective/damaged items will be covered by IronBox Containers.</p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold text-foreground mb-3">Exchanges</h2>
+        <p>We do not offer direct exchanges. If you need a different container size or model, please return your current container following this policy and place a new order.</p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold text-foreground mb-3">Cancellations</h2>
+        <p><strong>Before Delivery:</strong> Orders can be cancelled before shipping. A cancellation fee may apply if the container is already in transit.</p>
+        <p class="mt-2"><strong>After Delivery:</strong> Standard return policy applies (see above).</p>
+        <p class="mt-2"><strong>Custom Orders:</strong> Deposits on custom-built containers are non-refundable once fabrication begins, but may be transferred to a different project within 12 months.</p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold text-foreground mb-3">Warranty Information</h2>
+        <p>All new shipping containers come with a structural warranty covering manufacturing defects. Warranty terms vary by container type and condition:</p>
+        <ul class="mt-2 ml-6 space-y-1 list-disc">
+          <li><strong>New (One-Trip) Containers:</strong> 1-year structural warranty</li>
+          <li><strong>Cargo-Worthy Containers:</strong> 90-day structural warranty</li>
+          <li><strong>As-Is Containers:</strong> No warranty (sold as-is)</li>
+        </ul>
+        <p class="mt-2">Warranty claims must be reported within the warranty period with photo documentation.</p>
+      </div>
+
+      <div class="pt-6 border-t border-border">
+        <h3 class="text-lg font-semibold text-foreground mb-4">Contact Us</h3>
+        <p class="text-muted-foreground mb-2">If you have any questions about our Returns and Refunds Policy, please contact us:</p>
+        <ul class="space-y-2 text-muted-foreground">
+          <li><strong>IronBox Containers</strong></li>
+          <li>15 Electron Avenue, Isando</li>
+          <li>Kempton Park, Gauteng, 1600</li>
+          <li>South Africa</li>
+          <li>Email: <a href="mailto:support@ironboxcontainers.co.za" class="text-primary hover:underline">support@ironboxcontainers.co.za</a></li>
+          <li>Phone: <a href="tel:+27112345678" class="text-primary hover:underline">+27 11 234 5678</a></li>
+        </ul>
+      </div>
+    </div>
+  </PolicyPageLayout>
+  <Footer />
+</MainLayout>

@@ -1,0 +1,171 @@
+---
+const breadcrumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Account', href: '/account' },
+];
+
+const profile = {
+  name: 'Alex Morgan',
+  email: 'alex.morgan@example.com',
+  phone: '+1 (737) 555-8020',
+  memberSince: 'February 14, 2022',
+};
+
+const quickLinks = [
+  { label: 'Orders', description: 'View order history', href: '/account/orders', icon: 'package' },
+  { label: 'Addresses', description: 'Manage delivery sites', href: '#', icon: 'map' },
+  { label: 'Payment', description: 'Saved payment methods', href: '#', icon: 'card' },
+  { label: 'Wishlist', description: 'Saved products', href: '#', icon: 'heart' },
+];
+
+const recentOrders = [
+  {
+    number: 'NT-20437',
+    date: 'June 24, 2024',
+    total: 'R46,400.00',
+    status: 'In scheduling',
+    href: '/account/orders',
+  },
+  {
+    number: 'NT-19892',
+    date: 'March 3, 2024',
+    total: 'R18,900.00',
+    status: 'Delivered',
+    href: '/account/orders',
+  },
+];
+
+const savedSites = [
+  {
+    label: 'Primary residence',
+    address: '1421 Horizon Parkway, Austin, TX 73301',
+    instructions: '40ft crane access from rear alley. Pad poured May 2024.',
+  },
+  {
+    label: 'Hill Country retreat',
+    address: '85 Ridgeview Rd, Dripping Springs, TX 78620',
+    instructions: 'Utility stubs 60ft from road. Request 2-day install window.',
+  },
+];
+---
+
+<section class="bg-background text-foreground">
+  <div class="border-b border-border bg-muted/20">
+    <div class="mx-auto max-w-6xl px-4 py-6">
+      <nav class="flex items-center gap-2 text-sm text-muted-foreground">
+        {breadcrumbs.map((crumb, index) => (
+          <div class="flex items-center">
+            {index > 0 && <span class="px-1">/</span>}
+            {index === breadcrumbs.length - 1 ? (
+              <span class="font-semibold text-foreground">{crumb.label}</span>
+            ) : (
+              <a href={crumb.href} class="transition hover:text-foreground">{crumb.label}</a>
+            )}
+          </div>
+        ))}
+      </nav>
+    </div>
+  </div>
+
+  <div class="mx-auto max-w-6xl px-4 py-12 space-y-10">
+    <header>
+      <h1 class="text-3xl font-semibold">My account</h1>
+      <p class="mt-2 text-sm text-muted-foreground">Welcome back, {profile.name}. Manage your projects, deliveries, and saved sites.</p>
+    </header>
+
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      {quickLinks.map((link) => (
+        <a href={link.href} class="group flex items-center gap-4 rounded-2xl border border-border bg-card p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+          <div class="rounded-xl bg-primary/10 p-3 text-primary">
+            {link.icon === 'package' && <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5-9 5 9 5 9-5zm0 0v9l-9 5-9-5v-9" /></svg>}
+            {link.icon === 'map' && <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A2 2 0 013 15.447V5.236a1 1 0 011.447-.894L9 6l6-2.5 5.553 2.776A2 2 0 0121 7.118V18.5a1 1 0 01-1.447.894L15 18l-6 2z" /></svg>}
+            {link.icon === 'card' && <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.5A2.25 2.25 0 014.5 5.25h15a2.25 2.25 0 012.25 2.25v9a2.25 2.25 0 01-2.25 2.25h-15A2.25 2.25 0 012.25 16.5v-9z" /><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 10.5h19.5" /></svg>}
+            {link.icon === 'heart' && <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733C11.285 4.876 9.623 3.75 7.688 3.75 5.099 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>}
+          </div>
+          <div class="flex-1">
+            <p class="font-semibold text-foreground group-hover:text-primary">{link.label}</p>
+            <p class="text-xs text-muted-foreground">{link.description}</p>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-muted-foreground transition group-hover:text-primary" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+        </a>
+      ))}
+    </div>
+
+    <div class="grid gap-6 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
+      <div class="space-y-6">
+        <div class="rounded-2xl border border-border bg-card p-6 shadow-sm">
+          <h2 class="text-lg font-semibold">Profile information</h2>
+          <p class="mt-1 text-sm text-muted-foreground">Keep your details up to date for delivery coordination.</p>
+          <dl class="mt-6 grid gap-4 text-sm md:grid-cols-2">
+            <div>
+              <dt class="text-muted-foreground">Full name</dt>
+              <dd class="font-medium text-foreground">{profile.name}</dd>
+            </div>
+            <div>
+              <dt class="text-muted-foreground">Email</dt>
+              <dd class="font-medium text-foreground">{profile.email}</dd>
+            </div>
+            <div>
+              <dt class="text-muted-foreground">Phone</dt>
+              <dd class="font-medium text-foreground">{profile.phone}</dd>
+            </div>
+            <div>
+              <dt class="text-muted-foreground">Member since</dt>
+              <dd class="font-medium text-foreground">{profile.memberSince}</dd>
+            </div>
+          </dl>
+          <div class="mt-6">
+            <a href="#" class="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-semibold text-foreground transition hover:bg-muted">Update profile</a>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-border bg-card p-6 shadow-sm">
+          <div class="flex items-center justify-between">
+            <div>
+              <h2 class="text-lg font-semibold">Recent orders</h2>
+              <p class="mt-1 text-sm text-muted-foreground">Track fabrication milestones and delivery windows.</p>
+            </div>
+            <a href="/account/orders" class="text-sm font-semibold text-primary hover:underline">View all</a>
+          </div>
+          <div class="mt-6 space-y-4">
+            {recentOrders.map((order) => (
+              <a href={order.href} class="flex items-center justify-between rounded-xl border border-border bg-background p-4 text-sm transition hover:border-primary/60">
+                <div>
+                  <p class="font-semibold text-foreground">Order {order.number}</p>
+                  <p class="text-xs text-muted-foreground">Placed {order.date}</p>
+                </div>
+                <div class="text-right">
+                  <p class="font-semibold text-foreground">{order.total}</p>
+                  <p class="text-xs text-primary">{order.status}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="rounded-2xl border border-border bg-card p-6 shadow-sm">
+          <h2 class="text-lg font-semibold">Saved installation sites</h2>
+          <div class="mt-4 space-y-4 text-sm">
+            {savedSites.map((site) => (
+              <div class="rounded-xl border border-border bg-background p-4">
+                <p class="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{site.label}</p>
+                <p class="mt-2 font-medium text-foreground">{site.address}</p>
+                <p class="mt-2 text-xs text-muted-foreground">{site.instructions}</p>
+                <a href="#" class="mt-3 inline-flex items-center gap-2 text-xs font-semibold text-primary hover:underline">Edit site details <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 4.5l9 7.5-9 7.5" /></svg></a>
+              </div>
+            ))}
+            <button class="w-full rounded-xl border border-dashed border-border py-4 text-sm font-semibold text-primary transition hover:border-primary/60">Add new delivery site</button>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-border bg-muted/20 p-5 text-sm">
+          <p class="font-semibold text-foreground">Need help?</p>
+          <p class="mt-2 text-muted-foreground">Our concierge team can assist with install timelines, financing, or customization questions.</p>
+          <a href="/contact" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">Contact support <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 4.5l9 7.5-9 7.5" /></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

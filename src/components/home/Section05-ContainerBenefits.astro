@@ -1,0 +1,110 @@
+---
+const section = {
+  title: 'Why Choose Container Solutions?',
+  description:
+    'Experience hassle-free container solutions with fast nationwide delivery, expert customer support, and professional installation. Quality containers delivered when you need them.',
+  benefits: [
+    {
+      title: 'Fast Nationwide Delivery',
+      description: 'Professional teams deliver across all 50 states within 7-14 days.',
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5.25h13.5a2.25 2.25 0 012.25 2.25v9a.75.75 0 01-.75.75H12l-3 3v-3H3.75a.75.75 0 01-.75-.75v-9A2.25 2.25 0 015.25 3H18" /></svg>`
+    },
+    {
+      title: 'Expert Customer Support',
+      description: 'Dedicated team available 24/7 for questions and project guidance.',
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A3 3 0 004.977 18.72m.94-3.198l.001-.031A11.95 11.95 0 0112 3c-2.17 0-4.207.576-5.963 1.584A3 3 0 001.387 6.019m9.853-3.244A12.09 12.09 0 0112 12c-2.419 0-4.672.709-6.57 1.928m9.853 3.244A11.95 11.95 0 0112 21c-2.419 0-4.672-.709-6.57-1.928" /></svg>`
+    },
+    {
+      title: 'Hassle-Free Installation',
+      description: 'Professional installation included with every container purchase.',
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 9A2.652 2.652 0 0 0 19.58 12.82l-2.17 2.17a2.652 2.652 0 0 1-3.74 0l-2.93-2.92a2.652 2.652 0 0 0-3.74 0L2.25 12.83l2.17 2.17z" /><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 17.25v1.5a2.25 2.25 0 0 0 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25v-1.5" /></svg>`
+    },
+    {
+      title: 'Guaranteed Quality',
+      description: 'ISO/CSC certified containers with comprehensive warranty coverage.',
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m6.75-2.25a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`
+    },
+  ],
+  primaryCta: { label: 'View Shop Options', href: '/shop', icon: 'shopping-cart' },
+  secondaryCta: { label: 'Contact Support', href: '/contact', icon: 'phone' },
+  image: '/images/branding/container-benefits.webp',
+  badge: { headline: 'Fast Delivery', subline: 'Expert Support Team' },
+};
+
+const smallIconMap = {
+  'shopping-cart': `<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l2-7H5.4" /><path stroke-linecap="round" stroke-linejoin="round" d="M7 13l-1 4h12" /><path stroke-linecap="round" stroke-linejoin="round" d="M9 21a1 1 0 100-2 1 1 0 000 2zM17 21a1 1 0 100-2 1 1 0 000 2z" /></svg>`,
+  'phone': `<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25A2.25 2.25 0 0 0 21.75 19.5v-2.25a2.25 2.25 0 0 0-2.25-2.25H15a2.25 2.25 0 0 0-2.25 2.25v.75A2.25 2.25 0 0 0 15 21.75h2.25a2.25 2.25 0 0 0 2.25-2.25v-2.25A2.25 2.25 0 0 0 17.25 15H15A2.25 2.25 0 0 0 12.75 17.25v.75A2.25 2.25 0 0 0 15 21.75h2.25a2.25 2.25 0 0 0 2.25-2.25v-2.25A2.25 2.25 0 0 0 17.25 15H15A2.25 2.25 0 0 0 12.75 17.25v.75A2.25 2.25 0 0 0 15 21.75h2.25a2.25 2.25 0 0 0 2.25-2.25v-2.25z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 12.75c-1.637 0-3.063.654-4.122 1.711A5.25 5.25 0 0 1 6.75 9c0-2.899 2.351-5.25 5.25-5.25s5.25 2.351 5.25 5.25a5.25 5.25 0 0 1-1.128 3.274A5.913 5.913 0 0 1 12 12.75z" /></svg>`,
+};
+---
+
+<section class="w-full bg-gradient-to-r from-muted/40 to-accent/10 py-20">
+  <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 lg:grid-cols-2">
+    <div class="space-y-6">
+      <div class="space-y-4">
+        <h2 class="text-4xl font-bold leading-tight text-foreground md:text-5xl">{section.title}</h2>
+        <p class="max-w-xl text-lg text-muted-foreground">{section.description}</p>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2">
+        {section.benefits.map((benefit) => (
+          <div class="rounded-lg border border-border bg-card p-4">
+            <div class="mb-2 flex items-center gap-2" set:html={benefit.icon}></div>
+            <h3 class="font-semibold text-foreground">{benefit.title}</h3>
+            <p class="text-sm text-muted-foreground">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+      <div class="flex flex-col gap-4 sm:flex-row">
+        <a href={section.primaryCta.href} class="flex flex-1 items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:bg-primary/90">
+          <span class="inline-flex" set:html={smallIconMap[section.primaryCta.icon]}></span>
+          {section.primaryCta.label}
+        </a>
+        <a href={section.secondaryCta.href} class="flex flex-1 items-center justify-center gap-2 rounded-lg border border-border px-6 py-3 font-semibold text-foreground transition hover:bg-muted">
+          <span class="inline-flex" set:html={smallIconMap[section.secondaryCta.icon]}></span>
+          {section.secondaryCta.label}
+        </a>
+      </div>
+    </div>
+
+    <div class="space-y-6">
+      <div class="relative">
+        <div class="relative aspect-[5/3] overflow-hidden rounded-2xl shadow-2xl">
+          <img src={section.image} alt="Container solutions" class="h-full w-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-l from-black/30 to-transparent"></div>
+          <div class="absolute bottom-6 right-6 text-right text-white">
+            <div class="text-lg font-semibold">{section.badge.headline}</div>
+            <div class="text-sm opacity-90">{section.badge.subline}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional Banner -->
+      <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary/10 via-primary/5 to-accent/10 border border-border p-8">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold text-foreground mb-2">
+              Ready to Transform Your Space?
+            </h3>
+            <p class="text-muted-foreground leading-relaxed">
+              Discover our complete inventory of premium container solutions. From pools to homes to storage spaces, 
+              we have the perfect solution for your needs with fast delivery and expert installation.
+            </p>
+          </div>
+          <div class="flex flex-col gap-3">
+            <a href="/shop" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors whitespace-nowrap">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l2-7H5.4" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 13l-1 4h12" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 21a1 1 0 100-2 1 1 0 000 2zM17 21a1 1 0 100-2 1 1 0 000 2z" />
+              </svg>
+              Shop All Products
+            </a>
+            <div class="text-center text-sm text-muted-foreground">
+              <span class="font-semibold">87+ Products Available</span><br/>
+              <span>• Ships in 7-14 days</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

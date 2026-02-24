@@ -1,0 +1,276 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Section03FeaturedCategories from '../components/home/Section03-FeaturedCategories.astro';
+import Section04FeaturedProducts20ft from '../components/home/Section04-FeaturedProducts-20ft.astro';
+import Section04FeaturedProducts40ft from '../components/home/Section04-FeaturedProducts-40ft.astro';
+
+import Section06FeaturedCollections from '../components/home/Section06-FeaturedCollections.astro';
+import Section07BestSellers from '../components/home/Section07-BestSellers.astro';
+
+import Section10PrefabHomes from '../components/home/Section10-PrefabHomesShowcase.astro';
+import Section11ContactForm from '../components/home/Section11-ContactForm.astro';
+
+import Section12ContainerInnovation from '../components/home/Section12-ContainerInnovation.astro';
+import { getAllProducts } from '../lib/woocommerce.js';
+
+// Fetch real products for schema
+const allProducts = await getAllProducts();
+const featuredProducts = allProducts.slice(0, 10); // Top 10 products for schema
+
+// SEO Schema Data
+const siteUrl = 'https://ironboxcontainers.co.za';
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "IronBox Containers",
+  "url": siteUrl,
+  "logo": `${siteUrl}/favicon.svg`,
+  "description": "Premium container pools, prefab homes, portable restrooms, and storage solutions nationwide.",
+  "foundingDate": "2010",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+27-11-234-5678",
+    "contactType": "customer service",
+    "availableLanguage": ["English"]
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "15 Electron Avenue, Isando",
+    "addressLocality": "Kempton Park",
+    "addressRegion": "GP",
+    "postalCode": "1600",
+    "addressCountry": "ZA"
+  },
+  "sameAs": [
+    "https://facebook.com/ironboxcontainers",
+    "https://twitter.com/ironboxcontainers",
+    "https://instagram.com/ironboxcontainers",
+    "https://linkedin.com/company/ironboxcontainers"
+  ]
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "IronBox Containers",
+  "url": siteUrl,
+  "description": "Premium container pools, prefab homes, portable restrooms, and storage solutions. Nationwide delivery and installation.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": `${siteUrl}/shop?search={search_term_string}`,
+    "query-input": "required name=search_term_string"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "IronBox Containers",
+    "url": siteUrl
+  }
+};
+
+const productSchemas = featuredProducts.map(product => ({
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": product.name,
+  "image": product.images?.[0]?.src || `${siteUrl}/images/product-placeholder.jpg`,
+  "description": product.short_description?.replace(/<[^>]*>/g, '') || `${product.name} - Premium container solution for residential and commercial use.`,
+  "sku": product.sku || `CONT-${product.id}`,
+  "mpn": product.sku || `CONT-${product.id}`,
+  "brand": {
+    "@type": "Brand",
+    "name": "IronBox Containers"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": `${siteUrl}/products/${product.slug}`,
+    "priceCurrency": "ZAR",
+    "price": product.price,
+    "availability": product.stock_status === 'instock' ? "https://schema.org/InStock" : "https://schema.org/PreOrder",
+    "seller": {
+      "@type": "Organization",
+      "name": "IronBox Containers",
+      "url": siteUrl
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": "300",
+        "currency": "ZAR"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "ZA"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 5,
+          "maxValue": 10,
+          "unitText": "day"
+        }
+      }
+    }
+  },
+  "additionalProperty": [
+    {
+      "@type": "PropertyValue",
+      "name": "Condition",
+      "value": product.stock_status === 'instock' ? "New" : "Used"
+    },
+    {
+      "@type": "PropertyValue", 
+      "name": "Type",
+      "value": "Shipping Container"
+    }
+  ]
+}));
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": siteUrl
+    }
+  ]
+};
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "IronBox Containers",
+  "description": "Premium container solutions for residential and commercial use",
+  "url": siteUrl,
+  "telephone": "+27-11-234-5678",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "15 Electron Avenue, Isando",
+    "addressLocality": "Kempton Park",
+    "addressRegion": "GP",
+    "postalCode": "1600",
+    "addressCountry": "ZA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "-26.1413",
+    "longitude": "28.2340"
+  },
+  "openingHours": ["Mo-Fr 08:00-18:00", "Sa 09:00-16:00"],
+  "priceRange": "R180-R35,100",
+  "paymentAccepted": ["Cash", "Credit Card", "Financing"],
+  "currenciesAccepted": "ZAR",
+  "serviceArea": {
+    "@type": "AdministrativeArea",
+    "name": "South Africa"
+  }
+};
+
+// Meta Tags
+const metaTitle = "IronBox Containers – Premium Container Solutions | Pools, Homes & Storage";
+const metaDescription = "Shop premium shipping containers, guard booths, portable offices & storage solutions. Nationwide delivery & installation. Containers starting from R180.";
+const canonicalUrl = siteUrl + '/';
+---
+
+<MainLayout title={metaTitle} description={metaDescription}>
+  <!-- Enhanced SEO Head Content -->
+  <slot name="head">
+    <link rel="canonical" href={canonicalUrl} />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content={metaTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="IronBox Containers" />
+    <meta property="og:image" content={`${siteUrl}/images/og-homepage.jpg`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="IronBox Containers - Premium Container Solutions" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ironboxcontainers" />
+    <meta name="twitter:creator" content="@ironboxcontainers" />
+    <meta name="twitter:title" content={metaTitle} />
+    <meta name="twitter:description" content={metaDescription} />
+    <meta name="twitter:image" content={`${siteUrl}/images/og-homepage.jpg`} />
+    <meta name="twitter:image:alt" content="IronBox Containers - Premium Container Solutions" />
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="bingbot" content="index, follow" />
+    
+    <!-- Geolocation and Business Meta Tags -->
+    <meta name="geo.region" content="ZA-GP" />
+    <meta name="geo.placename" content="Kempton Park, Gauteng" />
+    <meta name="geo.position" content="-26.1413;28.2340" />
+    <meta name="ICBM" content="-26.1413, 28.2340" />
+
+    <!-- Business Contact Meta -->
+    <meta name="business:contact_data:street_address" content="15 Electron Avenue, Isando" />
+    <meta name="business:contact_data:locality" content="Kempton Park" />
+    <meta name="business:contact_data:region" content="GP" />
+    <meta name="business:contact_data:postal_code" content="1600" />
+    <meta name="business:contact_data:country_name" content="South Africa" />
+    <meta name="business:contact_data:phone_number" content="+27-11-234-5678" />
+    <meta name="business:contact_data:website" content={siteUrl} />
+    
+    <!-- Product and E-commerce Meta -->
+    <meta name="product:category" content="Shipping Containers" />
+    <meta name="product:brand" content="IronBox Containers" />
+    <meta name="product:condition" content="new" />
+    <meta name="product:price:currency" content="ZAR" />
+    <meta name="product:price:amount" content="180" />
+    <meta name="product:availability" content="in stock" />
+    <meta name="product:retailer" content="IronBox Containers" />
+    <meta name="product:item_group_id" content="container-solutions" />
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="/_astro/main.css" as="style" />
+    <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin />
+    
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//www.google-analytics.com" />
+
+    <!-- Preconnect to External Domains -->
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+    
+    <!-- Structured Data Schemas -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)}></script>
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)}></script>
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)}></script>
+    
+    <!-- Product Schemas (First 5 products) -->
+    {productSchemas.slice(0, 5).map(productSchema => (
+      <script type="application/ld+json" set:html={JSON.stringify(productSchema)}></script>
+    ))}
+  </slot>
+  
+  <Header />
+  <main class="overflow-hidden">
+
+    <Section12ContainerInnovation />
+
+    <Section03FeaturedCategories />
+
+    <Section04FeaturedProducts20ft />
+    <Section04FeaturedProducts40ft />
+
+    <Section06FeaturedCollections />
+    <Section07BestSellers />
+
+    <Section10PrefabHomes />
+    <Section11ContactForm />
+  </main>
+  <Footer />
+</MainLayout>

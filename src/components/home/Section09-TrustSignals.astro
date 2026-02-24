@@ -1,0 +1,43 @@
+---
+const section = {
+  title: 'Why Shop With Us',
+  description: 'Trusted by thousands of customers nationwide',
+  signals: [
+    { title: 'Licensed & Insured', description: 'Fully certified fabrication and installation crews across the U.S.', icon: 'shield', stat: '50+ Teams', statLabel: 'Certified Install Crews' },
+    { title: '5-Star Reviews', description: 'Customers rate us 4.8/5 for quality and service.', icon: 'star', stat: '4.8 / 5', statLabel: 'Average Rating' },
+    { title: 'Nationwide Delivery', description: 'Strategic hubs to deliver and install quickly.', icon: 'truck', stat: '48 States', statLabel: 'Served with Install Teams' },
+    { title: 'Industry Warranty', description: 'Comprehensive warranty backing every project.', icon: 'award', stat: '10 Years', statLabel: 'Structural Coverage' },
+  ],
+};
+
+const iconMap = {
+  shield: `<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75L4.5 9.75v4.5c0 4.28 3.108 7.621 7.5 8.25 4.392-.629 7.5-3.97 7.5-8.25v-4.5l-7.5-3z" /></svg>`,
+  star: `<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-primary" viewBox="0 0 24 24" fill="currentColor"><path d="M11.48 3.499a.75.75 0 011.04 0l2.56 2.401 3.38.49a.75.75 0 01.415 1.28l-2.447 2.384.578 3.366a.75.75 0 01-1.088.79L12 12.347l-3.038 1.597a.75.75 0 01-1.088-.79l.578-3.366L6.005 7.67a.75.75 0 01.415-1.28l3.38-.49 2.56-2.401z" /></svg>`,
+  truck: `<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.5A1.5 1.5 0 013.75 6h9.5a1.5 1.5 0 011.5 1.5v6.75A2.25 2.25 0 0112.5 16.5h-6a2.25 2.25 0 01-2.25-2.25V7.5zM14.75 9h2a1.5 1.5 0 011.335.832l1.5 3A1.5 1.5 0 0118.25 15H14.75M5.25 19.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM16.5 19.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" /></svg>`,
+  award: `<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3.75a6 6 0 100 12 6 6 0 000-12z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-5.25" /><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 21 12 18.75 8.25 21" /></svg>`,
+};
+---
+
+<section class="w-full bg-muted/20 py-16">
+  <div class="mx-auto max-w-7xl px-4">
+    <div class="mb-12 text-center">
+      <h2 class="text-3xl font-bold text-foreground">{section.title}</h2>
+      <p class="text-lg text-muted-foreground">{section.description}</p>
+    </div>
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+      {section.signals.map((signal) => (
+        <div class="rounded-xl border border-border bg-card p-8 text-center">
+          <div class="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-accent/10" set:html={iconMap[signal.icon]}></div>
+          <h3 class="mb-3 text-xl font-bold text-foreground">{signal.title}</h3>
+          <p class="text-muted-foreground">{signal.description}</p>
+          {signal.stat && (
+            <div class="mt-4 space-y-1">
+              <div class="text-2xl font-bold text-primary">{signal.stat}</div>
+              {signal.statLabel && <div class="text-sm text-muted-foreground">{signal.statLabel}</div>}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

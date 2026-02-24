@@ -1,0 +1,202 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCategories, getProductsByCategory, formatPrice, getProductCondition, getContainerSize } from '../../lib/woocommerce.js';
+
+// Get all categories for static paths
+export async function getStaticPaths() {
+  const categories = await getCategories();
+
+  return categories.map(category => ({
+    params: { slug: category.slug },
+    props: { category }
+  }));
+}
+
+const { category } = Astro.props;
+const { slug } = Astro.params;
+
+// Fetch products for this category
+const products = await getProductsByCategory(category.id);
+const allCategories = await getCategories();
+---
+
+<MainLayout title={`${category.name} – IronBox Containers`} description={category.description || `Shop our ${category.name} collection. ${products.length} products available with nationwide delivery.`}>
+  <Header />
+  <main>
+    <section class="min-h-screen bg-gray-50">
+      <!-- Category Header -->
+      <div class="bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <nav class="py-3">
+            <ol class="flex items-center gap-1.5 text-xs text-gray-400">
+              <li><a href="/" class="hover:text-gray-600 transition-colors">Home</a></li>
+              <li>/</li>
+              <li><a href="/shop" class="hover:text-gray-600 transition-colors">Shop</a></li>
+              <li>/</li>
+              <li class="text-gray-700 font-medium">{category.name}</li>
+            </ol>
+          </nav>
+          <div class="pb-6">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <div>
+                <h1 class="text-xl font-semibold text-gray-900">{category.name}</h1>
+                <p class="mt-1 text-sm text-gray-500">
+                  {products.length} products
+                </p>
+              </div>
+              <div class="relative">
+                <input
+                  type="search"
+                  placeholder="Search..."
+                  class="w-full sm:w-64 px-3 py-2 pl-9 text-sm text-gray-700 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:bg-white"
+                />
+                <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-col-reverse lg:flex-row gap-8">
+
+          <!-- Sidebar -->
+          <aside class="w-full lg:w-56 flex-shrink-0">
+            <div class="bg-white rounded-xl border border-gray-100 sticky top-4 overflow-hidden">
+              <div class="px-4 py-3 border-b border-gray-100">
+                <h2 class="text-sm font-semibold text-gray-900">Categories</h2>
+              </div>
+              <div class="p-2">
+                <a
+                  href={`/categories/${category.slug}`}
+                  class="flex items-center justify-between px-3 py-2 rounded-lg bg-blue-50 mb-0.5"
+                >
+                  <span class="text-[13px] font-semibold text-blue-700">{category.name}</span>
+                  <span class="text-[11px] font-medium text-blue-600 tabular-nums">{products.length}</span>
+                </a>
+                <div class="space-y-0.5">
+                  {allCategories.filter(cat => cat.id !== category.id).map((cat) => (
+                    <a
+                      href={`/categories/${cat.slug}`}
+                      class="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors group"
+                    >
+                      <span class="text-[13px] text-gray-600 group-hover:text-gray-900">{cat.name}</span>
+                      <span class="text-[11px] text-gray-400 tabular-nums">{cat.count}</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+              <div class="p-2 border-t border-gray-100">
+                <a
+                  href="/shop"
+                  class="flex items-center justify-center gap-1.5 w-full px-3 py-2 bg-gray-900 text-white text-xs font-medium rounded-lg hover:bg-gray-800 transition-colors"
+                >
+                  View All Products
+                </a>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Products Grid -->
+          <div class="flex-1">
+            <!-- Sort Bar -->
+            <div class="flex items-center justify-between mb-4">
+              <p class="text-xs text-gray-500">
+                {products.length} results
+              </p>
+              <select class="text-xs text-gray-600 bg-transparent border-0 focus:ring-0 cursor-pointer pr-6">
+                <option>Featured</option>
+                <option>Price: Low to High</option>
+                <option>Price: High to Low</option>
+                <option>Newest</option>
+                <option>Name A-Z</option>
+              </select>
+            </div>
+
+            {products.length > 0 ? (
+              <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
+                {products.map((product) => {
+                  const condition = getProductCondition(product);
+                  const size = getContainerSize(product);
+                  const imageUrl = product.images?.[0]?.src || 'https://via.placeholder.com/400x300';
+                  const hasSale = product.regular_price && product.regular_price !== product.price;
+
+                  return (
+                    <a href={`/products/${product.slug}`} class="group">
+                      <div class="bg-white rounded-xl border border-gray-100 overflow-hidden hover:shadow-md hover:border-gray-200 transition-all duration-200">
+                        <div class="aspect-square relative overflow-hidden bg-gray-50">
+                          <img
+                            src={imageUrl}
+                            alt={product.name}
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                          />
+                          <div class="absolute inset-x-0 top-0 flex items-start justify-between p-2">
+                            <span class={`
+                              px-2 py-0.5 text-[10px] font-semibold rounded-md backdrop-blur-sm
+                              ${condition === 'New' ? 'bg-emerald-500/90 text-white' :
+                                condition === 'Used' ? 'bg-amber-500/90 text-white' :
+                                'bg-gray-800/80 text-white'}
+                            `}>
+                              {condition}
+                            </span>
+                            {size && size !== 'Standard' && (
+                              <span class="px-2 py-0.5 text-[10px] font-semibold rounded-md bg-black/60 text-white backdrop-blur-sm">
+                                {size}
+                              </span>
+                            )}
+                          </div>
+                          {hasSale && (
+                            <div class="absolute bottom-2 left-2">
+                              <span class="px-2 py-0.5 text-[10px] font-bold rounded-md bg-red-500 text-white">SALE</span>
+                            </div>
+                          )}
+                        </div>
+                        <div class="p-3">
+                          <h3 class="text-xs sm:text-sm font-medium text-gray-900 leading-snug line-clamp-2 group-hover:text-blue-600 transition-colors">
+                            {product.name}
+                          </h3>
+                          <div class="mt-2 flex items-baseline gap-2">
+                            <span class="text-sm sm:text-base font-bold text-gray-900">{formatPrice(product.price)}</span>
+                            {hasSale && (
+                              <span class="text-[11px] text-gray-400 line-through">{formatPrice(product.regular_price)}</span>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  );
+                })}
+              </div>
+            ) : (
+              <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-12 text-center">
+                <svg class="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
+                </svg>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">No products found</h3>
+                <p class="text-gray-600 mb-6">There are no products in this category yet.</p>
+                <a href="/shop" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
+                  Browse All Products
+                </a>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</MainLayout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

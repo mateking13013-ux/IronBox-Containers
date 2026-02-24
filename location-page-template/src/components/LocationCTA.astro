@@ -1,0 +1,31 @@
+---
+interface Props {
+  locationName: string;
+  phoneNumber: string;
+}
+
+const { locationName, phoneNumber } = Astro.props;
+
+import { Button } from '@/components/ui/button';
+import { Phone, Mail } from 'lucide-react';
+---
+
+<!-- CTA Section -->
+<section class="bg-primary text-primary-foreground py-16 px-6">
+  <div class="max-w-4xl mx-auto text-center space-y-6">
+    <h2 class="text-3xl font-bold">Need a Shipping Container in {locationName} Today?</h2>
+    <p class="text-lg opacity-90">
+      Don't wait! Call us now for immediate assistance and same-day quotes.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <Button variant="secondary" size="lg" class="text-lg px-8">
+        <Phone className="mr-2 h-5 w-5" />
+        Call {phoneNumber}
+      </Button>
+      <Button variant="outline" size="lg" class="text-lg px-8 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+        <Mail className="mr-2 h-5 w-5" />
+        Email Us
+      </Button>
+    </div>
+  </div>
+</section>

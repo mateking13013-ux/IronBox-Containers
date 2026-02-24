@@ -1,0 +1,227 @@
+---
+const section = {
+  title: 'Container Innovation Meets Quality',
+  description:
+    'Transform shipping containers into functional spaces. From luxury pools to modern homes, our solutions combine sustainability with superior craftsmanship.',
+  highlights: [
+    {
+      title: '25+ Year Durability',
+      description: 'High-grade Corten steel maintains structural integrity in extreme weather.',
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5" /><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-9-9 9 9 0 019 9z" /></svg>`
+    },
+    {
+      title: 'Nationwide Installation',
+      description: 'Coast-to-coast teams handle delivery, site prep, and setup.',
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.5A1.5 1.5 0 013.75 6h9.5a1.5 1.5 0 011.5 1.5v6.75A2.25 2.25 0 0112.5 16.5h-6a2.25 2.25 0 01-2.25-2.25V7.5zM14.75 9h2a1.5 1.5 0 011.335.832l1.5 3A1.5 1.5 0 0118.25 15H14.75" /><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 19.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM16.5 19.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" /></svg>`
+    },
+    {
+      title: 'Eco-Friendly Design',
+      description: 'Repurposed containers reduce waste and accelerate project timelines.',
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 1.902 5.25 4.945 5.25 8.25a5.25 5.25 0 11-10.5 0C6.75 7.945 9.245 4.902 12 3z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-6" /></svg>`
+    },
+  ],
+  ctas: [
+    { label: 'Shop All Products', href: '/shop', variant: 'primary' },
+    { label: 'Browse Categories', href: '/categories/20ft-used-shipping-containers', variant: 'outline' },
+  ],
+};
+
+const slides = [
+  {
+    src: '/images/products/conex-20ft-used-shipping-containers/1.jpg',
+    alt: '20ft Used Shipping Container',
+    category: '20ft Used Containers',
+    description: 'Our most popular size — affordable, versatile, and ready for delivery.',
+    href: '/categories/20ft-used-shipping-containers',
+  },
+  {
+    src: '/images/products/conex-40ft-modified-container-house/1.webp',
+    alt: '40ft Modified Container House',
+    category: 'Modified Containers',
+    description: 'Custom-built homes, offices, and specialty conversions to your spec.',
+    href: '/categories/modified-containers',
+  },
+  {
+    src: '/images/products/conex-6-8-guard-booth/1.webp',
+    alt: 'Guard Booth',
+    category: 'Guard Booths & Shacks',
+    description: 'Prefab security booths and guard houses, ready for immediate deployment.',
+    href: '/categories/guard-booths-shacks-houses',
+  },
+  {
+    src: '/images/products/conex-20ft-shipping-container-mobile-office/1.webp',
+    alt: 'Mobile Office Container',
+    category: 'Portable Offices',
+    description: 'Turnkey mobile offices for construction sites, events, and remote work.',
+    href: '/categories/portable-site-office-containers',
+  },
+  {
+    src: '/images/products/conex-20-feet-reefer-container-naru-106379-0/1.webp',
+    alt: 'Reefer Container',
+    category: 'Refrigerated Containers',
+    description: 'Temperature-controlled units for cold chain storage and perishables.',
+    href: '/categories/refrigerated-shipping-containers',
+  },
+  {
+    src: '/images/products/conex-40ft-new-shipping-containers-40ft-new-co/1.jpg',
+    alt: '40ft New Shipping Container',
+    category: '40ft New Containers',
+    description: 'Maximum storage capacity with factory-fresh, one-trip quality.',
+    href: '/categories/40ft-new-shipping-containers',
+  },
+];
+---
+
+<section class="w-full bg-muted/20 py-0 -mt-16 lg:-mt-[104px]">
+  <div class="grid lg:grid-cols-2 lg:min-h-[520px]">
+    <!-- Left: Text -->
+    <div class="flex items-center bg-gradient-to-br from-muted/60 to-accent/20 p-12 pt-24 lg:p-16 lg:pt-[140px]">
+      <div class="mx-auto max-w-lg space-y-8">
+        <div class="space-y-4">
+          <h2 class="text-4xl font-bold leading-tight text-foreground md:text-5xl">{section.title}</h2>
+          <p class="text-lg text-muted-foreground">{section.description}</p>
+        </div>
+        <div class="space-y-5">
+          {section.highlights.map((item) => (
+            <div class="flex items-start gap-4">
+              <span class="rounded-lg bg-primary/10 p-2" set:html={item.icon}></span>
+              <div>
+                <h3 class="font-semibold text-foreground">{item.title}</h3>
+                <p class="text-sm text-muted-foreground">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="flex flex-col gap-3 sm:flex-row">
+          {section.ctas.map((cta) => (
+            <a href={cta.href} class={`flex flex-1 items-center justify-center gap-2 rounded-lg px-6 py-3 font-semibold transition ${cta.variant === 'primary' ? 'bg-primary text-primary-foreground hover:bg-primary/90' : 'border border-border text-foreground hover:bg-muted'}`}>
+              {cta.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Slideshow -->
+    <div class="relative overflow-hidden" id="hero-slideshow">
+      {slides.map((slide, i) => (
+        <img
+          src={slide.src}
+          alt={slide.alt}
+          class:list={[
+            'hero-slide absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-in-out',
+            i === 0 ? 'opacity-100' : 'opacity-0',
+          ]}
+          loading={i === 0 ? 'eager' : 'lazy'}
+        />
+      ))}
+
+      <!-- Gradient overlay — strong at bottom-left for text readability -->
+      <div class="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/30 to-transparent pointer-events-none"></div>
+
+      <!-- Category text overlay — bottom left -->
+      {slides.map((slide, i) => (
+        <div
+          class:list={[
+            'hero-slide-text absolute bottom-0 left-0 right-0 z-10 p-6 sm:p-8 transition-opacity duration-700 ease-in-out',
+            i === 0 ? 'opacity-100' : 'opacity-0',
+          ]}
+        >
+          <p class="text-[11px] font-semibold uppercase tracking-widest text-white/70 mb-1">Featured Category</p>
+          <h3 class="text-xl sm:text-2xl font-bold text-white leading-tight mb-2">{slide.category}</h3>
+          <p class="text-sm text-white/80 max-w-sm mb-4 leading-relaxed">{slide.description}</p>
+          <a
+            href={slide.href}
+            class="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-gray-900 transition hover:bg-gray-100"
+          >
+            Shop {slide.category}
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+          </a>
+        </div>
+      ))}
+
+      <!-- Dots -->
+      <div class="absolute bottom-6 right-6 sm:right-8 flex items-center gap-2 z-10">
+        {slides.map((_, i) => (
+          <button
+            class:list={[
+              'hero-dot h-2 w-2 rounded-full transition-all duration-300',
+              i === 0 ? 'bg-white w-6' : 'bg-white/50',
+            ]}
+            data-index={i}
+            aria-label={`Go to slide ${i + 1}`}
+          ></button>
+        ))}
+      </div>
+
+      <!-- Prev / Next arrows -->
+      <button id="slide-prev" class="absolute left-3 top-1/2 -translate-y-1/2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 text-white backdrop-blur-sm transition hover:bg-black/50" aria-label="Previous slide">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+      </button>
+      <button id="slide-next" class="absolute right-3 top-1/2 -translate-y-1/2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 text-white backdrop-blur-sm transition hover:bg-black/50" aria-label="Next slide">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initSlideshow() {
+    const slides = document.querySelectorAll('.hero-slide');
+    const texts = document.querySelectorAll('.hero-slide-text');
+    const dots = document.querySelectorAll('.hero-dot');
+    const prevBtn = document.getElementById('slide-prev');
+    const nextBtn = document.getElementById('slide-next');
+    if (!slides.length) return;
+
+    let current = 0;
+    let timer: ReturnType<typeof setInterval>;
+    const total = slides.length;
+    const textCount = texts.length;
+
+    function goTo(index: number) {
+      slides[current].classList.replace('opacity-100', 'opacity-0');
+      if (current < textCount) texts[current].classList.replace('opacity-100', 'opacity-0');
+      dots[current].classList.remove('bg-white', 'w-6');
+      dots[current].classList.add('bg-white/50');
+
+      current = ((index % total) + total) % total;
+
+      slides[current].classList.replace('opacity-0', 'opacity-100');
+      if (current < textCount) texts[current].classList.replace('opacity-0', 'opacity-100');
+      dots[current].classList.add('bg-white', 'w-6');
+      dots[current].classList.remove('bg-white/50');
+    }
+
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    function resetTimer() {
+      clearInterval(timer);
+      timer = setInterval(next, 4000);
+    }
+
+    // Auto-play
+    timer = setInterval(next, 4000);
+
+    // Arrow buttons
+    nextBtn?.addEventListener('click', () => { next(); resetTimer(); });
+    prevBtn?.addEventListener('click', () => { prev(); resetTimer(); });
+
+    // Dot clicks
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const idx = Number((dot as HTMLElement).dataset.index);
+        goTo(idx);
+        resetTimer();
+      });
+    });
+
+    // Pause on hover
+    const container = document.getElementById('hero-slideshow');
+    container?.addEventListener('mouseenter', () => clearInterval(timer));
+    container?.addEventListener('mouseleave', () => { timer = setInterval(next, 4000); });
+  }
+
+  initSlideshow();
+</script>

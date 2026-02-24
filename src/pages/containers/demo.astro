@@ -1,0 +1,167 @@
+---
+// Demo page with mock data to test the location page template
+export const prerender = true;
+
+// Import components
+import MainLayout from '../../layouts/MainLayout.astro';
+import LocationHero from '../../components/location/LocationHero.astro';
+import LocationIntroduction from '../../components/location/LocationIntroduction.astro';
+import LocationProducts from '../../components/location/LocationProducts.astro';
+import LocationFAQ from '../../components/location/LocationFAQ.astro';
+import LocationCTA from '../../components/location/LocationCTA.astro';
+import LocationSidebar from '../../components/location/LocationSidebar.astro';
+
+// Mock data for demonstration
+const mockData = {
+  location_name: "New York",
+  location_state: "New York",
+  location_country: "South Africa",
+  hero_headline: "Buy Shipping Containers in New York",
+  hero_subheadline: "Premium quality containers at competitive prices. Fast delivery throughout NYC and surrounding areas.",
+  hero_cta_primary_text: "Get Instant Quote",
+  hero_cta_secondary_text: "Browse Inventory",
+  service_area_text: "Serving New York and Surrounding Areas",
+  intro_title: "Your Trusted Source for Shipping Containers in New York",
+  intro_paragraph_1: "We are New York's premier provider of high-quality shipping containers for storage, shipping, and custom projects. With years of experience serving the greater New York area, we understand the unique needs of businesses and residents in the Big Apple.",
+  intro_paragraph_2: "Our extensive inventory includes new and used containers in various sizes and conditions, all thoroughly inspected to ensure they meet industry standards. Whether you need a container for a construction site in Manhattan, additional storage in Brooklyn, or a custom project in Queens, we have the perfect solution for you.",
+  container_products: [
+    {
+      product_name: "20ft Standard Container",
+      product_description: "Perfect for residential storage, small business inventory, and local shipping needs. Wind and water tight with secure locking mechanisms.",
+      product_price: "$2,500",
+      product_features: [
+        "Wind & Water Tight",
+        "Cargo Worthy Certification",
+        "Secure Lock Box",
+        "Wooden Flooring",
+        "Delivery Available"
+      ]
+    },
+    {
+      product_name: "40ft Standard Container",
+      product_description: "Ideal for large-scale storage, commercial inventory, and international shipping. Spacious and durable for heavy-duty applications.",
+      product_price: "$3,800",
+      product_features: [
+        "Double Door Options",
+        "Heavy Duty Construction",
+        "CSC Certified",
+        "Ventilation System",
+        "Ground-Level Access"
+      ]
+    },
+    {
+      product_name: "40ft High Cube Container",
+      product_description: "Extra height provides additional vertical space for storage, customization, and conversion projects. Popular for container homes and offices.",
+      product_price: "$4,200",
+      product_features: [
+        "9'6\" Interior Height",
+        "Enhanced Ventilation",
+        "Reinforced Flooring",
+        "Multiple Entry Points",
+        "Customization Ready"
+      ]
+    },
+    {
+      product_name: "20ft Refrigerated Container",
+      product_description: "Temperature-controlled storage for perishable goods, pharmaceuticals, and temperature-sensitive materials.",
+      product_price: "$5,500",
+      product_features: [
+        "-20°F to 70°F Range",
+        "Digital Temperature Control",
+        "Aluminum Interior",
+        "Remote Monitoring",
+        "Backup Power Compatible"
+      ]
+    }
+  ],
+  faq_items: [
+    {
+      faq_question: "How much does a shipping container cost in New York?",
+      faq_answer: "Shipping container prices in New York vary based on size, condition, and features. A 20ft standard container typically costs $2,500-$3,500, while 40ft containers range from $3,800-$5,000. Refrigerated units and specialized containers cost more. We offer competitive pricing and can provide detailed quotes based on your specific needs."
+    },
+    {
+      faq_question: "Do you deliver containers throughout New York City?",
+      faq_answer: "Yes! We deliver containers throughout all five boroughs of New York City - Manhattan, Brooklyn, Queens, The Bronx, and Staten Island. We also serve surrounding areas including Westchester, Long Island, and parts of New Jersey. Our experienced team handles all logistics and permits required for urban delivery."
+    },
+    {
+      faq_question: "What sizes of containers do you have available?",
+      faq_answer: "We offer a comprehensive range of container sizes including 10ft, 20ft, 40ft standard, and 40ft high cube containers. We also have specialized containers like refrigerated units, open-top containers, and double-door containers. Each size can be customized with additional features like windows, doors, insulation, and electrical systems."
+    },
+    {
+      faq_question: "Can I customize my shipping container?",
+      faq_answer: "Absolutely! We offer comprehensive customization services including adding doors, windows, ventilation systems, electrical wiring, insulation, interior finishing, and paint. We can help you create container offices, homes, pop-up shops, or specialized storage solutions. Our team works with you to design and build exactly what you need."
+    },
+    {
+      faq_question: "What payment options do you offer?",
+      faq_answer: "We offer flexible payment options including cash, credit cards, wire transfers, and financing through our partner lenders. We can also work with business accounts and offer bulk pricing for multiple container purchases. Contact our team to discuss payment plans that fit your budget."
+    },
+    {
+      faq_question: "Do you offer used containers?",
+      faq_answer: "Yes, we have a wide selection of used containers in various conditions and price points. All used containers are thoroughly inspected to ensure they are wind and water tight, structurally sound, and suitable for their intended use. We provide detailed condition reports and can help you choose the right option for your budget and requirements."
+    }
+  ],
+  phone_number: "(555) 123-4567",
+  email_address: "nyc@containercompany.com",
+  business_hours: "Mon-Fri: 8AM-6PM, Sat: 9AM-4PM",
+  seo_title: "Shipping Containers for Sale in New York | NYC Container Company",
+  seo_description: "Buy high-quality shipping containers in New York City. Fast delivery, competitive prices, and customization options available. Call (555) 123-4567 for a free quote."
+};
+---
+
+<MainLayout 
+  title={mockData.seo_title}
+  description={mockData.seo_description}
+>
+  <div class="min-h-screen">
+    <!-- Hero Section -->
+    <LocationHero 
+      headline={mockData.hero_headline}
+      subheadline={mockData.hero_subheadline}
+      primaryCTAText={mockData.hero_cta_primary_text}
+      secondaryCTAText={mockData.hero_cta_secondary_text}
+      serviceAreaText={mockData.service_area_text}
+      locationName={mockData.location_name}
+    />
+
+    <!-- Main Content with Sidebar -->
+    <div class="flex flex-col lg:flex-row max-w-7xl mx-auto px-6 py-12 gap-8">
+      <!-- Main Content (70%) -->
+      <div class="flex-1 lg:w-[70%] space-y-8">
+        <!-- Introduction Section -->
+        <LocationIntroduction 
+          title={mockData.intro_title}
+          paragraph1={mockData.intro_paragraph_1}
+          paragraph2={mockData.intro_paragraph_2}
+          locationName={mockData.location_name}
+        />
+
+        <!-- Products Section -->
+        <LocationProducts 
+          products={mockData.container_products}
+          locationName={mockData.location_name}
+        />
+
+        <!-- FAQ Section -->
+        <LocationFAQ 
+          faqItems={mockData.faq_items}
+          locationName={mockData.location_name}
+        />
+
+        <!-- CTA Section -->
+        <LocationCTA 
+          locationName={mockData.location_name}
+          phoneNumber={mockData.phone_number}
+        />
+      </div>
+
+      <!-- Sidebar (30%) -->
+      <LocationSidebar 
+        locationName={mockData.location_name}
+        phoneNumber={mockData.phone_number}
+        emailAddress={mockData.email_address}
+        businessHours={mockData.business_hours}
+        locations={['New York', 'Los Angeles', 'Chicago', 'Johannesburg', 'Phoenix', 'Miami', 'Seattle', 'Boston']}
+      />
+    </div>
+  </div>
+</MainLayout>

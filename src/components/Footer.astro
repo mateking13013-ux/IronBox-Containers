@@ -1,0 +1,151 @@
+---
+const year = new Date().getFullYear();
+const company = {
+  name: 'IronBox Containers',
+  legalName: 'IronBox Containers (Pty) Ltd',
+  phone: '+27 11 234 5678',
+  email: 'support@ironboxcontainers.co.za',
+  address: '15 Electron Avenue, Isando, Kempton Park, Gauteng, 1600',
+  hours: 'Mon-Fri: 8AM-6PM | Sat: 9AM-4PM',
+  regNumber: '2010/012345/07',
+  vatNumber: '4123456789',
+  foundingYear: 2010,
+  logo: '/images/branding/ironbox-logo.png',
+};
+
+const shopLinks = [
+  { label: 'Shop All Products', href: '/shop' },
+  { label: '20ft Containers', href: '/categories/20ft-used-shipping-containers' },
+  { label: '40ft Containers', href: '/categories/40ft-new-shipping-containers' },
+  { label: 'Guard Booths & Shacks', href: '/categories/guard-booths-shacks-houses' },
+  { label: 'Modified Containers', href: '/categories/modified-containers' },
+  { label: 'Portable Offices', href: '/categories/portable-site-office-containers' },
+];
+
+const supportLinks = [
+  { label: 'Contact Us', href: '/contact' },
+  { label: 'FAQs', href: '/faq' },
+  { label: 'Shipping Policy', href: '/shipping-policy' },
+  { label: 'Return & Refund Policy', href: '/return-policy' },
+  { label: 'My Account', href: '/account' },
+];
+
+const companyLinks = [
+  { label: 'About Us', href: '/about' },
+  { label: 'Our Locations', href: '/locations' },
+  { label: 'Contact', href: '/contact' },
+];
+
+const legalLinks = [
+  { label: 'Privacy Policy', href: '/privacy-policy' },
+  { label: 'Terms of Service', href: '/terms-of-service' },
+  { label: 'Return & Refund Policy', href: '/return-policy' },
+  { label: 'Shipping Policy', href: '/shipping-policy' },
+];
+
+const paymentBadges = [
+  { label: 'Credit Card', icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2.25" y="4.5" width="19.5" height="15" rx="2" /><path d="M2.25 9h19.5" /></svg>` },
+  { label: 'PayPal', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8.25 19.5h-2.5a1 1 0 0 1-.99-1.14l2-14A1 1 0 0 1 7.75 3h8.3a4 4 0 0 1 0 8h-4.2l-.35 2.5h2.7a3 3 0 0 1 0 6h-2.21" /></svg>` },
+  { label: 'Bank Transfer', icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3 2.25 9h19.5L12 3Z" /><path d="M4.5 9v9.75a.75.75 0 0 0 .75.75h13.5a.75.75 0 0 0 .75-.75V9" /><path d="M9 13.5h6" /></svg>` },
+];
+---
+
+<footer class="border-t bg-background text-foreground">
+  <div class="mx-auto grid max-w-screen-xl gap-8 px-4 py-12 md:grid-cols-2 lg:grid-cols-6 lg:gap-10 lg:px-6 xl:px-8">
+    <!-- Company Info -->
+    <div class="md:col-span-2 space-y-5">
+      <a href="/" class="inline-flex items-center" aria-label={company.name}>
+        <img src={company.logo} alt={company.name} class="h-10 w-auto" />
+      </a>
+      <p class="text-sm text-muted-foreground leading-relaxed">Premium shipping containers delivered across South Africa. Quality products, professional service, nationwide delivery.</p>
+      <div class="space-y-3 text-sm">
+        <div class="flex items-start gap-2.5">
+          <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0 mt-0.5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.25 4.5l1.5-1.5h3l3 6-2.25 2.25a16.5 16.5 0 007.5 7.5L15 16.5l6 3v3l-1.5 1.5A18 18 0 012.25 4.5Z" /></svg>
+          </span>
+          <div class="flex flex-col">
+            <a href={`tel:${company.phone.replace(/[^+\d]/g, '')}`} class="text-foreground font-medium transition hover:text-primary">{company.phone}</a>
+            <span class="text-xs text-muted-foreground">{company.hours}</span>
+          </div>
+        </div>
+        <div class="flex items-start gap-2.5">
+          <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0 mt-0.5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 4.5h15a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18V6a1.5 1.5 0 0 1 1.5-1.5Z" /><path d="m3 6 9 7.5L21 6" /></svg>
+          </span>
+          <a href={`mailto:${company.email}`} class="text-muted-foreground transition hover:text-primary break-all">{company.email}</a>
+        </div>
+        <div class="flex items-start gap-2.5">
+          <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0 mt-0.5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg>
+          </span>
+          <span class="text-muted-foreground text-xs leading-relaxed">{company.address}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shop -->
+    <div class="space-y-4">
+      <h4 class="text-sm font-bold uppercase tracking-wider text-foreground">Shop</h4>
+      <ul class="space-y-2.5 text-sm">
+        {shopLinks.map((item) => (
+          <li><a href={item.href} class="text-muted-foreground transition hover:text-primary hover:translate-x-0.5 inline-block">{item.label}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Support -->
+    <div class="space-y-4">
+      <h4 class="text-sm font-bold uppercase tracking-wider text-foreground">Support</h4>
+      <ul class="space-y-2.5 text-sm">
+        {supportLinks.map((item) => (
+          <li><a href={item.href} class="text-muted-foreground transition hover:text-primary hover:translate-x-0.5 inline-block">{item.label}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Company -->
+    <div class="space-y-4">
+      <h4 class="text-sm font-bold uppercase tracking-wider text-foreground">Company</h4>
+      <ul class="space-y-2.5 text-sm">
+        {companyLinks.map((item) => (
+          <li><a href={item.href} class="text-muted-foreground transition hover:text-primary hover:translate-x-0.5 inline-block">{item.label}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Legal & Policies -->
+    <div class="space-y-4">
+      <h4 class="text-sm font-bold uppercase tracking-wider text-foreground">Legal</h4>
+      <ul class="space-y-2.5 text-sm">
+        {legalLinks.map((item) => (
+          <li><a href={item.href} class="text-muted-foreground transition hover:text-primary hover:translate-x-0.5 inline-block">{item.label}</a></li>
+        ))}
+      </ul>
+      <div class="pt-2">
+        <h5 class="mb-3 text-xs font-semibold uppercase tracking-wide text-foreground">We Accept</h5>
+        <div class="flex flex-wrap items-center gap-2">
+          {paymentBadges.map((badge) => (
+            <span class="inline-flex items-center gap-1.5 rounded-md bg-muted px-2.5 py-1.5 text-xs text-muted-foreground border border-border/50">
+              <span set:html={badge.icon}></span>
+              {badge.label}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-border/60">
+    <div class="mx-auto max-w-screen-xl px-4 py-6 lg:px-6 xl:px-8">
+      <div class="flex flex-col items-center gap-2 text-center sm:flex-row sm:flex-wrap sm:justify-center sm:gap-3">
+        <span class="text-xs sm:text-sm text-muted-foreground">&copy; {year} {company.legalName}. All rights reserved.</span>
+        <span class="hidden sm:inline text-muted-foreground">|</span>
+        <span class="text-xs text-muted-foreground">Reg: {company.regNumber}</span>
+        <span class="hidden sm:inline text-muted-foreground">|</span>
+        <span class="text-xs text-muted-foreground">VAT: {company.vatNumber}</span>
+        <span class="hidden sm:inline text-muted-foreground">|</span>
+        <span class="text-xs text-muted-foreground">Est. {company.foundingYear}</span>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,59 @@
+---
+import '../../styles/global.css';
+
+export const prerender = true;
+
+const {
+  title = 'Test Location Page',
+  description = 'Testing location page functionality',
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="min-h-screen bg-background text-foreground antialiased">
+    <div class="pt-[104px]">
+      <div class="max-w-4xl mx-auto px-6 py-12">
+        <h1 class="text-4xl font-bold text-gray-900 mb-6">Test Location Page</h1>
+        <p class="text-lg text-gray-600 mb-8">This is a test to verify the location page routing is working.</p>
+        
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-8">
+          <h2 class="text-xl font-semibold text-blue-900 mb-2">Location Page Template Integration</h2>
+          <p class="text-blue-700">The location page template has been successfully integrated into your Astro project!</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-lg font-semibold mb-3">✅ Integration Complete</h3>
+            <ul class="text-gray-600 space-y-2">
+              <li>• Location pages route configured</li>
+              <li>• Components created and integrated</li>
+              <li>• SEO optimization ready</li>
+              <li>• WordPress connection configured</li>
+            </ul>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-lg font-semibold mb-3">🚀 Next Steps</h3>
+            <ul class="text-gray-600 space-y-2">
+              <li>• Set up WordPress backend</li>
+              <li>• Configure ACF fields</li>
+              <li>• Create location pages</li>
+              <li>• Test with real data</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+---
+const benefits = [
+  'Competitive & Transparent Pricing',
+  'Delivery in 3-5 Business Days',
+  'Limited Lifetime Warranty with Best-in-Class Coverage',
+  'Industry Leader with the Most 5-Star Reviews',
+];
+---
+
+<section class="w-full bg-white">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid items-center gap-8 py-16 lg:grid-cols-2 lg:gap-12 lg:py-24">
+      <!-- Left: Text Content -->
+      <div class="space-y-8">
+        <div class="space-y-5">
+          <h1 class="text-4xl font-extrabold leading-[1.1] tracking-tight text-gray-900 sm:text-5xl">
+            Buy or Rent Used Shipping Containers from South Africa's Leading Provider
+          </h1>
+          <p class="max-w-lg text-base leading-relaxed text-gray-600 sm:text-lg">
+            Conex Group offers 24/7 access to used 10ft, 20ft, 40ft, and High Cube shipping containers with upfront pricing and nationwide delivery. Wind & watertight storage solutions, ordered in minutes, delivered in days.
+          </p>
+        </div>
+
+        <a
+          href="/shop"
+          class="inline-flex items-center gap-2 rounded-lg bg-gray-900 px-7 py-3.5 text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-gray-800"
+        >
+          Purchase a Container
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+
+        <div class="space-y-4 pt-2">
+          <p class="text-xs font-bold uppercase tracking-widest text-gray-900">Your benefits...</p>
+          <div class="space-y-3">
+            {benefits.map((benefit) => (
+              <div class="flex items-center gap-3">
+                <div class="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-emerald-500">
+                  <svg class="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                </div>
+                <span class="text-sm font-semibold text-gray-900">{benefit}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Container Image -->
+      <div class="relative flex items-center justify-center lg:justify-end">
+        <img
+          src="/images/products/conex-20ft-used-shipping-containers/1.jpg"
+          alt="20ft Used Shipping Container"
+          class="w-full max-w-lg object-contain drop-shadow-2xl lg:max-w-none"
+        />
+      </div>
+    </div>
+  </div>
+</section>

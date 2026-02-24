@@ -1,0 +1,14 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import AccountOrders from '../../components/account/AccountOrders.astro';
+---
+
+<MainLayout title="Order History – IronBox Containers" description="Track fabrication, delivery, and installation milestones for your container builds.">
+  <Header />
+  <main class="pb-16">
+    <AccountOrders />
+  </main>
+  <Footer />
+</MainLayout>

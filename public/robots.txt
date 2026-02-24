@@ -1,0 +1,75 @@
+# Robots.txt for IronBox Containers
+# Updated: January 10, 2025
+
+User-agent: *
+Allow: /
+
+# Disallow admin and private areas
+Disallow: /account/
+Disallow: /auth/
+Disallow: /checkout/
+Disallow: /cart
+Disallow: /order-confirmation
+Disallow: /admin/
+Disallow: /wp-admin/
+Disallow: /wp-json/wp/v2/users/
+
+# Allow important resource directories
+Allow: /_astro/
+Allow: /images/
+Allow: /css/
+Allow: /js/
+Allow: /fonts/
+
+# Sitemap location
+Sitemap: https://ironboxcontainers.co.za/sitemap.xml
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+# Special rules for Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Special rules for Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Social media crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Image SEO
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /wp-content/uploads/
+
+# Mobile crawlers
+User-agent: Googlebot-Mobile
+Allow: /
+
+# Prioritize content crawling
+User-agent: Mediapartners-Google
+Disallow: /
+
+# Analytics (should not index)
+User-agent: GoogleAnalytics
+Disallow: /

@@ -1,0 +1,44 @@
+---
+interface FAQItem {
+  faq_question: string;
+  faq_answer: string;
+}
+
+interface Props {
+  faqItems: FAQItem[];
+  locationName: string;
+}
+
+const { faqItems, locationName } = Astro.props;
+
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+---
+
+<!-- FAQ Section -->
+<section class="py-20 px-6">
+  <div class="max-w-4xl mx-auto">
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-2xl">Frequently Asked Questions</CardTitle>
+        <CardDescription>
+          Common questions about buying shipping containers in {locationName}
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <Accordion type="single" collapsible className="w-full">
+          {faqItems.map((faq, index) => (
+            <AccordionItem key={index} value={`item-${index}`}>
+              <AccordionTrigger className="text-left">
+                {faq.faq_question}
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                <div set:html={faq.faq_answer} />
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </CardContent>
+    </Card>
+  </div>
+</section>

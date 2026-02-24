@@ -1,0 +1,115 @@
+---
+interface Props {
+  locationName: string;
+  phoneNumber: string;
+  emailAddress: string;
+  businessHours: string;
+  locations: string[];
+}
+
+const { locationName, phoneNumber, emailAddress, businessHours, locations } = Astro.props;
+
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Phone, Mail, Clock, MapPin, Package, Star } from 'lucide-react';
+---
+
+<!-- Sidebar Component -->
+<div class="w-full lg:w-[30%] bg-muted/30 p-6 lg:p-8 space-y-8">
+  {/* Location Selector */}
+  <Card>
+    <CardHeader>
+      <CardTitle className="text-lg">Select Your Location</CardTitle>
+      <CardDescription>
+        Get local pricing and availability
+      </CardDescription>
+    </CardHeader>
+    <CardContent className="space-y-4">
+      <Select>
+        <SelectTrigger>
+          <SelectValue placeholder="Choose location" />
+        </SelectTrigger>
+        <SelectContent>
+          {locations.map((location) => (
+            <SelectItem key={location} value={location}>
+              {location}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+      <Button className="w-full">
+        View Local Pricing
+      </Button>
+    </CardContent>
+  </Card>
+
+  {/* Contact Info */}
+  <Card>
+    <CardHeader>
+      <CardTitle className="text-lg">Contact Info</CardTitle>
+    </CardHeader>
+    <CardContent className="space-y-3">
+      <div class="flex items-center gap-2">
+        <Phone className="h-4 w-4" />
+        <span class="text-sm">{phoneNumber}</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <Mail className="h-4 w-4" />
+        <span class="text-sm">{emailAddress}</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <Clock className="h-4 w-4" />
+        <span class="text-sm">{businessHours}</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <MapPin className="h-4 w-4" />
+        <span class="text-sm">Serving {locationName}</span>
+      </div>
+    </CardContent>
+  </Card>
+
+  {/* Popular Products */}
+  <Card>
+    <CardHeader>
+      <CardTitle className="text-lg">Popular in {locationName}</CardTitle>
+    </CardHeader>
+    <CardContent className="space-y-3">
+      <div class="border rounded p-3">
+        <h4 class="font-semibold text-sm mb-2">20ft Standard Container</h4>
+        <p class="text-xs text-muted-foreground mb-2">Perfect for storage and small shipping needs</p>
+        <div class="flex items-center justify-between">
+          <span class="font-bold text-primary text-sm">$2,500</span>
+          <Button size="sm" variant="outline">
+            Details
+          </Button>
+        </div>
+      </div>
+      <div class="border rounded p-3">
+        <h4 class="font-semibold text-sm mb-2">40ft Standard Container</h4>
+        <p class="text-xs text-muted-foreground mb-2">Ideal for large storage and commercial use</p>
+        <div class="flex items-center justify-between">
+          <span class="font-bold text-primary text-sm">$3,800</span>
+          <Button size="sm" variant="outline">
+            Details
+          </Button>
+        </div>
+      </div>
+    </CardContent>
+  </Card>
+
+  {/* Final CTA */}
+  <Card class="bg-primary text-primary-foreground">
+    <CardHeader>
+      <CardTitle className="text-lg">Need Help?</CardTitle>
+    </CardHeader>
+    <CardContent class="space-y-3">
+      <p class="text-sm opacity-90">
+        Our {locationName} experts are ready to help you find the perfect container solution.
+      </p>
+      <Button variant="secondary" class="w-full" size="sm">
+        Call Now
+      </Button>
+    </CardContent>
+  </Card>
+</div>

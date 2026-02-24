@@ -1,0 +1,59 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  locationName: string;
+}
+
+const { title, description, locationName, children } = Astro.props;
+
+import '../styles/location-page.css';
+import LocationSidebar from '../components/LocationSidebar.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  
+  <!-- SEO Meta Tags -->
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href={`https://yoursite.com/containers/${locationName.toLowerCase().replace(/\s+/g, '-')}/`} />
+  
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={`https://yoursite.com/containers/${locationName.toLowerCase().replace(/\s+/g, '-')}/`} />
+  
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+</head>
+<body class="min-h-screen bg-background">
+  <div class="flex flex-col lg:flex-row">
+    <!-- Main Content - 70% -->
+    <div class="flex-1 lg:w-[70%] p-6 lg:p-8">
+      <main>
+        {children}
+      </main>
+    </div>
+
+    <!-- Sidebar - 30% -->
+    <LocationSidebar 
+      locationName={locationName}
+      phoneNumber="(555) 123-4567"
+      emailAddress="sales@containers.com"
+      businessHours="Mon-Fri: 8AM-6PM"
+      locations={[
+        'New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix',
+        'Philadelphia', 'San Antonio', 'San Diego', 'Dallas', 'San Jose'
+      ]}
+    />
+  </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+---
+const features = [
+  {
+    title: 'Fast Nationwide Delivery',
+    description: 'Professional teams deliver and install across all 50 states.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5.25h13.5a2.25 2.25 0 012.25 2.25v9a.75.75 0 01-.75.75H12l-3 3v-3H3.75a.75.75 0 01-.75-.75v-9A2.25 2.25 0 015.25 3H18" /></svg>`
+  },
+  {
+    title: 'Engineered for 25+ Years',
+    description: 'Built from high-grade Corten steel for extreme durability.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m6-3.375v11.25a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 17.625V6.375A2.25 2.25 0 015.25 4.125h13.5A2.25 2.25 0 0121 6.375Z" /></svg>`
+  },
+  {
+    title: 'Flexible Financing',
+    description: 'Work with our team to secure affordable payment plans.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8.25v-3m0 14.25v-3m0 0a3 3 0 10-3-3h3m0 0a3 3 0 11-3 3H6.75a4.5 4.5 0 018.785-1.125m2.715 3.375a6.75 6.75 0 10-9.75-9.75" /></svg>`
+  },
+  {
+    title: 'Licensed & Insured',
+    description: 'Fully certified fabrication and installation crews.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 00-9 0v3.75M4.5 19.5A2.25 2.25 0 006.75 21h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75z" /></svg>`
+  },
+];
+---
+
+<section class="w-full py-16">
+  <div class="mx-auto grid max-w-7xl gap-6 px-4 md:grid-cols-2 lg:grid-cols-4">
+    {features.map((feature) => (
+      <div class="flex items-center gap-4 rounded-xl border border-border bg-card p-6">
+        <span class="inline-flex items-center justify-center rounded-lg bg-primary/10 p-3 text-primary" set:html={feature.icon}></span>
+        <div>
+          <h3 class="font-semibold text-foreground">{feature.title}</h3>
+          <p class="text-sm text-muted-foreground">{feature.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

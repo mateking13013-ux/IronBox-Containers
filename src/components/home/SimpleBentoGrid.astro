@@ -1,0 +1,158 @@
+---
+
+<section class="bento-section">
+  <div class="container">
+    <div class="header">
+      <h2>Our Solutions</h2>
+      <p>Transform your space with our innovative container products</p>
+    </div>
+
+    <div class="bento-grid">
+      <!-- First Row -->
+      <div class="row">
+        <div class="col col1">
+          <div class="content">
+            <h3>Container Pools</h3>
+            <p>Premium pool solutions</p>
+          </div>
+        </div>
+        <div class="col col2">
+          <div class="content">
+            <h3>Tiny Homes</h3>
+            <p>Modern living</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Second Row -->
+      <div class="row">
+        <div class="col col3">
+          <div class="content">
+            <h3>Storage Units</h3>
+            <p>Secure solutions</p>
+          </div>
+        </div>
+        <div class="col col4">
+          <div class="content">
+            <h3>Restroom Solutions</h3>
+            <p>Portable and permanent restroom solutions</p>
+            <div class="price">Starting at $3,500</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .bento-section {
+      width: 100%;
+      padding: 4rem 1rem;
+      background-color: #f3f4f6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .header h2 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #1f2937;
+    }
+    
+    .header p {
+      font-size: 1.125rem;
+      color: #6b7280;
+      max-width: 672px;
+      margin: 0 auto;
+    }
+    
+    .bento-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .row {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .col {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      font-weight: bold;
+      border-radius: 0.75rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s;
+    }
+    
+    .col:hover {
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+    }
+    
+    .col1 {
+      width: 70%;
+      height: 150px;
+      background: linear-gradient(135deg, #10b981, #059669);
+    }
+    
+    .col2 {
+      width: 30%;
+      height: 150px;
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    }
+    
+    .col3 {
+      width: 30%;
+      height: 300px;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+    }
+    
+    .col4 {
+      width: 70%;
+      height: 300px;
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    }
+    
+    .content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 1rem;
+    }
+    
+    .price {
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      display: inline-block;
+      font-size: 0.875rem;
+    }
+    
+    @media (max-width: 768px) {
+      .row {
+        flex-direction: column;
+      }
+      
+      .col {
+        width: 100% !important;
+        height: 120px !important;
+      }
+    }
+  </style>
+</section>

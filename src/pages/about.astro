@@ -1,0 +1,52 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import AboutPage from '../components/support/AboutPage.astro';
+
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "IronBox Containers",
+      "url": "https://ironboxcontainers.co.za",
+      "logo": "/images/branding/ironbox-logo.png",
+      "foundingDate": "2010",
+      "description": "Premier provider of shipping containers, container pools, and prefab tiny homes.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "15 Electron Avenue, Isando",
+        "addressLocality": "Kempton Park",
+        "addressRegion": "GP",
+        "postalCode": "1600",
+        "addressCountry": "ZA"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+27-11-234-5678",
+        "contactType": "customer service"
+      }
+    },
+    {
+      "@type": "AboutPage",
+      "mainEntity": {
+        "@id": "https://ironboxcontainers.co.za/#organization"
+      },
+      "name": "About IronBox Containers",
+      "description": "Learn about our history, mission, and commitment to quality container solutions."
+    }
+  ]
+};
+---
+
+<MainLayout title="About IronBox Containers" description="Learn how IronBox Containers reimagines shipping containers into pools, residences, and hospitality suites with nationwide installation.">
+  <slot slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(aboutSchema)}></script>
+  </slot>
+  <Header />
+  <main class="pb-16">
+    <AboutPage />
+  </main>
+  <Footer />
+</MainLayout>

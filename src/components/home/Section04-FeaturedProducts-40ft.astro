@@ -1,0 +1,123 @@
+---
+import { getAllProducts, formatPrice, getProductCondition, getContainerSize, parseProductSpecs } from '../../lib/woocommerce.js';
+
+// Fetch all products and filter for 40ft containers
+const allProducts = await getAllProducts();
+const ft40Products = allProducts.filter(product => getContainerSize(product) === '40ft').slice(0, 4); // Show max 4 products
+---
+
+<section class="w-full py-16 bg-gray-50">
+  <div class="mx-auto max-w-7xl px-4">
+    <div class="mb-12 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+      <div>
+        <h2 class="text-3xl font-bold text-foreground">40ft Container Solutions</h2>
+        <p class="text-lg text-muted-foreground">Spacious containers ideal for large-scale projects and commercial applications</p>
+      </div>
+      <a href="/categories/40ft-container" class="inline-flex items-center gap-2 rounded border border-border px-4 py-2 text-sm font-medium text-foreground transition hover:bg-muted">
+        View 40ft Containers
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12l-7.5 7.5M21 12H3" /></svg>
+      </a>
+    </div>
+    
+    <!-- Products Grid - Using archive design -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {ft40Products.map((product) => {
+        const specs = parseProductSpecs(product);
+        const condition = getProductCondition(product);
+        const size = getContainerSize(product);
+        const imageUrl = product.images?.[0]?.src || 'https://via.placeholder.com/400x300';
+
+        return (
+          <a href={`/products/${product.slug}`} class="group">
+            <div class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:border-gray-300 transition-colors duration-200">
+              <!-- Image -->
+              <div class="aspect-[4/3] relative overflow-hidden bg-gray-100">
+                <img
+                  src={imageUrl}
+                  alt={product.name}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+
+                <!-- Condition Badge -->
+                <div class="absolute top-3 left-3">
+                  <span class={`
+                    inline-block px-3 py-1 text-xs font-semibold rounded-full
+                    ${condition === 'New' ? 'bg-green-100 text-green-800' :
+                      condition === 'Used' ? 'bg-yellow-100 text-yellow-800' :
+                      'bg-blue-100 text-blue-800'}
+                  `}>
+                    {condition}
+                  </span>
+                </div>
+
+                {/* Size Badge */}
+                <div class="absolute top-3 right-3">
+                  <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-gray-900 text-white">
+                    {size}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Content -->
+              <div class="p-5">
+                <h3 class="text-base font-semibold text-gray-900 mb-2 group-hover:text-[#d4a574] transition-colors line-clamp-2">
+                  {product.name}
+                </h3>
+
+                <!-- Specs Grid -->
+                <div class="grid grid-cols-2 gap-2 mb-4 text-sm">
+                  {specs.dimensions && (
+                    <div class="flex items-center gap-1 text-gray-600">
+                      <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+                      </svg>
+                      <span class="truncate">{specs.dimensions}</span>
+                    </div>
+                  )}
+                  {specs.volume && (
+                    <div class="flex items-center gap-1 text-gray-600">
+                      <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                      </svg>
+                      <span>{specs.volume}</span>
+                    </div>
+                  )}
+                </div>
+
+                <!-- Price and Action -->
+                <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                  <div>
+                    <p class="text-lg font-medium text-gray-900">
+                      {formatPrice(product.price)}
+                    </p>
+                    {product.regular_price && product.regular_price !== product.price && (
+                      <p class="text-sm text-gray-500 line-through">
+                        {formatPrice(product.regular_price)}
+                      </p>
+                    )}
+                  </div>
+
+                  <button class="px-4 py-2 bg-[#fef6ea] text-gray-900 text-sm font-medium rounded-lg hover:bg-[#fef6ea]/80 transition-colors border border-gray-200">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .bg-gray-50 {
+    background-color: #f9fafb;
+  }
+</style>

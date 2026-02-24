@@ -1,0 +1,368 @@
+---
+const defaultProduct = {
+  name: 'Signature Container Pool 30FT',
+  brand: 'IronBox Containers',
+  sku: 'POOL-30FT-PREMIUM',
+  category: 'Container Pools',
+  rating: 4.8,
+  reviews: 124,
+  price: '$24,500',
+  originalPrice: '$28,900',
+  availability: 'In Stock – ships in 6-8 weeks',
+  badges: ['Best Seller', 'Engineered in South Africa'],
+  description:
+    'Turn any backyard into a resort with our Signature Container Pool. Built from recycled Corten steel, corrosion-protected, and delivered ready for hook-up. Includes heating, filtration, and smart automation controls.',
+  highlights: [
+    'Engineered from Grade A Corten steel with marine epoxy coating',
+    'Includes Pentair filtration, heater, and smart automation hub',
+    'Fully insulated walls and floor to maintain temperature year-round',
+    'Delivered craned into position with plumbing and electrical stubs ready',
+  ],
+  dimensions: '30ft L × 8ft W × 5ft D',
+  weight: 'Approx. 12,500 lbs (dry)',
+  expectedDelivery: 'Nationwide installation within 6-8 weeks of permit approval',
+  warranty: '10-year structural warranty + 3-year equipment coverage',
+  returnPolicy: '30-day workmanship guarantee & service support',
+};
+
+const defaultGallery = {
+  main: 'https://images.unsplash.com/photo-1616628188410-5fe5b3ba1f80?auto=format&fit=crop&w=1400&q=80',
+  thumbs: [
+    'https://images.unsplash.com/photo-1616628188410-5fe5b3ba1f80?auto=format&fit=crop&w=400&q=80',
+    'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=400&q=80',
+    'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=400&q=80',
+    'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=400&q=80',
+  ],
+};
+
+const defaultVariants = [
+  {
+    label: 'Finish Color',
+    options: [
+      { value: 'slate-black', label: 'Slate Black' },
+      { value: 'coastal-white', label: 'Coastal White' },
+      { value: 'desert-tan', label: 'Desert Tan' },
+    ],
+  },
+  {
+    label: 'Equipment Package',
+    options: [
+      { value: 'standard', label: 'Standard Automation' },
+      { value: 'premium', label: 'Premium Smart Suite (+$1,950)' },
+    ],
+  },
+];
+
+const defaultSpecs = [
+  { label: 'Exterior Dimensions', value: '30ft × 8ft × 5ft' },
+  { label: 'Water Volume', value: 'Approx. 10,200 gallons' },
+  { label: 'Power Requirements', value: '240V / 60A dedicated circuit' },
+  { label: 'Filtration', value: 'Pentair WhisperFlo pump + Clean & Clear cartridge' },
+  { label: 'Heating', value: 'Pentair MasterTemp 250 (gas or propane)' },
+  { label: 'Shell', value: 'Corten steel with marine-grade epoxy + polyurea liner' },
+  { label: 'Interior Finish', value: 'Slip-resistant composite decking with insulated panels' },
+  { label: 'Automation', value: 'iAquaLink smart automation with mobile control' },
+];
+
+const defaultRelatedProducts = [
+  {
+    name: 'Signature Container Pool 40FT',
+    price: '$31,900',
+    href: '/products/signature-container-pool-40ft',
+    image: 'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    name: 'Summit Series Prefab Home',
+    price: '$198,500',
+    href: '/products/summit-prefab-home',
+    image: 'https://images.unsplash.com/photo-1600585154340-0ef3c08ba6b0?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    name: 'Executive Restroom Suite',
+    price: '$21,900',
+    href: '/products/executive-restroom-suite',
+    image: 'https://images.unsplash.com/photo-1529421306624-0f59bd09f1f8?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    name: 'Secure Storage Plus',
+    price: '$10,200',
+    href: '/products/secure-storage-plus',
+    image: 'https://images.unsplash.com/photo-1503389152951-9f343605f61e?auto=format&fit=crop&w=1200&q=80',
+  },
+];
+
+const {
+  product = defaultProduct,
+  gallery = defaultGallery,
+  variants = defaultVariants,
+  specs = defaultSpecs,
+  relatedProducts = defaultRelatedProducts,
+} = Astro.props;
+
+const whatsIncluded = Astro.props.whatsIncluded || defaultProduct.highlights;
+const shippingNotes = Astro.props.shippingNotes || [
+  defaultProduct.expectedDelivery,
+  'Site prep and utility connections coordinated with our install partners.',
+  'Permit services available as an add-on package.',
+];
+
+const trustBadges = Astro.props.trustBadges || [
+  { title: 'Financing Available', description: 'Partner lenders with rates as low as 5.9% APR.' },
+  { title: 'Licensed & Insured', description: 'Certified crews in all 50 states.' },
+  { title: 'Sustainably Built', description: 'Repurposed containers keep 8k lbs of steel out of landfills.' },
+];
+
+const faqs = Astro.props.faqs || [
+  {
+    question: 'Do you handle permits?',
+    answer: 'We provide engineered drawings and can coordinate local permit expediters. Permitting fees are billed separately by your municipality.',
+  },
+  {
+    question: 'What site prep is needed?',
+    answer: 'A compacted gravel pad or helical pier foundation is required. Electrical and gas lines must be stubbed to the pool location prior to delivery.',
+  },
+  {
+    question: 'Can the pool be partially buried?',
+    answer: 'Yes. With proper drainage and retaining design, the container can be recessed or semi-recessed for custom aesthetics.',
+  },
+];
+
+const breadcrumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Shop', href: '/shop' },
+  { label: product.category ?? 'Container Pools', href: '/categories/container-swimming-pools' },
+  { label: product.name, href: '#' },
+];
+---
+
+<article class="bg-background text-foreground">
+  <div class="mx-auto max-w-6xl px-4 py-6">
+    <nav class="mb-6 flex items-center gap-2 text-sm text-muted-foreground">
+      {breadcrumbs.map((crumb, index) => (
+        <>
+          <a href={crumb.href} class={`hover:text-foreground ${index === breadcrumbs.length - 1 ? 'text-foreground font-semibold' : ''}`}>{crumb.label}</a>
+          {index < breadcrumbs.length - 1 && <span class="text-muted-foreground">/</span>}
+        </>
+      ))}
+    </nav>
+
+    <div class="grid gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-6 space-y-4">
+        <div class="relative overflow-hidden rounded-2xl bg-muted">
+          <img src={gallery.main} alt={product.name} class="h-full w-full object-cover" />
+          <div class="absolute left-4 top-4 flex flex-wrap gap-2">
+            {product.badges.map((badge) => (
+              <span class="rounded-full bg-black/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">{badge}</span>
+            ))}
+          </div>
+        </div>
+        <div class="grid grid-cols-4 gap-3">
+          {gallery.thumbs.map((thumb) => (
+            <div class="overflow-hidden rounded-xl border border-border">
+              <img src={thumb} alt="Pool thumbnail" class="h-full w-full object-cover" />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <aside class="lg:col-span-6 space-y-6">
+        <div class="space-y-3">
+          <h1 class="text-3xl font-bold leading-tight text-foreground">{product.name}</h1>
+          <div class="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+            <span class="inline-flex items-center gap-1">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-warning" viewBox="0 0 24 24" fill="currentColor"><path d="M11.48 3.499a.75.75 0 011.04 0l2.56 2.401 3.38.49a.75.75 0 01.415 1.28l-2.447 2.384.578 3.366a.75.75 0 01-1.088.79L12 12.347l-3.038 1.597a.75.75 0 01-1.088-.79l.578-3.366L6.005 7.67a.75.75 0 01.415-1.28l3.38-.49 2.56-2.401z" /></svg>
+              <span class="font-semibold text-foreground">{product.rating}</span>
+              <span>({product.reviews} reviews)</span>
+            </span>
+            <span>SKU: {product.sku}</span>
+            <span>Brand: {product.brand}</span>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <div class="flex items-center gap-3">
+            <span class="text-3xl font-bold text-foreground">{product.price}</span>
+            <span class="text-lg text-muted-foreground line-through">{product.originalPrice}</span>
+          </div>
+          <p class="text-sm text-green-600">Save $4,400 compared to custom build-outs.</p>
+        </div>
+
+        <p class="text-muted-foreground">{product.description}</p>
+
+        <div class="space-y-4">
+          {variants.map((variant) => (
+            <div>
+              <p class="mb-2 text-sm font-semibold text-foreground">{variant.label}</p>
+              <div class="flex flex-wrap gap-2">
+                {variant.options.map((option) => (
+                  <label class="cursor-pointer rounded-full border border-border px-4 py-2 text-sm transition hover:border-primary">
+                    <input type="radio" name={variant.label} value={option.value} class="sr-only" />
+                    {option.label}
+                  </label>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="flex flex-col gap-3 sm:flex-row">
+          <div class="flex items-center justify-between rounded-full border border-border px-4 py-2 text-sm">
+            <span class="font-semibold text-foreground">Quantity</span>
+            <span class="text-muted-foreground">Adjust in cart</span>
+          </div>
+          <a href="#" class="flex flex-1 items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:bg-primary/90">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l2-7H5.4" /><path stroke-linecap="round" stroke-linejoin="round" d="M7 13l-1 4h12" /><path stroke-linecap="round" stroke-linejoin="round" d="M9 21a1 1 0 100-2 1 1 0 000 2zM17 21a1 1 0 100-2 1 1 0 000 2z" /></svg>
+            Add to Cart
+          </a>
+          <a href="/checkout" class="flex flex-1 items-center justify-center rounded-full border border-border px-6 py-3 font-semibold text-foreground transition hover:bg-muted">
+            Buy Now
+          </a>
+        </div>
+
+        <div class="grid gap-3 rounded-xl border border-border bg-card p-4 text-sm">
+          <div class="flex items-center gap-3">
+            <span class="rounded-full bg-primary/10 p-2 text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.5A1.5 1.5 0 013.75 6h9.5a1.5 1.5 0 011.5 1.5v6.75A2.25 2.25 0 0112.5 16.5h-6a2.25 2.25 0 01-2.25-2.25V7.5zM14.75 9h2a1.5 1.5 0 011.335.832l1.5 3A1.5 1.5 0 0118.25 15H14.75" /></svg>
+            </span>
+            <div>
+              <p class="font-semibold text-foreground">Standard Delivery</p>
+              <p class="text-muted-foreground">{product.availability}</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="rounded-full bg-primary/10 p-2 text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" /></svg>
+            </span>
+            <div>
+              <p class="font-semibold text-foreground">Financing Available</p>
+              <p class="text-muted-foreground">Connect with our lending partners at checkout.</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <section class="mx-auto max-w-6xl px-4 py-12">
+    <div class="grid gap-6 lg:grid-cols-[2fr_1fr]">
+      <div class="rounded-2xl border border-border bg-card p-6">
+        <h2 class="text-xl font-semibold text-foreground">Product Highlights</h2>
+        <ul class="mt-4 space-y-3 text-sm text-muted-foreground">
+          {product.highlights.map((item) => (
+            <li class="flex items-start gap-2">
+              <span class="mt-1 inline-flex h-2 w-2 rounded-full bg-primary"></span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="space-y-4">
+        <div class="rounded-2xl border border-border bg-card p-6">
+          <h3 class="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Includes</h3>
+          <ul class="mt-3 space-y-2 text-sm text-muted-foreground">
+            {whatsIncluded.map((item) => (
+              <li>• {item}</li>
+            ))}
+          </ul>
+        </div>
+        <div class="rounded-2xl border border-border bg-card p-6">
+          <h3 class="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Warranty & Support</h3>
+          <p class="text-sm text-muted-foreground">{product.warranty}</p>
+          <p class="text-sm text-muted-foreground mt-2">{product.returnPolicy}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-12">
+    <div class="grid gap-8 lg:grid-cols-2">
+      <div>
+        <h2 class="text-2xl font-semibold text-foreground">Technical Specifications</h2>
+        <dl class="mt-6 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
+          {specs.map((spec) => (
+            <div>
+              <dt class="text-sm font-semibold uppercase tracking-wide text-muted-foreground">{spec.label}</dt>
+              <dd class="text-sm text-foreground">{spec.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+      <div class="rounded-2xl border border-border bg-card p-6">
+        <h3 class="text-lg font-semibold text-foreground">Shipping & Installation Notes</h3>
+        <ul class="mt-4 space-y-3 text-sm text-muted-foreground">
+          {shippingNotes.map((note) => (
+            <li class="flex items-start gap-2">
+              <span class="mt-1 inline-flex h-2 w-2 rounded-full bg-primary"></span>
+              <span>{note}</span>
+            </li>
+          ))}
+        </ul>
+        <a href="/contact" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">Schedule site walkthrough</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-12">
+    <div class="grid gap-6 md:grid-cols-3">
+      {trustBadges.map((badge) => (
+        <div class="rounded-2xl border border-border bg-card p-6 text-center">
+          <h3 class="mb-2 text-lg font-semibold text-foreground">{badge.title}</h3>
+          <p class="text-sm text-muted-foreground">{badge.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-12">
+    <div class="rounded-2xl bg-gradient-to-r from-primary/10 to-accent/10 p-8 md:flex md:items-center md:justify-between">
+      <div class="max-w-xl space-y-2">
+        <h2 class="text-2xl font-semibold text-foreground">Ready to customize your container pool?</h2>
+        <p class="text-sm text-muted-foreground">Upload site photos, choose finishes, and receive a detailed project proposal within 48 hours.</p>
+      </div>
+      <a href="/contact" class="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:bg-primary/90 md:mt-0">
+        Start a Project
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12l-7.5 7.5M21 12H3" /></svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-12">
+    <div class="mb-8 text-center">
+      <h2 class="text-2xl font-semibold text-foreground">Frequently Asked Questions</h2>
+      <p class="text-muted-foreground">Still have questions? Reach out to our specialists.</p>
+    </div>
+    <div class="space-y-4">
+      {faqs.map((faq) => (
+        <div class="rounded-2xl border border-border bg-card p-6">
+          <h3 class="text-lg font-semibold text-foreground">{faq.question}</h3>
+          <p class="mt-2 text-sm text-muted-foreground">{faq.answer}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 pb-16">
+    <div class="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <div>
+        <h2 class="text-2xl font-semibold text-foreground">You may also like</h2>
+        <p class="text-sm text-muted-foreground">Explore more container solutions from IronBox Containers.</p>
+      </div>
+      <a href="/shop" class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">Browse all products</a>
+    </div>
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      {relatedProducts.map((item) => (
+        <a href={item.href} class="group">
+          <div class="overflow-hidden rounded-2xl border border-border bg-card">
+            <div class="relative aspect-[4/3]">
+              <img src={item.image} alt={item.name} class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" />
+            </div>
+            <div class="space-y-1 p-4">
+              <h3 class="text-sm font-semibold text-foreground group-hover:text-primary">{item.name}</h3>
+              <p class="text-sm font-medium text-primary">{item.price}</p>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</article>

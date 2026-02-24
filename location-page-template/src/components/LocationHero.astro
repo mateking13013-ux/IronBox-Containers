@@ -1,0 +1,51 @@
+---
+interface Props {
+  headline: string;
+  subheadline: string;
+  primaryCTAText: string;
+  secondaryCTAText: string;
+  serviceAreaText: string;
+  locationName: string;
+}
+
+const { 
+  headline, 
+  subheadline, 
+  primaryCTAText, 
+  secondaryCTAText, 
+  serviceAreaText, 
+  locationName 
+} = Astro.props;
+
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { ArrowRight } from 'lucide-react';
+---
+
+<!-- Hero Section -->
+<section class="relative bg-gradient-to-r from-primary/10 to-primary/5 py-20 px-6">
+  <div class="max-w-6xl mx-auto text-center space-y-6">
+    <Badge variant="secondary" class="text-sm">
+      {serviceAreaText || `Serving ${locationName} and Surrounding Areas`}
+    </Badge>
+    
+    <h1 class="text-4xl lg:text-6xl font-bold tracking-tight">
+      {headline}
+    </h1>
+    
+    <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+      {subheadline}
+    </p>
+    
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <Button size="lg" class="text-lg px-8">
+        {primaryCTAText || 'Get Instant Quote'}
+        <ArrowRight className="ml-2 h-5 w-5" />
+      </Button>
+      
+      <Button variant="outline" size="lg" class="text-lg px-8">
+        {secondaryCTAText || 'Browse Inventory'}
+      </Button>
+    </div>
+  </div>
+</section>

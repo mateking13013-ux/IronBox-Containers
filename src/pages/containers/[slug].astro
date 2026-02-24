@@ -1,0 +1,691 @@
+---
+export const prerender = true;
+
+import MainLayout from '../../layouts/MainLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getAllProducts, formatPrice, getProductCondition, getContainerSize, parseProductSpecs } from '../../lib/woocommerce.js';
+
+// Tell Astro which paths to pre-render
+export function getStaticPaths() {
+  return [
+    { params: { slug: 'houston-tx-20ft-containers-construction' } }
+  ];
+}
+
+const { slug } = Astro.params;
+
+// Fetch 3 featured 20ft products
+const allProducts = await getAllProducts();
+const featuredProducts = allProducts.filter(product => getContainerSize(product) === '20ft').slice(0, 3);
+
+// Policy sidebar data
+const allPolicies = [
+	{ name: "Privacy Policy", href: "/privacy-policy" },
+	{ name: "Terms of Service", href: "/terms-of-service" },
+	{ name: "Return & Warranty Policy", href: "/return-policy" },
+	{ name: "Shipping & Installation Policy", href: "/shipping-policy" },
+	{ name: "Cookie Policy", href: "/cookie-policy" },
+	{ name: "Accessibility Policy", href: "/accessibility" },
+	{ name: "Data Protection Policy", href: "/data-protection" },
+	{ name: "GDPR Compliance", href: "/gdpr" }
+];
+
+const categories = [
+	{ name: "20ft Used Containers", href: "/categories/20ft-used-shipping-containers" },
+	{ name: "20ft New Containers", href: "/categories/20ft-new-shipping-containers" },
+	{ name: "40ft New Containers", href: "/categories/40ft-new-shipping-containers" },
+	{ name: "40ft Used Containers", href: "/categories/40ft-used-shipping-containers" },
+	{ name: "10ft Used Containers", href: "/categories/10-ft-used-shipping-containers" },
+	{ name: "10ft New Containers", href: "/categories/10ft-new-shipping-containers" },
+	{ name: "Modified Containers", href: "/categories/modified-containers" },
+	{ name: "Refrigerated Containers", href: "/categories/refrigerated-shipping-containers" },
+	{ name: "Guard Booths & Shacks", href: "/categories/guard-booths-shacks-houses" },
+	{ name: "Portable Offices", href: "/categories/portable-site-office-containers" }
+];
+
+const contactDetails = {
+	phone: "+27 11 234 5678",
+	email: "sales@ironboxcontainers.co.za",
+	address: "1421 Horizon Parkway, Austin, TX 73301"
+};
+---
+
+<MainLayout 
+  title="20ft Shipping Containers for Construction in Houston TX | IronBox Containers"
+  description="Premium 20ft construction containers in Houston, TX. Wind & water tight, CSC certified. Perfect for tool storage, equipment protection & building sites. Fast local delivery."
+>
+  <Header />
+  
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-amber-50 to-orange-50 py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="px-3 py-1 bg-amber-600 text-white text-xs font-semibold rounded-full">Houston, TX</span>
+          <span class="px-3 py-1 bg-green-600 text-white text-xs font-semibold rounded-full">✓ In Stock</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          20ft Shipping Containers for Construction in Houston, TX
+        </h1>
+        <p class="text-xl text-gray-600 mb-8">
+          Premium quality 20ft construction containers perfect for Houston building sites. Wind & water tight, CSC certified, and ready for immediate delivery to your location.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 mb-8">
+          <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 bg-amber-600 text-white font-semibold rounded-lg hover:bg-amber-700 transition-colors">
+            Get Free Quote
+          </a>
+          <a href="tel:+27112345678" class="inline-flex items-center justify-center px-8 py-4 bg-white text-amber-600 font-semibold rounded-lg border-2 border-amber-600 hover:bg-amber-50 transition-colors">
+            📞 Call +27 11 234 5678
+          </a>
+        </div>
+        <div class="flex flex-wrap gap-6 text-sm text-gray-700">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-amber-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+            <span><strong>ISO/CSC Certified</strong></span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-amber-600" fill="currentColor" viewBox="0 0 20 20"><path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"></path><path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z"></path></svg>
+            <span><strong>Fast Houston Delivery</strong></span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-amber-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
+            <span><strong>Wind & Water Tight</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-7xl mx-auto px-6 py-12">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Main Content -->
+      <main class="flex-1 lg:min-w-0 space-y-12">
+        
+        <!-- Introduction Section -->
+        <section>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Premium 20ft Construction Containers in Houston</h2>
+          <div class="prose prose-lg max-w-none">
+            <p class="text-gray-700 leading-relaxed mb-4">
+              When it comes to <strong>20ft shipping containers for construction sites in Houston, TX</strong>, IronBox Containers provides the most reliable and cost-effective solutions. Our containers are perfect for tool storage, equipment protection, and temporary office spaces on building sites throughout the Greater Houston area.
+            </p>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Each <strong>20ft construction container</strong> is thoroughly inspected, wind & water tight, and comes with <strong>CSC certification</strong>. Whether you're managing a commercial construction project in downtown Houston, residential development in Katy, or industrial work in Baytown, our containers provide secure, weatherproof storage that keeps your valuable tools and equipment protected.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+              We understand Houston's unique climate challenges and construction site requirements. That's why all our containers feature reinforced steel construction, secure locking mechanisms, and proper ventilation. Fast local delivery means your container arrives when you need it, where you need it.
+            </p>
+          </div>
+        </section>
+
+        <!-- Featured Products Section -->
+        <section>
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-3xl font-bold text-gray-900">Available 20ft Containers in Houston</h2>
+            <a href="/categories/20ft-container" class="text-amber-600 hover:text-amber-700 font-semibold flex items-center gap-2">
+              View All
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </a>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {featuredProducts.map((product) => {
+              const specs = parseProductSpecs(product);
+              const condition = getProductCondition(product);
+              const size = getContainerSize(product);
+              const imageUrl = product.images?.[0]?.src || 'https://via.placeholder.com/400x300';
+
+              return (
+                <a href={`/products/${product.slug}`} class="group">
+                  <div class="bg-white rounded-lg border-2 border-gray-200 overflow-hidden hover:border-amber-500 hover:shadow-lg transition-all duration-200">
+                    <div class="aspect-[4/3] relative overflow-hidden bg-gray-100">
+                      <img
+                        src={imageUrl}
+                        alt={product.name}
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div class="absolute top-3 left-3">
+                        <span class={`inline-block px-3 py-1 text-xs font-semibold rounded-full ${
+                          condition === 'New' ? 'bg-green-100 text-green-800' :
+                          condition === 'Used' ? 'bg-amber-100 text-amber-800' :
+                          'bg-blue-100 text-blue-800'
+                        }`}>
+                          {condition}
+                        </span>
+                      </div>
+                      <div class="absolute top-3 right-3">
+                        <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-amber-600 text-white">
+                          {size}
+                        </span>
+                      </div>
+                    </div>
+                    <div class="p-5">
+                      <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-amber-600 transition-colors line-clamp-2">
+                        {product.name}
+                      </h3>
+                      {specs.dimensions && (
+                        <p class="text-sm text-gray-600 mb-3">{specs.dimensions}</p>
+                      )}
+                      <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-amber-600">{formatPrice(product.price)}</span>
+                        <span class="text-amber-600 font-semibold group-hover:translate-x-1 transition-transform">View Details →</span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="bg-amber-50 rounded-xl p-8">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Why Choose Our Construction Containers?</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-lg p-6 border-2 border-amber-200">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Wind & Water Tight</h3>
+              <p class="text-gray-600">Complete weather protection for your tools and equipment in any Houston weather condition.</p>
+            </div>
+            <div class="bg-white rounded-lg p-6 border-2 border-amber-200">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Secure Lock Box</h3>
+              <p class="text-gray-600">Heavy-duty lock boxes keep your valuable construction equipment safe and secure.</p>
+            </div>
+            <div class="bg-white rounded-lg p-6 border-2 border-amber-200">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">CSC Certified</h3>
+              <p class="text-gray-600">All containers meet international safety standards and come with proper certification.</p>
+            </div>
+            <div class="bg-white rounded-lg p-6 border-2 border-amber-200">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Fast Houston Delivery</h3>
+              <p class="text-gray-600">Quick local delivery to any construction site in the Greater Houston area.</p>
+            </div>
+            <div class="bg-white rounded-lg p-6 border-2 border-amber-200">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Heavy Duty Steel</h3>
+              <p class="text-gray-600">Reinforced corten steel construction designed for demanding construction environments.</p>
+            </div>
+            <div class="bg-white rounded-lg p-6 border-2 border-amber-200">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Customization Available</h3>
+              <p class="text-gray-600">Add shelving, electrical, lighting, or ventilation to meet your specific needs.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Use Cases Section -->
+        <section>
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Perfect for Houston Construction Projects</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-amber-500 transition-colors">
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Construction Site Storage</h3>
+              <p class="text-gray-600">Secure on-site storage for construction materials, power tools, and equipment. Keep everything organized and protected from theft and weather.</p>
+            </div>
+            <div class="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-amber-500 transition-colors">
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Tool & Equipment Protection</h3>
+              <p class="text-gray-600">Protect expensive tools, machinery, and equipment from Houston's heat, humidity, and sudden storms. Lockable and weatherproof.</p>
+            </div>
+            <div class="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-amber-500 transition-colors">
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Temporary Site Office</h3>
+              <p class="text-gray-600">Convert into a comfortable on-site office with AC, electricity, and windows. Perfect for project managers and site supervisors.</p>
+            </div>
+            <div class="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-amber-500 transition-colors">
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Material & Equipment Yard</h3>
+              <p class="text-gray-600">Organize lumber, pipes, electrical supplies, and heavy equipment. Perfect for staging areas and keeping job sites clean and efficient.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Customer Reviews / Social Proof Section -->
+        <section>
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">What Houston Customers Say</h2>
+            <div class="flex items-center justify-center gap-2 mb-2">
+              <div class="flex">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} class="w-6 h-6 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                  </svg>
+                ))}
+              </div>
+              <span class="text-lg font-semibold text-gray-900">4.9 out of 5</span>
+            </div>
+            <p class="text-gray-600">Based on 150+ verified Houston customers</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Review 1 -->
+            <div class="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-amber-300 transition-colors">
+              <div class="flex items-start justify-between mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center">
+                    <span class="text-xl font-bold text-amber-600">MR</span>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-gray-900">Marcus Rodriguez</h3>
+                    <p class="text-sm text-gray-500">Katy, TX • 2 weeks ago</p>
+                  </div>
+                </div>
+                <div class="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <div class="mb-3">
+                <span class="inline-block px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold rounded-full border border-green-200">
+                  ✓ Verified Purchase
+                </span>
+                <span class="inline-block px-3 py-1 bg-amber-50 text-amber-700 text-xs font-semibold rounded-full ml-2">
+                  Construction Site
+                </span>
+              </div>
+              <p class="text-gray-700 leading-relaxed">
+                "Needed a 20ft container for our construction site in Katy. Fast delivery, great condition, and exactly what we needed for tool storage. The team was professional and placed it exactly where we wanted. Highly recommend for any Houston area contractors!"
+              </p>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-amber-300 transition-colors">
+              <div class="flex items-start justify-between mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center">
+                    <span class="text-xl font-bold text-amber-600">JC</span>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-gray-900">Jennifer Chen</h3>
+                    <p class="text-sm text-gray-500">Sugar Land, TX • 3 weeks ago</p>
+                  </div>
+                </div>
+                <div class="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <div class="mb-3">
+                <span class="inline-block px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold rounded-full border border-green-200">
+                  ✓ Verified Purchase
+                </span>
+                <span class="inline-block px-3 py-1 bg-amber-50 text-amber-700 text-xs font-semibold rounded-full ml-2">
+                  Equipment Storage
+                </span>
+              </div>
+              <p class="text-gray-700 leading-relaxed">
+                "Purchased for equipment storage at our commercial building project. Container arrived in excellent condition - completely weatherproof and secure. Perfect for protecting expensive machinery from Houston humidity. Would definitely order again."
+              </p>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-amber-300 transition-colors">
+              <div class="flex items-start justify-between mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center">
+                    <span class="text-xl font-bold text-amber-600">DT</span>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-gray-900">David Thompson</h3>
+                    <p class="text-sm text-gray-500">The Woodlands, TX • 1 month ago</p>
+                  </div>
+                </div>
+                <div class="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} class={`w-4 h-4 ${i < 4 ? 'text-amber-500' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <div class="mb-3">
+                <span class="inline-block px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold rounded-full border border-green-200">
+                  ✓ Verified Purchase
+                </span>
+                <span class="inline-block px-3 py-1 bg-amber-50 text-amber-700 text-xs font-semibold rounded-full ml-2">
+                  Site Office
+                </span>
+              </div>
+              <p class="text-gray-700 leading-relaxed">
+                "Good quality container, converted it into a temporary site office. Only minor issue was delivery was a day late, but customer service kept me informed. Overall happy with the purchase and the price was competitive."
+              </p>
+            </div>
+
+            <!-- Review 4 -->
+            <div class="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-amber-300 transition-colors">
+              <div class="flex items-start justify-between mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center">
+                    <span class="text-xl font-bold text-amber-600">SP</span>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-gray-900">Sarah Patel</h3>
+                    <p class="text-sm text-gray-500">Houston, TX • 1 month ago</p>
+                  </div>
+                </div>
+                <div class="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <div class="mb-3">
+                <span class="inline-block px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold rounded-full border border-green-200">
+                  ✓ Verified Purchase
+                </span>
+                <span class="inline-block px-3 py-1 bg-amber-50 text-amber-700 text-xs font-semibold rounded-full ml-2">
+                  Tool Storage
+                </span>
+              </div>
+              <p class="text-gray-700 leading-relaxed">
+                "Excellent container for our downtown Houston project. Secure lock system gave us peace of mind storing power tools and materials overnight. Container stayed completely dry during the last storm. Best purchase for our construction needs!"
+              </p>
+            </div>
+
+            <!-- Review 5 -->
+            <div class="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-amber-300 transition-colors">
+              <div class="flex items-start justify-between mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center">
+                    <span class="text-xl font-bold text-amber-600">TB</span>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-gray-900">Tom Baker</h3>
+                    <p class="text-sm text-gray-500">Pearland, TX • 2 months ago</p>
+                  </div>
+                </div>
+                <div class="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <div class="mb-3">
+                <span class="inline-block px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold rounded-full border border-green-200">
+                  ✓ Verified Purchase
+                </span>
+                <span class="inline-block px-3 py-1 bg-amber-50 text-amber-700 text-xs font-semibold rounded-full ml-2">
+                  Material Storage
+                </span>
+              </div>
+              <p class="text-gray-700 leading-relaxed">
+                "Third container we've ordered from IronBox Containers. Consistent quality and reliable delivery every time. We use them on all our residential construction projects around Pearland. Great value for money and excellent customer support."
+              </p>
+            </div>
+
+            <!-- Review 6 -->
+            <div class="bg-white rounded-lg border-2 border-gray-200 p-6 hover:border-amber-300 transition-colors">
+              <div class="flex items-start justify-between mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center">
+                    <span class="text-xl font-bold text-amber-600">LG</span>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-gray-900">Lisa Garcia</h3>
+                    <p class="text-sm text-gray-500">Baytown, TX • 2 months ago</p>
+                  </div>
+                </div>
+                <div class="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <div class="mb-3">
+                <span class="inline-block px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold rounded-full border border-green-200">
+                  ✓ Verified Purchase
+                </span>
+                <span class="inline-block px-3 py-1 bg-amber-50 text-amber-700 text-xs font-semibold rounded-full ml-2">
+                  Industrial Use
+                </span>
+              </div>
+              <p class="text-gray-700 leading-relaxed">
+                "Needed secure storage for industrial equipment at our Baytown facility. This 20ft container exceeded expectations - heavy duty construction, weatherproof, and the delivery team navigated our tight space perfectly. Will be ordering more!"
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section>
+          <h2 class="text-3xl font-bold text-gray-900 mb-8">Houston Container FAQs</h2>
+          <div class="space-y-4">
+            <details class="group bg-white rounded-lg border-2 border-gray-200 hover:border-amber-500 transition-colors">
+              <summary class="flex items-center justify-between p-6 cursor-pointer">
+                <h3 class="text-lg font-semibold text-gray-900">How much does a 20ft container cost in Houston?</h3>
+                <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </summary>
+              <div class="px-6 pb-6 text-gray-600">
+                <p>20ft shipping containers in Houston typically range from $2,500 to $4,500 depending on condition (new vs. used), features, and customization. Used containers start around $2,500-$3,000, while new one-trip containers cost $3,500-$4,500. We offer competitive pricing and can provide detailed quotes based on your specific requirements.</p>
+              </div>
+            </details>
+
+            <details class="group bg-white rounded-lg border-2 border-gray-200 hover:border-amber-500 transition-colors">
+              <summary class="flex items-center justify-between p-6 cursor-pointer">
+                <h3 class="text-lg font-semibold text-gray-900">Do you deliver to Houston construction sites?</h3>
+                <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </summary>
+              <div class="px-6 pb-6 text-gray-600">
+                <p>Yes! We deliver containers to construction sites throughout Houston, including downtown, The Woodlands, Katy, Sugar Land, Pearland, Baytown, and all surrounding areas. Our experienced drivers handle challenging site conditions and tight spaces. Delivery typically takes 3-5 business days, with expedited options available.</p>
+              </div>
+            </details>
+
+            <details class="group bg-white rounded-lg border-2 border-gray-200 hover:border-amber-500 transition-colors">
+              <summary class="flex items-center justify-between p-6 cursor-pointer">
+                <h3 class="text-lg font-semibold text-gray-900">Are your containers wind and water tight?</h3>
+                <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </summary>
+              <div class="px-6 pb-6 text-gray-600">
+                <p>Absolutely. All our construction containers are inspected to ensure they are wind and water tight before delivery. They feature rubber door seals, sealed roof panels, and no holes or rust-through. Your tools and equipment will stay dry even during Houston's heavy rainstorms.</p>
+              </div>
+            </details>
+
+            <details class="group bg-white rounded-lg border-2 border-gray-200 hover:border-amber-500 transition-colors">
+              <summary class="flex items-center justify-between p-6 cursor-pointer">
+                <h3 class="text-lg font-semibold text-gray-900">What's included with delivery?</h3>
+                <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </summary>
+              <div class="px-6 pb-6 text-gray-600">
+                <p>Delivery includes transportation to your Houston construction site and placement using our tilt-bed truck. We require a level, accessible area for drop-off. If your site needs crane service or forklift placement, we can arrange that for an additional fee. All containers come with working doors, lock boxes, and current CSC certification.</p>
+              </div>
+            </details>
+
+            <details class="group bg-white rounded-lg border-2 border-gray-200 hover:border-amber-500 transition-colors">
+              <summary class="flex items-center justify-between p-6 cursor-pointer">
+                <h3 class="text-lg font-semibold text-gray-900">Can I rent or must I buy?</h3>
+                <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </summary>
+              <div class="px-6 pb-6 text-gray-600">
+                <p>We offer both rental and purchase options for construction containers. Monthly rentals start around $150-$200 per month for 20ft containers, with discounts for longer terms. Buying is more cost-effective for projects longer than 12-18 months. Contact us to discuss which option works best for your construction timeline.</p>
+              </div>
+            </details>
+
+            <details class="group bg-white rounded-lg border-2 border-gray-200 hover:border-amber-500 transition-colors">
+              <summary class="flex items-center justify-between p-6 cursor-pointer">
+                <h3 class="text-lg font-semibold text-gray-900">How long does delivery take in Houston?</h3>
+                <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </summary>
+              <div class="px-6 pb-6 text-gray-600">
+                <p>Standard delivery to Houston-area construction sites takes 3-5 business days from order confirmation. We also offer rush delivery (1-2 days) for urgent construction needs. Delivery times may vary based on customization requirements, site accessibility, and current inventory levels.</p>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <!-- Location Info Section -->
+        <section class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-8">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4 text-center">Serving Houston & Surrounding Areas</h2>
+          <p class="text-center text-gray-600 mb-6 max-w-2xl mx-auto">
+            Fast, reliable delivery of construction containers throughout the Greater Houston metropolitan area and surrounding communities.
+          </p>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            <div class="bg-white rounded-lg p-4 border border-amber-200">
+              <p class="font-semibold text-gray-900">Houston</p>
+            </div>
+            <div class="bg-white rounded-lg p-4 border border-amber-200">
+              <p class="font-semibold text-gray-900">Katy</p>
+            </div>
+            <div class="bg-white rounded-lg p-4 border border-amber-200">
+              <p class="font-semibold text-gray-900">Sugar Land</p>
+            </div>
+            <div class="bg-white rounded-lg p-4 border border-amber-200">
+              <p class="font-semibold text-gray-900">The Woodlands</p>
+            </div>
+            <div class="bg-white rounded-lg p-4 border border-amber-200">
+              <p class="font-semibold text-gray-900">Pearland</p>
+            </div>
+            <div class="bg-white rounded-lg p-4 border border-amber-200">
+              <p class="font-semibold text-gray-900">Baytown</p>
+            </div>
+            <div class="bg-white rounded-lg p-4 border border-amber-200">
+              <p class="font-semibold text-gray-900">Pasadena</p>
+            </div>
+            <div class="bg-white rounded-lg p-4 border border-amber-200">
+              <p class="font-semibold text-gray-900">League City</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="bg-amber-600 rounded-xl p-8 md:p-12 text-center text-white">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Get Your Container?</h2>
+          <p class="text-xl mb-8 text-amber-50">
+            Join 500+ Houston businesses and contractors using our containers for their construction projects
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 bg-white text-amber-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+              Request Free Quote
+            </a>
+            <a href="tel:+27112345678" class="inline-flex items-center justify-center px-8 py-4 bg-amber-700 text-white font-semibold rounded-lg hover:bg-amber-800 transition-colors border-2 border-white">
+              📞 Call +27 11 234 5678
+            </a>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Sidebar (30%) - Policy Page Sidebar -->
+      <aside class="w-full lg:w-80">
+        <div class="bg-[#FFFACD] rounded-xl p-3 space-y-3">
+          <!-- Policies Menu -->
+          <div class="space-y-1">
+            <h3 class="text-base font-bold text-gray-800 mb-2">Policies</h3>
+            {allPolicies.map((policy) => (
+              <a 
+                href={policy.href} 
+                class="block bg-white border border-gray-200 rounded px-3 py-2 hover:bg-[#FF9800] hover:border-[#FF9800] hover:text-white transition-all duration-300"
+              >
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-medium text-gray-700 hover:text-white">{policy.name}</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-gray-400 hover:text-white" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7" />
+                  </svg>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <div class="border-t border-yellow-200 pt-2"></div>
+
+          <!-- Product Categories -->
+          <div class="space-y-1">
+            <h3 class="text-base font-bold text-gray-800 mb-2">Categories</h3>
+            {categories.slice(0, 6).map((category) => (
+              <a 
+                href={category.href} 
+                class="block bg-white border border-gray-200 rounded px-3 py-2 hover:bg-[#FF9800] hover:border-[#FF9800] hover:text-white transition-all duration-300 mb-1"
+              >
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-medium text-gray-700 hover:text-white">{category.name}</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-gray-400 hover:text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7" />
+                  </svg>
+                </div>
+              </a>
+            ))}
+            {categories.length > 6 && (
+              <details class="group">
+                <summary class="flex items-center justify-between px-3 py-2 text-xs font-bold text-gray-700 cursor-pointer hover:text-orange-600">
+                  <span>More Categories</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-gray-400 group-open:rotate-90 transition-transform" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7" />
+                  </svg>
+                </summary>
+                <div class="pl-3 space-y-1">
+                  {categories.slice(6).map((category) => (
+                    <a 
+                      href={category.href} 
+                      class="block bg-white border border-gray-200 rounded px-3 py-2 hover:bg-[#FF9800] hover:border-[#FF9800] hover:text-white transition-all duration-300 mb-1"
+                    >
+                      <div class="flex items-center justify-between">
+                        <span class="text-xs font-medium text-gray-700 hover:text-white">{category.name}</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-gray-400 hover:text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7" />
+                        </svg>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </details>
+            )}
+          </div>
+
+          <div class="border-t border-yellow-300 pt-4"></div>
+
+          <!-- Contact Details -->
+          <div class="space-y-2">
+            <h3 class="text-lg font-bold text-gray-800 mb-3">Contact Us</h3>
+            
+            <div class="bg-white border border-gray-200 rounded-md p-4 space-y-3">
+              <div class="flex items-center gap-3">
+                <div class="bg-[#FFFACD] rounded-full p-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-[#FF9800]" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 17.25V6.75M19.5 12c0 1.121-.939 2-2.087 2H6.587c-1.148 0-2.087-.879-2.087-2s.939-2 2.087-2h10.826c1.148 0 2.087.879 2.087 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold text-gray-600">PHONE</p>
+                  <p class="text-sm font-bold text-gray-800">{contactDetails.phone}</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <div class="bg-[#FFFACD] rounded-full p-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-[#FF9800]" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 17.25V6.75m19.5 0A2.25 2.25 0 0 0 21.75 4.5H6.75A2.25 2.25 0 0 0 4.5 6.75m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold text-gray-600">EMAIL</p>
+                  <p class="text-sm font-bold text-gray-800">{contactDetails.email}</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="bg-[#FFFACD] rounded-full p-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-[#FF9800]" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <p class="text-xs font-semibold text-gray-600">ADDRESS</p>
+                  <p class="text-sm font-bold text-gray-800">{contactDetails.address}</p>
+                </div>
+              </div>
+
+              <a href="/contact" class="block w-full bg-[#FF9800] text-white text-center py-3 px-4 rounded-md font-bold hover:bg-orange-600 transition-colors text-sm">
+                Contact Support
+              </a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <Footer />
+</MainLayout>

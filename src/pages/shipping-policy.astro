@@ -1,0 +1,18 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ShippingPolicyPage from '../components/support/ShippingPolicyPage.astro';
+import PolicyPageLayout from '../components/policy/PolicyPageLayout.astro';
+---
+
+<MainLayout title="Shipping & Delivery Policy – IronBox Containers" description="Learn about nationwide shipping container delivery, timeframes, costs, and requirements.">
+  <Header />
+  <PolicyPageLayout
+    title="Shipping & Delivery Policy"
+    lastUpdated="Updated January 24, 2025"
+  >
+    <ShippingPolicyPage />
+  </PolicyPageLayout>
+  <Footer />
+</MainLayout>
