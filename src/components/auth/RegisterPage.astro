@@ -16,23 +16,25 @@ const errorMessage = '';
       <div class="mt-6 rounded-xl border border-destructive bg-destructive/10 p-3 text-sm text-destructive">{errorMessage}</div>
     )}
 
-    <form class="mt-8 space-y-4">
+    <form class="mt-8 space-y-4" method="POST" action="https://submit-form.com/giqYy9VTp">
+      <input type="hidden" name="_redirect" value="https://submit-form.com/giqYy9VTp/thank-you" />
+      <input type="hidden" name="formType" value="register" />
       <div class="space-y-2">
         <label class="text-sm font-medium text-foreground" for="full-name">Full name</label>
-        <input id="full-name" type="text" placeholder="Alex Morgan" class="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
+        <input id="full-name" name="fullName" type="text" placeholder="Alex Morgan" class="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
       </div>
       <div class="space-y-2">
         <label class="text-sm font-medium text-foreground" for="email">Email</label>
-        <input id="email" type="email" placeholder="alex.morgan@example.com" class="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
+        <input id="email" name="email" type="email" placeholder="alex.morgan@example.com" class="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
       </div>
       <div class="space-y-2">
         <label class="text-sm font-medium text-foreground" for="password">Password</label>
-        <input id="password" type="password" placeholder="••••••••" class="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
+        <input id="password" name="password" type="password" placeholder="••••••••" class="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
         <p class="text-xs text-muted-foreground">Minimum 8 characters with at least one number.</p>
       </div>
       <div class="space-y-2">
         <label class="text-sm font-medium text-foreground" for="confirm">Confirm password</label>
-        <input id="confirm" type="password" placeholder="••••••••" class="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
+        <input id="confirm" name="confirmPassword" type="password" placeholder="••••••••" class="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
       </div>
       <p class="text-xs text-muted-foreground">By creating an account you agree to our <a href="/terms-of-service" class="text-primary hover:underline">Terms</a> and <a href="/privacy-policy" class="text-primary hover:underline">Privacy Policy</a>.</p>
       <button type="submit" class="w-full rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90">Create account</button>

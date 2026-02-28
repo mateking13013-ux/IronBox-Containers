@@ -18,7 +18,11 @@ import Footer from '../components/Footer.astro';
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <!-- Checkout Form -->
         <div class="bg-white rounded-lg shadow-sm p-6">
-          <form id="checkout-form">
+          <form id="checkout-form" method="POST" action="https://submit-form.com/giqYy9VTp">
+            <input type="hidden" name="_redirect" value="/order-confirmation" />
+            <input type="hidden" name="formType" value="checkout" />
+            <input type="hidden" name="cartItems" id="hidden-cart-items" value="" />
+            <input type="hidden" name="cartTotal" id="hidden-cart-total" value="" />
             <!-- Contact Information -->
             <div class="mb-6">
               <h2 class="text-xl font-semibold mb-4">Contact Information</h2>
@@ -283,68 +287,26 @@ import Footer from '../components/Footer.astro';
     }
   }
 
-  // Handle form submission
-  document.getElementById('checkout-form')?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const submitBtn = document.getElementById('submit-button');
-    const errorEl = document.getElementById('error-message');
-    
-    // Disable button
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Processing...';
-    submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
-    errorEl.classList.add('hidden');
+  // Handle form submission - populate hidden fields before submit
+  document.getElementById('checkout-form')?.addEventListener('submit', (e) => {
+    const cart = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const total = subtotal + 300;
 
-    try {
-      const formData = new FormData(e.target);
-      const billingData = Object.fromEntries(formData);
-      const cart = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-      
-      // Get selected payment method
-      const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked')?.value;
-      
-      if (!paymentMethod) {
-        throw new Error('Please select a payment method');
-      }
+    // Populate hidden fields with cart data
+    const cartItemsField = document.getElementById('hidden-cart-items');
+    const cartTotalField = document.getElementById('hidden-cart-total');
 
-      // Call our API
-      const response = await fetch('/api/create-order', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          billing: billingData,
-          line_items: cart,
-          payment_method: paymentMethod
-        })
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.message || 'Failed to create order');
-      }
-
-      // Success!
-      // Clear cart
-      localStorage.removeItem(STORAGE_KEY);
-      window.dispatchEvent(new Event('cartUpdated'));
-
-      // Redirect to confirmation
-      window.location.href = `/order-confirmation?id=${result.orderId}&key=${result.orderKey}`;
-
-    } catch (error) {
-      console.error('Order failed:', error);
-      errorEl.textContent = error.message;
-      errorEl.classList.remove('hidden');
-      
-      // Reset button
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Place Order';
-      submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+    if (cartItemsField) {
+      cartItemsField.value = cart.map(item => `${item.name} (Qty: ${item.quantity}) - R${(item.price * item.quantity).toLocaleString()}`).join(' | ');
     }
+    if (cartTotalField) {
+      cartTotalField.value = `R${total.toLocaleString()}`;
+    }
+
+    // Clear cart after form submits
+    localStorage.removeItem(STORAGE_KEY);
+    window.dispatchEvent(new Event('cartUpdated'));
   });
 
   // Load on page load

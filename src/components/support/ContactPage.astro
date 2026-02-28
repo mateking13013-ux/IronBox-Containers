@@ -42,23 +42,24 @@ const faqs = [
     <div class="space-y-6 rounded-3xl border border-border bg-card p-6 shadow-sm">
       <h2 class="text-lg font-semibold">Project intake form</h2>
       <p class="text-sm text-muted-foreground">Share a few details and we’ll pair you with the right specialist—pool, prefab home, hospitality suite, or custom build.</p>
-      <form class="space-y-4 text-sm">
+      <form class="space-y-4 text-sm" method="POST" action="https://submit-form.com/giqYy9VTp">
+        <input type="hidden" name="_redirect" value="https://submit-form.com/giqYy9VTp/thank-you" />
         <div class="grid gap-4 md:grid-cols-2">
           <div class="space-y-2">
             <label class="font-medium text-muted-foreground" for="name">Name</label>
-            <input id="name" type="text" placeholder="Alex Morgan" class="w-full rounded-xl border border-border bg-background px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" />
+            <input id="name" name="name" type="text" placeholder="Alex Morgan" class="w-full rounded-xl border border-border bg-background px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" />
           </div>
           <div class="space-y-2">
             <label class="font-medium text-muted-foreground" for="email">Email</label>
-            <input id="email" type="email" placeholder="alex.morgan@example.com" class="w-full rounded-xl border border-border bg-background px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" />
+            <input id="email" name="email" type="email" placeholder="alex.morgan@example.com" class="w-full rounded-xl border border-border bg-background px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" />
           </div>
           <div class="space-y-2">
             <label class="font-medium text-muted-foreground" for="phone">Phone</label>
-            <input id="phone" type="tel" placeholder="(737) 555-8020" class="w-full rounded-xl border border-border bg-background px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" />
+            <input id="phone" name="phone" type="tel" placeholder="(737) 555-8020" class="w-full rounded-xl border border-border bg-background px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary" />
           </div>
           <div class="space-y-2">
             <label class="font-medium text-muted-foreground" for="project">Container Type</label>
-            <select id="project" class="w-full rounded-xl border border-border bg-background px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary">
+            <select id="project" name="containerType" class="w-full rounded-xl border border-border bg-background px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary">
               <option>20ft Standard Container</option>
               <option>40ft High Cube Container</option>
               <option>Refrigerated Container</option>
@@ -70,7 +71,7 @@ const faqs = [
         </div>
         <div class="space-y-2">
           <label class="font-medium text-muted-foreground" for="timeline">How soon do you need it?</label>
-          <select id="timeline" class="w-full rounded-xl border border-border bg-background px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary">
+          <select id="timeline" name="timeline" class="w-full rounded-xl border border-border bg-background px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary">
             <option>Right away (ASAP)</option>
             <option>Within the next week</option>
             <option>Just looking around</option>
@@ -78,7 +79,7 @@ const faqs = [
         </div>
         <div class="space-y-2">
           <label class="font-medium text-muted-foreground" for="notes">Site details & permit status</label>
-          <textarea id="notes" rows="4" placeholder="Tell us about your site access, utilities, or permit progress." class="w-full rounded-xl border border-border bg-background px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+          <textarea id="notes" name="notes" rows="4" placeholder="Tell us about your site access, utilities, or permit progress." class="w-full rounded-xl border border-border bg-background px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
         </div>
         <button type="submit" class="w-full rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90">Submit intake</button>
         <p class="text-xs text-muted-foreground">By submitting you agree to our Privacy Policy and consent to receive project updates.</p>
