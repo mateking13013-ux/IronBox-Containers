@@ -9,18 +9,18 @@ This checklist ensures your Google Merchant Center (GMC) and WordPress backend s
 Log in to [Google Merchant Center](https://merchants.google.com/) and configure the following exactly as written below. **Consistency is key.**
 
 ### 1. Business Information
-*   **Business Name:** Nunes Tiny Homes
+*   **Business Name:** IronBox Containers
 *   **Address:**
     *   410 E Airport Fwy
     *   Irving, TX 75062
     *   United States
 *   **Phone Number:** +1 (415) 625-3493 (Must be verified via voice/text)
 *   **Customer Service Contact:**
-    *   Email: support@nunestinyhomes.com
-    *   URL: https://nunestinyhomes.com/contact
+    *   Email: support@ironboxcontainers.com
+    *   URL: https://ironboxcontainers.com/contact
 
 ### 2. Website Claiming
-*   **Website URL:** https://nunestinyhomes.com
+*   **Website URL:** https://ironboxcontainers.com
 *   **Verification:** Use the "HTML Tag" method or Google Analytics method since you have the code on your site.
 
 ### 3. Shipping & Returns (CRITICAL)
@@ -55,7 +55,7 @@ Log in to [Google Merchant Center](https://merchants.google.com/) and configure 
 Your product feed comes from here. These settings must match the frontend to avoid "Mismatched Value" errors.
 
 ### 1. General Settings
-*   **Site Title:** Nunes Tiny Homes
+*   **Site Title:** IronBox Containers
 *   **Address:** Ensure the WooCommerce store address matches the GMC address above.
 
 ### 2. Product Data (For Every Product)
@@ -64,7 +64,7 @@ Your product feed comes from here. These settings must match the frontend to avo
     *   Manage Stock: **Yes**
     *   Stock Status: **In Stock** (Do not submit "Out of Stock" items to GMC).
 *   **Attributes (Required for Feed):**
-    *   **Brand:** Nunes Tiny Homes
+    *   **Brand:** IronBox Containers
     *   **Condition:** New (or Used, if applicable - must be explicit).
     *   **MPN / SKU:** Ensure every product has a unique SKU (e.g., `CONT-20-STD`).
     *   **GTIN/UPC:** If you have them, add them. If not, set "Identifier Exists" to **No** in your feed plugin.

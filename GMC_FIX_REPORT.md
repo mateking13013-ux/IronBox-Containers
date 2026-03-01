@@ -8,7 +8,7 @@
 
 ### 1. Checkout Process (CRITICAL FIX)
 - **Problem:** The previous checkout was a "Quote Request" form, which violates Google's "Buy Online" requirement.
-- **Fix:** The `/checkout` page now automatically redirects users to your secure WordPress checkout (`cms.nunestinyhomes.com/checkout/`).
+- **Fix:** The `/checkout` page now automatically redirects users to your secure WordPress checkout (`cms.ironboxcontainers.com/checkout/`).
 - **Mechanism:** It reads the cart from the Astro site, attempts to add items to the WordPress cart via background API calls, and then sends the user to the payment page to complete the purchase.
 - **Result:** Users can now pay online, satisfying the "Checkout Capability" requirement.
 
@@ -30,14 +30,14 @@
 ### 4. Technical Schema Improvements
 - **Problem:** JSON-LD Schema had errors (Brand mismatch, PreOrder status, Fake SKUs).
 - **Fix:**
-    - **Brand:** Unified to "Nunes Tiny Homes".
+    - **Brand:** Unified to "IronBox Containers".
     - **Availability:** Changed `PreOrder` to `OutOfStock` for unavailable items.
     - **Images:** Removed the "placeholder" fallback which triggers disapproval.
 - **Result:** Google Bots will now correctly parse your product data.
 
 ### 5. Contact Information
 - **Problem:** Too many different email addresses.
-- **Fix:** Consolidated all contact points (Footer, Contact Page) to `support@nunestinyhomes.com`.
+- **Fix:** Consolidated all contact points (Footer, Contact Page) to `support@ironboxcontainers.com`.
 - **Result:** Clearer communication channel for customers and Google reviewers.
 
 ---
@@ -49,8 +49,8 @@
     - Go to your live site.
     - Add a product to the cart.
     - Click Checkout.
-    - Verify it redirects you to `cms.nunestinyhomes.com` and the item is in the cart.
-    - **Important:** Ensure your WordPress site (`cms.nunestinyhomes.com`) has a payment gateway (Stripe/PayPal) enabled and working.
+    - Verify it redirects you to `cms.ironboxcontainers.com` and the item is in the cart.
+    - **Important:** Ensure your WordPress site (`cms.ironboxcontainers.com`) has a payment gateway (Stripe/PayPal) enabled and working.
 3.  **Submit to Google:** Once the site is live and the checkout works, you can request a review in Google Merchant Center.
 
 **Good luck!**

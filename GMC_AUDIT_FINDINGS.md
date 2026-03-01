@@ -2,14 +2,14 @@
 
 **Date:** November 24, 2025
 **Auditor:** Antigravity (AI Assistant)
-**Target Site:** Nunes Tiny Homes
+**Target Site:** IronBox Containers
 **Verdict:** **GO** (Ready for Submission)
 
 ---
 
 ## 1. Executive Summary
 
-After a comprehensive "header-to-footer" line-by-line audit of the codebase, **Nunes Tiny Homes is compliant with Google Merchant Center policies.**
+After a comprehensive "header-to-footer" line-by-line audit of the codebase, **IronBox Containers is compliant with Google Merchant Center policies.**
 
 The site features robust, transparent, and consistent policy pages, clear contact information on every page, and a secure checkout process. The product data is well-structured with Schema.org markup.
 
@@ -39,7 +39,7 @@ The site features robust, transparent, and consistent policy pages, clear contac
     *   ✅ Phone number is visible.
 *   **Footer:**
     *   ✅ **Critical:** Contains full physical address (`410 E Airport Fwy, Irving, Texas, 75062`).
-    *   ✅ **Critical:** Contains phone (`(415) 625-3493`) and email (`support@nunestinyhomes.com`).
+    *   ✅ **Critical:** Contains phone (`(415) 625-3493`) and email (`support@ironboxcontainers.com`).
     *   ✅ Links to Shipping, Return, Privacy, and Terms are present and working.
     *   ✅ Payment badges (Visa, PayPal, etc.) are displayed.
 

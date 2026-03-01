@@ -6,7 +6,7 @@
 import fetch from 'node-fetch';
 
 // Configuration - Update these with your WordPress credentials
-const WP_GRAPHQL_URL = 'https://cms.nunestinyhomes.com/graphql';
+const WP_GRAPHQL_URL = 'https://cms.ironboxcontainers.com/graphql';
 const WP_USERNAME = 'your_username'; // UPDATE THIS
 const WP_PASSWORD = 'your_password'; // UPDATE THIS
 

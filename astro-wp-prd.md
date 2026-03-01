@@ -2,7 +2,7 @@
 
 ## Project Overview
 - Build a new headless commerce experience with Astro (frontend) powered by WordPress + WooCommerce (headless backend).
-- Match current Nunes Tiny Homes storefront journey while improving performance, maintainability, and Google Merchant Center (GMC) compliance.
+- Match current IronBox Containers storefront journey while improving performance, maintainability, and Google Merchant Center (GMC) compliance.
 - Store all business data (products, categories, policies, media, reviews) in WordPress; expose via WPGraphQL for Astro consumption.
 - Integrate AI-assisted workflows to generate and refresh compliant product content and maintain GMC approval status.
 

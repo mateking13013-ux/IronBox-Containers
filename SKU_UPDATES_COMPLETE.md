@@ -28,15 +28,15 @@
 - ✅ `src/components/support/ShippingPolicyPage.astro`
 
 ### 3. ✅ Email Domain Consistency - FIXED
-**Standardized to:** `@nunestinyhomes.com`
+**Standardized to:** `@ironboxcontainers.com`
 
 **Updated Emails:**
-- ✅ concierge@nunestinyhomes.com
-- ✅ support@nunestinyhomes.com
-- ✅ warranty@nunestinyhomes.com
-- ✅ logistics@nunestinyhomes.com
-- ✅ privacy@nunestinyhomes.com
-- ✅ legal@nunestinyhomes.com
+- ✅ concierge@ironboxcontainers.com
+- ✅ support@ironboxcontainers.com
+- ✅ warranty@ironboxcontainers.com
+- ✅ logistics@ironboxcontainers.com
+- ✅ privacy@ironboxcontainers.com
+- ✅ legal@ironboxcontainers.com
 
 ### 4. ✅ Product SKUs - ALL FIXED
 **Total Products:** 87
@@ -46,19 +46,19 @@
 
 1. **Product ID 1543**
    - Name: Refurbished 10ft Open Top Shipping Container - Steel Floor
-   - New SKU: `NTH-CONT-10-001`
+   - New SKU: `IBC-CONT-10-001`
    - Price: $1,750
    - ✅ Updated Successfully
 
 2. **Product ID 1549**
    - Name: Refurbished 10ft High Cube Refrigerated Shipping Container - ISO Certified
-   - New SKU: `NTH-REFR-10-001`
+   - New SKU: `IBC-REFR-10-001`
    - Price: $5,960
    - ✅ Updated Successfully
 
 3. **Product ID 1534**
    - Name: Refurbished 40ft High Cube Standard Shipping Container
-   - New SKU: `NTH-CONT-40HC-001`
+   - New SKU: `IBC-CONT-40HC-001`
    - Price: $2,100
    - ✅ Updated Successfully
 
@@ -66,7 +66,7 @@
 
 ## 🏷️ SKU FORMAT IMPLEMENTED
 
-**Format Used:** `NTH-[CATEGORY]-[SIZE]-[SEQ]`
+**Format Used:** `IBC-[CATEGORY]-[SIZE]-[SEQ]`
 
 **Category Codes:**
 - **CONT** = Container (storage/standard)
@@ -77,9 +77,9 @@
 - **HC** = High Cube (added to size)
 
 **Examples:**
-- `NTH-CONT-10-001` = Nunes Tiny Homes, Container, 10ft, #001
-- `NTH-REFR-10-001` = Nunes Tiny Homes, Refrigerated, 10ft, #001
-- `NTH-CONT-40HC-001` = Nunes Tiny Homes, Container, 40ft High Cube, #001
+- `IBC-CONT-10-001` = IronBox Containers, Container, 10ft, #001
+- `IBC-REFR-10-001` = IronBox Containers, Refrigerated, 10ft, #001
+- `IBC-CONT-40HC-001` = IronBox Containers, Container, 40ft High Cube, #001
 
 **Why This Format?**
 - ✅ Brand identifier (NTH)
@@ -96,7 +96,7 @@
 ### ✅ PASSED Requirements
 - [x] **Business Address** - Consistent across all pages
 - [x] **Phone Number** - Consistent across all pages
-- [x] **Email Addresses** - Single domain (@nunestinyhomes.com)
+- [x] **Email Addresses** - Single domain (@ironboxcontainers.com)
 - [x] **Product Count** - 87 products (exceeds 50 minimum)
 - [x] **Product SKUs** - All 87 products have unique SKUs
 - [x] **Policy Pages** - All present and complete
@@ -114,8 +114,8 @@
 1. **Deploy to Production with HTTPS**
    - [ ] Deploy site to production server
    - [ ] Ensure SSL certificate is active
-   - [ ] Test: https://nunestinyhomes.com
-   - [ ] Test: https://www.nunestinyhomes.com
+   - [ ] Test: https://ironboxcontainers.com
+   - [ ] Test: https://www.ironboxcontainers.com
    - [ ] Verify both redirect to same URL
 
 2. **Add Product Schema Markup**
@@ -227,7 +227,7 @@
 ### SKU Naming Convention
 For future products, use this format:
 ```
-NTH-[CATEGORY]-[SIZE]-[###]
+IBC-[CATEGORY]-[SIZE]-[###]
 
 Categories:
 - CONT = Standard Container
@@ -238,16 +238,16 @@ Categories:
 - STOR = Storage Building
 
 Examples:
-- NTH-POOL-30-001 (30ft Pool)
-- NTH-HOME-20-001 (20ft Home)
-- NTH-REST-10-002 (10ft Restroom #2)
+- IBC-POOL-30-001 (30ft Pool)
+- IBC-HOME-20-001 (20ft Home)
+- IBC-REST-10-002 (10ft Restroom #2)
 ```
 
 ### Contact Information
 **Your Official Business Info:**
 - Address: 410 E Airport Fwy, Irving, Texas, 75062 United States
 - Phone: (415) 625-3493
-- Email Domain: @nunestinyhomes.com
+- Email Domain: @ironboxcontainers.com
 
 **IMPORTANT:** Always use this exact info everywhere:
 - Google Business Profile
@@ -267,20 +267,20 @@ To verify the changes:
 ### Check Products Have SKUs
 ```bash
 curl -s -u "ck_...:cs_..." \
-  "https://cms.nunestinyhomes.com/wp-json/wc/v3/products/1543" | \
+  "https://cms.ironboxcontainers.com/wp-json/wc/v3/products/1543" | \
   jq '{name: .name, sku: .sku}'
 ```
 
 ### Check Total Products
 ```bash
 curl -s -I -u "ck_...:cs_..." \
-  "https://cms.nunestinyhomes.com/wp-json/wc/v3/products?per_page=1" | \
+  "https://cms.ironboxcontainers.com/wp-json/wc/v3/products?per_page=1" | \
   grep x-wp-total
 ```
 
 ### Test Site is Live
 ```bash
-curl -I https://nunestinyhomes.com
+curl -I https://ironboxcontainers.com
 # Should return 200 OK with HTTPS
 ```
 
@@ -312,10 +312,10 @@ curl -I https://nunestinyhomes.com
 ### Need to Update More Products?
 
 Use WooCommerce admin panel:
-1. Login: https://cms.nunestinyhomes.com/wp-admin
+1. Login: https://cms.ironboxcontainers.com/wp-admin
 2. Products → All Products
 3. Click product to edit
-4. Add SKU in format: NTH-[CATEGORY]-[SIZE]-[###]
+4. Add SKU in format: IBC-[CATEGORY]-[SIZE]-[###]
 5. Update
 
 ---

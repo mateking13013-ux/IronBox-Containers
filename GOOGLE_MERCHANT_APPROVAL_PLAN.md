@@ -1,5 +1,5 @@
 # Google Merchant Center Approval Plan
-**Nunes Tiny Homes - nunestinyhomes.com**
+**IronBox Containers - ironboxcontainers.com**
 
 ---
 
@@ -46,7 +46,7 @@
 3. Use (512) 555-6720 (already used in header) OR your actual number
 
 ### 3. Fix Email Domains (MEDIUM PRIORITY)
-**Problem:** Mixing @nunes.com and @nunestinyhomes.com
+**Problem:** Mixing @ironboxcontainers.com and @ironboxcontainers.com
 
 **Action:**
 1. Pick ONE domain for all emails
@@ -57,7 +57,7 @@
 **Problem:** At least 1 product has no SKU
 
 **Action:**
-1. Login to WordPress admin: https://cms.nunestinyhomes.com/wp-admin
+1. Login to WordPress admin: https://cms.ironboxcontainers.com/wp-admin
 2. Go to Products → All Products
 3. Find product "Refurbished 10ft Open Top Shipping Container - Steel Floor"
 4. Add unique SKU (example: BCG214189)
@@ -70,7 +70,7 @@
 1. Deploy site to production server
 2. Ensure SSL certificate is installed
 3. Verify both www and non-www work
-4. Test: https://nunestinyhomes.com
+4. Test: https://ironboxcontainers.com
 
 ---
 
@@ -193,10 +193,10 @@
 2. Sign in with Google account
 3. Click "Create Account"
 4. Country: United States
-5. Business name: **Nunes Tiny Homes** (exact match)
+5. Business name: **IronBox Containers** (exact match)
 
 ### Step 2: Verify Website
-1. Add website URL: https://nunestinyhomes.com
+1. Add website URL: https://ironboxcontainers.com
 2. Choose verification method: HTML tag (easiest)
 3. Copy the meta tag Google provides
 4. Add to `src/layouts/MainLayout.astro` in `<head>` section
@@ -205,11 +205,11 @@
 
 ### Step 3: Add Business Info
 Go to Settings → Business Information:
-- Business name: Nunes Tiny Homes
+- Business name: IronBox Containers
 - Address: [YOUR REAL ADDRESS - must match website]
 - Phone: [YOUR REAL PHONE - must match website]
-- Customer service email: support@nunestinyhomes.com
-- Website URL: https://nunestinyhomes.com
+- Customer service email: support@ironboxcontainers.com
+- Website URL: https://ironboxcontainers.com
 
 ### Step 4: Configure Shipping
 Go to Settings → Shipping and Returns:

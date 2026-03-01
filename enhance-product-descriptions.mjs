@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 
-const WP_REST_URL = 'https://cms.nunestinyhomes.com/wp-json';
+const WP_REST_URL = 'https://cms.ironboxcontainers.com/wp-json';
 const WC_CONSUMER_KEY = 'ck_86754cd3c8be9983b57983a0e8e7b995ce335c9b';
 const WC_CONSUMER_SECRET = 'cs_447a4a730c11bc23d2e1b0cceff663c32a6411ea';
 
