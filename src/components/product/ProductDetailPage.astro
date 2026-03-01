@@ -6,8 +6,8 @@ const defaultProduct = {
   category: 'Container Pools',
   rating: 4.8,
   reviews: 124,
-  price: '$24,500',
-  originalPrice: '$28,900',
+  price: 'R24,500',
+  originalPrice: 'R28,900',
   availability: 'In Stock – ships in 6-8 weeks',
   badges: ['Best Seller', 'Engineered in South Africa'],
   description:
@@ -48,7 +48,7 @@ const defaultVariants = [
     label: 'Equipment Package',
     options: [
       { value: 'standard', label: 'Standard Automation' },
-      { value: 'premium', label: 'Premium Smart Suite (+$1,950)' },
+      { value: 'premium', label: 'Premium Smart Suite (+R35,000)' },
     ],
   },
 ];
@@ -67,25 +67,25 @@ const defaultSpecs = [
 const defaultRelatedProducts = [
   {
     name: 'Signature Container Pool 40FT',
-    price: '$31,900',
+    price: 'R31,900',
     href: '/products/signature-container-pool-40ft',
     image: 'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80',
   },
   {
     name: 'Summit Series Prefab Home',
-    price: '$198,500',
+    price: 'R198,500',
     href: '/products/summit-prefab-home',
     image: 'https://images.unsplash.com/photo-1600585154340-0ef3c08ba6b0?auto=format&fit=crop&w=1200&q=80',
   },
   {
     name: 'Executive Restroom Suite',
-    price: '$21,900',
+    price: 'R21,900',
     href: '/products/executive-restroom-suite',
     image: 'https://images.unsplash.com/photo-1529421306624-0f59bd09f1f8?auto=format&fit=crop&w=1200&q=80',
   },
   {
     name: 'Secure Storage Plus',
-    price: '$10,200',
+    price: 'R10,200',
     href: '/products/secure-storage-plus',
     image: 'https://images.unsplash.com/photo-1503389152951-9f343605f61e?auto=format&fit=crop&w=1200&q=80',
   },
@@ -107,7 +107,7 @@ const shippingNotes = Astro.props.shippingNotes || [
 ];
 
 const trustBadges = Astro.props.trustBadges || [
-  { title: 'Financing Available', description: 'Partner lenders with rates as low as 5.9% APR.' },
+  { title: 'Financing Available', description: 'Partner lenders with rates as low as prime + 2%.' },
   { title: 'Licensed & Insured', description: 'Certified crews across all provinces.' },
   { title: 'Sustainably Built', description: 'Repurposed containers keep 3,600 kg of steel out of landfills.' },
 ];
@@ -184,7 +184,7 @@ const breadcrumbs = [
             <span class="text-3xl font-bold text-foreground">{product.price}</span>
             <span class="text-lg text-muted-foreground line-through">{product.originalPrice}</span>
           </div>
-          <p class="text-sm text-green-600">Save $4,400 compared to custom build-outs.</p>
+          <p class="text-sm text-green-600">Save R79,000 compared to custom build-outs.</p>
         </div>
 
         <p class="text-muted-foreground">{product.description}</p>

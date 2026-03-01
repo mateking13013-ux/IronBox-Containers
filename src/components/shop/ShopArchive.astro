@@ -31,10 +31,10 @@ const filters = {
     { label: 'Office Suites', count: 7, href: '/categories/mobile-office-suites' },
   ],
   priceRanges: [
-    { label: 'Under $10k', min: 0, max: 10000 },
-    { label: '$10k - $25k', min: 10000, max: 25000 },
-    { label: '$25k - $50k', min: 25000, max: 50000 },
-    { label: '$50k+', min: 50000, max: 1000000 },
+    { label: 'Under R10k', min: 0, max: 10000 },
+    { label: 'R10k - R25k', min: 10000, max: 25000 },
+    { label: 'R25k - R50k', min: 25000, max: 50000 },
+    { label: 'R50k+', min: 50000, max: 1000000 },
   ],
   ratings: [
     { label: '4 stars & up', value: 4 },
@@ -45,7 +45,7 @@ const filters = {
 };
 
 const logistics = [
-  { title: 'Financing Ready', description: 'Partner lenders with rates as low as 5.9% APR.' },
+  { title: 'Financing Ready', description: 'Partner lenders with rates as low as prime + 2%.' },
   { title: 'White-glove Delivery', description: 'Crane placement coordinated in all 9 provinces.' },
   { title: 'Permit Support', description: 'Engineered drawings and site plan assistance included.' },
 ];
@@ -54,8 +54,8 @@ const products = [
   {
     name: 'Signature Container Pool 30FT',
     description: 'Turnkey swimming pool delivered craned into place with automation suite.',
-    price: '$24,500',
-    originalPrice: '$28,900',
+    price: 'R24,500',
+    originalPrice: 'R28,900',
     rating: '4.8',
     reviews: 124,
     badge: 'Best Seller',
@@ -65,8 +65,8 @@ const products = [
   {
     name: 'Summit Series Prefab Home',
     description: 'Three-bedroom prefab home with rooftop deck and premium insulation package.',
-    price: '$198,500',
-    originalPrice: '$214,900',
+    price: 'R198,500',
+    originalPrice: 'R214,900',
     rating: '4.9',
     reviews: 87,
     badge: 'Featured',
@@ -76,8 +76,8 @@ const products = [
   {
     name: 'Executive Restroom Suite',
     description: 'Luxury restroom trailer with quartz vanities and climate control.',
-    price: '$21,900',
-    originalPrice: '$23,500',
+    price: 'R21,900',
+    originalPrice: 'R23,500',
     rating: '4.7',
     reviews: 56,
     badge: 'Quick Ship',
@@ -87,7 +87,7 @@ const products = [
   {
     name: 'Secure Storage Plus',
     description: 'Climate-controlled storage container with roll-up access and security package.',
-    price: '$10,200',
+    price: 'R10,200',
     rating: '4.6',
     reviews: 42,
     badge: 'Industrial',
@@ -97,8 +97,8 @@ const products = [
   {
     name: 'Coastal Retreat ADU',
     description: 'Accessory dwelling unit with full kitchen, bath, and lofted sleeping space.',
-    price: '$156,000',
-    originalPrice: '$169,000',
+    price: 'R156,000',
+    originalPrice: 'R169,000',
     rating: '4.9',
     reviews: 68,
     badge: 'Limited Stock',
@@ -108,8 +108,8 @@ const products = [
   {
     name: 'Modern Site Office Pod',
     description: 'Modular office pod with glass frontage and flexible workspace interior.',
-    price: '$32,400',
-    originalPrice: '$36,000',
+    price: 'R32,400',
+    originalPrice: 'R36,000',
     rating: '4.5',
     reviews: 35,
     badge: 'New Arrival',
@@ -119,7 +119,7 @@ const products = [
   {
     name: 'Vista Series Glass Pool',
     description: 'Glass-sided container pool with submerged lounge deck and LED package.',
-    price: '$42,800',
+    price: 'R42,800',
     rating: '4.8',
     reviews: 51,
     badge: 'Design Award',
@@ -129,7 +129,7 @@ const products = [
   {
     name: 'Trailblazer Mobile Office',
     description: 'Two-room mobile office with conference pod and integrated storage.',
-    price: '$54,900',
+    price: 'R54,900',
     rating: '4.6',
     reviews: 39,
     badge: 'Commercial',
@@ -139,7 +139,7 @@ const products = [
   {
     name: 'Nomad Retreat Duo',
     description: 'Twin-suite hospitality unit perfect for glamping and resort upgrades.',
-    price: '$74,500',
+    price: 'R74,500',
     rating: '4.7',
     reviews: 44,
     badge: 'Glamping',
@@ -149,7 +149,7 @@ const products = [
   {
     name: 'Harbor Series ADU',
     description: 'Two-bedroom ADU with wrap-around porch and smart home automation.',
-    price: '$189,000',
+    price: 'R189,000',
     rating: '4.9',
     reviews: 72,
     badge: 'Premium',
@@ -159,7 +159,7 @@ const products = [
   {
     name: 'Rapid Response Clinic Pod',
     description: 'Medical-grade container clinic with triage, exam room, and HVAC filtration.',
-    price: '$88,600',
+    price: 'R88,600',
     rating: '4.8',
     reviews: 33,
     badge: 'Gov/Municipal',
@@ -169,7 +169,7 @@ const products = [
   {
     name: 'Elevate Hospitality Suite',
     description: 'Luxury hotel suite module with king bedroom, spa bath, and kitchenette.',
-    price: '$126,400',
+    price: 'R126,400',
     rating: '4.6',
     reviews: 29,
     badge: 'Hospitality',
@@ -179,7 +179,7 @@ const products = [
   {
     name: 'Frontier Field Office',
     description: 'Secure field office with server rack, meeting pod, and break area.',
-    price: '$64,200',
+    price: 'R64,200',
     rating: '4.5',
     reviews: 41,
     badge: 'Jobsite',

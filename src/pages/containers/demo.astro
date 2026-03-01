@@ -13,22 +13,22 @@ import LocationSidebar from '../../components/location/LocationSidebar.astro';
 
 // Mock data for demonstration
 const mockData = {
-  location_name: "New York",
-  location_state: "New York",
+  location_name: "Cape Town",
+  location_state: "Cape Town",
   location_country: "South Africa",
-  hero_headline: "Buy Shipping Containers in New York",
-  hero_subheadline: "Premium quality containers at competitive prices. Fast delivery throughout NYC and surrounding areas.",
+  hero_headline: "Buy Shipping Containers in Cape Town",
+  hero_subheadline: "Premium quality containers at competitive prices. Fast delivery throughout Cape Town and surrounding areas.",
   hero_cta_primary_text: "Get Instant Quote",
   hero_cta_secondary_text: "Browse Inventory",
-  service_area_text: "Serving New York and Surrounding Areas",
-  intro_title: "Your Trusted Source for Shipping Containers in New York",
-  intro_paragraph_1: "We are New York's premier provider of high-quality shipping containers for storage, shipping, and custom projects. With years of experience serving the greater New York area, we understand the unique needs of businesses and residents in the Big Apple.",
+  service_area_text: "Serving Cape Town and Surrounding Areas",
+  intro_title: "Your Trusted Source for Shipping Containers in Cape Town",
+  intro_paragraph_1: "We are Cape Town's premier provider of high-quality shipping containers for storage, shipping, and custom projects. With years of experience serving the greater Cape Town area, we understand the unique needs of businesses and residents in the Mother City.",
   intro_paragraph_2: "Our extensive inventory includes new and used containers in various sizes and conditions, all thoroughly inspected to ensure they meet industry standards. Whether you need a container for a construction site in Manhattan, additional storage in Brooklyn, or a custom project in Queens, we have the perfect solution for you.",
   container_products: [
     {
       product_name: "20ft Standard Container",
       product_description: "Perfect for residential storage, small business inventory, and local shipping needs. Wind and water tight with secure locking mechanisms.",
-      product_price: "$2,500",
+      product_price: "R45,000",
       product_features: [
         "Wind & Water Tight",
         "Cargo Worthy Certification",
@@ -40,7 +40,7 @@ const mockData = {
     {
       product_name: "40ft Standard Container",
       product_description: "Ideal for large-scale storage, commercial inventory, and international shipping. Spacious and durable for heavy-duty applications.",
-      product_price: "$3,800",
+      product_price: "R68,000",
       product_features: [
         "Double Door Options",
         "Heavy Duty Construction",
@@ -52,7 +52,7 @@ const mockData = {
     {
       product_name: "40ft High Cube Container",
       product_description: "Extra height provides additional vertical space for storage, customization, and conversion projects. Popular for container homes and offices.",
-      product_price: "$4,200",
+      product_price: "R75,000",
       product_features: [
         "9'6\" Interior Height",
         "Enhanced Ventilation",
@@ -64,7 +64,7 @@ const mockData = {
     {
       product_name: "20ft Refrigerated Container",
       product_description: "Temperature-controlled storage for perishable goods, pharmaceuticals, and temperature-sensitive materials.",
-      product_price: "$5,500",
+      product_price: "R99,000",
       product_features: [
         "-20°F to 70°F Range",
         "Digital Temperature Control",
@@ -76,12 +76,12 @@ const mockData = {
   ],
   faq_items: [
     {
-      faq_question: "How much does a shipping container cost in New York?",
-      faq_answer: "Shipping container prices in New York vary based on size, condition, and features. A 20ft standard container typically costs $2,500-$3,500, while 40ft containers range from $3,800-$5,000. Refrigerated units and specialized containers cost more. We offer competitive pricing and can provide detailed quotes based on your specific needs."
+      faq_question: "How much does a shipping container cost in South Africa?",
+      faq_answer: "Shipping container prices in South Africa vary based on size, condition, and features. A 20ft standard container typically costs R45,000-R65,000, while 40ft containers range from R68,000-R90,000. Refrigerated units and specialized containers cost more. We offer competitive pricing and can provide detailed quotes based on your specific needs."
     },
     {
-      faq_question: "Do you deliver containers throughout New York City?",
-      faq_answer: "Yes! We deliver containers throughout all five boroughs of New York City - Manhattan, Brooklyn, Queens, The Bronx, and Staten Island. We also serve surrounding areas including Westchester, Long Island, and parts of New Jersey. Our experienced team handles all logistics and permits required for urban delivery."
+      faq_question: "Do you deliver containers throughout Cape Town?",
+      faq_answer: "Yes! We deliver containers throughout all areas of Cape Town including the City Bowl, Southern Suburbs, Northern Suburbs, and Atlantic Seaboard. We also serve surrounding areas including Stellenbosch, Paarl, and the Winelands. Our experienced team handles all logistics and permits required for urban delivery."
     },
     {
       faq_question: "What sizes of containers do you have available?",
@@ -100,11 +100,11 @@ const mockData = {
       faq_answer: "Yes, we have a wide selection of used containers in various conditions and price points. All used containers are thoroughly inspected to ensure they are wind and water tight, structurally sound, and suitable for their intended use. We provide detailed condition reports and can help you choose the right option for your budget and requirements."
     }
   ],
-  phone_number: "(555) 123-4567",
+  phone_number: "+27 11 234 5678",
   email_address: "nyc@containercompany.com",
   business_hours: "Mon-Fri: 8AM-6PM, Sat: 9AM-4PM",
-  seo_title: "Shipping Containers for Sale in New York | NYC Container Company",
-  seo_description: "Buy high-quality shipping containers in New York City. Fast delivery, competitive prices, and customization options available. Call (555) 123-4567 for a free quote."
+  seo_title: "Shipping Containers for Sale in Cape Town | Cape Town Container Company",
+  seo_description: "Buy high-quality shipping containers in Cape Town. Fast delivery, competitive prices, and customization options available. Call +27 11 234 5678 for a free quote."
 };
 ---
 
@@ -160,7 +160,7 @@ const mockData = {
         phoneNumber={mockData.phone_number}
         emailAddress={mockData.email_address}
         businessHours={mockData.business_hours}
-        locations={['New York', 'Los Angeles', 'Chicago', 'Johannesburg', 'Phoenix', 'Miami', 'Seattle', 'Boston']}
+        locations={['Cape Town', 'Johannesburg', 'Durban', 'Pretoria', 'Port Elizabeth', 'Bloemfontein', 'East London', 'Nelspruit']}
       />
     </div>
   </div>
