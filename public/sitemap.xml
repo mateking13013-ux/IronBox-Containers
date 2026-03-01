@@ -8,7 +8,7 @@
   
   <!-- Homepage -->
   <url>
-    <loc>https://ironboxcontainers.co.za/</loc>
+    <loc>https://ironboxcontainers.com/</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -16,35 +16,35 @@
   
   <!-- Main Pages -->
   <url>
-    <loc>https://ironboxcontainers.co.za/about</loc>
+    <loc>https://ironboxcontainers.com/about</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://ironboxcontainers.co.za/shop</loc>
+    <loc>https://ironboxcontainers.com/shop</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://ironboxcontainers.co.za/contact</loc>
+    <loc>https://ironboxcontainers.com/contact</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://ironboxcontainers.co.za/cart</loc>
+    <loc>https://ironboxcontainers.com/cart</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://ironboxcontainers.co.za/checkout</loc>
+    <loc>https://ironboxcontainers.com/checkout</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -52,14 +52,14 @@
   
   <!-- Account Pages -->
   <url>
-    <loc>https://ironboxcontainers.co.za/account</loc>
+    <loc>https://ironboxcontainers.com/account</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://ironboxcontainers.co.za/account/orders</loc>
+    <loc>https://ironboxcontainers.com/account/orders</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -67,21 +67,21 @@
   
   <!-- Auth Pages -->
   <url>
-    <loc>https://ironboxcontainers.co.za/auth/login</loc>
+    <loc>https://ironboxcontainers.com/auth/login</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   
   <url>
-    <loc>https://ironboxcontainers.co.za/auth/register</loc>
+    <loc>https://ironboxcontainers.com/auth/register</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   
   <url>
-    <loc>https://ironboxcontainers.co.za/auth/verify-email</loc>
+    <loc>https://ironboxcontainers.com/auth/verify-email</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
@@ -89,28 +89,28 @@
   
   <!-- Category Pages (High Priority) -->
   <url>
-    <loc>https://ironboxcontainers.co.za/categories/container-swimming-pools</loc>
+    <loc>https://ironboxcontainers.com/categories/container-swimming-pools</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://ironboxcontainers.co.za/categories/prefab-tiny-homes</loc>
+    <loc>https://ironboxcontainers.com/categories/prefab-tiny-homes</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://ironboxcontainers.co.za/categories/portable-restrooms-bathrooms</loc>
+    <loc>https://ironboxcontainers.com/categories/portable-restrooms-bathrooms</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://ironboxcontainers.co.za/categories/storage-buildings</loc>
+    <loc>https://ironboxcontainers.com/categories/storage-buildings</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -118,28 +118,28 @@
   
   <!-- Policy Pages -->
   <url>
-    <loc>https://ironboxcontainers.co.za/shipping-policy</loc>
+    <loc>https://ironboxcontainers.com/shipping-policy</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://ironboxcontainers.co.za/return-policy</loc>
+    <loc>https://ironboxcontainers.com/return-policy</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://ironboxcontainers.co.za/privacy-policy</loc>
+    <loc>https://ironboxcontainers.com/privacy-policy</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   
   <url>
-    <loc>https://ironboxcontainers.co.za/terms-of-service</loc>
+    <loc>https://ironboxcontainers.com/terms-of-service</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
@@ -150,21 +150,21 @@
   
   <!-- Container Size Categories -->
   <url>
-    <loc>https://ironboxcontainers.co.za/categories/10-fus-container</loc>
+    <loc>https://ironboxcontainers.com/categories/10-fus-container</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://ironboxcontainers.co.za/categories/20-fus-container</loc>
+    <loc>https://ironboxcontainers.com/categories/20-fus-container</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://ironboxcontainers.co.za/categories/40-fus-container</loc>
+    <loc>https://ironboxcontainers.com/categories/40-fus-container</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -172,14 +172,14 @@
   
   <!-- Order and Checkout Pages -->
   <url>
-    <loc>https://ironboxcontainers.co.za/checkout/thank-you</loc>
+    <loc>https://ironboxcontainers.com/checkout/thank-you</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://ironboxcontainers.co.za/order-confirmation</loc>
+    <loc>https://ironboxcontainers.com/order-confirmation</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

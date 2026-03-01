@@ -22,7 +22,7 @@ Allow: /js/
 Allow: /fonts/
 
 # Sitemap location
-Sitemap: https://ironboxcontainers.co.za/sitemap.xml
+Sitemap: https://ironboxcontainers.com/sitemap.xml
 
 # Block bad bots
 User-agent: AhrefsBot
