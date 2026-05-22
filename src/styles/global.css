@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* cache-bust v2 — force new asset hashes after broken upload */
 :root {
   --background-values: 1 0 0;
   --foreground-values: 0.2686 0 0;
