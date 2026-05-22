@@ -1,0 +1,24 @@
+---
+const { size = 'md', variant = 'light' } = Astro.props;
+
+const sizes = {
+  sm: { icon: 'text-2xl', name: 'text-lg', tag: 'text-[9px] tracking-[0.25em]' },
+  md: { icon: 'text-3xl', name: 'text-2xl', tag: 'text-[10px] tracking-[0.3em]' },
+  lg: { icon: 'text-4xl', name: 'text-3xl', tag: 'text-xs tracking-[0.3em]' },
+};
+const s = sizes[size] || sizes.md;
+
+const colors = variant === 'dark'
+  ? { icon: 'text-orange-400', name: 'text-white', tag: 'text-orange-400' }
+  : { icon: 'text-orange-500', name: 'text-gray-900', tag: 'text-orange-500' };
+---
+
+<a href="/" class="inline-flex items-center gap-3 group" aria-label="IronBox Containers & Trailers">
+  <span class={`flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-orange-500 to-orange-600 ${size === 'sm' ? 'h-10 w-10' : ''} ${size === 'lg' ? 'h-14 w-14' : ''}`}>
+    <i class={`fa-solid fa-truck-ramp-box ${s.icon} text-white transition-transform group-hover:scale-110`}></i>
+  </span>
+  <span class="flex flex-col leading-none">
+    <span class={`font-extrabold tracking-tight ${s.name} ${colors.name}`} style="font-family: 'Oswald', sans-serif; letter-spacing: 0.02em;">IRONBOX</span>
+    <span class={`mt-1 font-semibold ${s.tag} ${colors.tag} uppercase`} style="font-family: 'Oswald', sans-serif;">Containers &amp; Trailers</span>
+  </span>
+</a>
