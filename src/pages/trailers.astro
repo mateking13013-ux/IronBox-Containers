@@ -72,7 +72,7 @@ const collectionSchema = {
             <a href={`/categories/${cat.slug}`} class="group block overflow-hidden rounded-xl border border-gray-200 bg-white transition hover:shadow-lg">
               <div class="aspect-[4/3] overflow-hidden bg-gray-100">
                 {cat.image?.src && (
-                  <img src={cat.image.src} alt={cat.name} class="h-full w-full object-cover transition group-hover:scale-105" loading="lazy" />
+                  <img src={cat.image.src} alt={cat.name} class="h-full w-full object-cover transition group-hover:scale-105" loading="eager" decoding="async" />
                 )}
               </div>
               <div class="p-4">
@@ -104,7 +104,7 @@ const collectionSchema = {
               <a href={`/products/${product.slug}`} class="group">
                 <div class="overflow-hidden rounded-xl border border-gray-100 bg-white transition-all duration-200 hover:border-gray-200 hover:shadow-md">
                   <div class="relative aspect-square overflow-hidden bg-gray-50">
-                    <img src={imageUrl} alt={product.name} class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+                    <img src={imageUrl} alt={product.name} class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="eager" decoding="async" />
                     <div class="absolute inset-x-0 top-0 flex items-start justify-between p-2">
                       <span class={`rounded-md px-2 py-0.5 text-[10px] font-semibold backdrop-blur-sm ${condition === 'New' ? 'bg-emerald-500/90 text-white' : 'bg-amber-500/90 text-white'}`}>{condition}</span>
                       <span class="rounded-md bg-black/60 px-2 py-0.5 text-[10px] font-semibold text-white backdrop-blur-sm">{catName.replace(' Trailers','')}</span>

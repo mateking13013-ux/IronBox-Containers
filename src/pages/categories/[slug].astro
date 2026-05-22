@@ -133,7 +133,8 @@ const allCategories = await getCategories();
                             src={imageUrl}
                             alt={product.name}
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                            loading="lazy"
+                            loading="eager"
+                            decoding="async"
                           />
                           <div class="absolute inset-x-0 top-0 flex items-start justify-between p-2">
                             <span class={`
