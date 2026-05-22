@@ -6,10 +6,10 @@ const defaultProduct = {
   category: 'Container Pools',
   rating: 4.8,
   reviews: 124,
-  price: 'R24,500',
-  originalPrice: 'R28,900',
+  price: '$1,325',
+  originalPrice: '$1,560',
   availability: 'In Stock – ships in 6-8 weeks',
-  badges: ['Best Seller', 'Engineered in South Africa'],
+  badges: ['Best Seller', 'Engineered in United States'],
   description:
     'Turn any backyard into a resort with our Signature Container Pool. Built from recycled Corten steel, corrosion-protected, and delivered ready for hook-up. Includes heating, filtration, and smart automation controls.',
   highlights: [
@@ -48,7 +48,7 @@ const defaultVariants = [
     label: 'Equipment Package',
     options: [
       { value: 'standard', label: 'Standard Automation' },
-      { value: 'premium', label: 'Premium Smart Suite (+R35,000)' },
+      { value: 'premium', label: 'Premium Smart Suite (+$1,890)' },
     ],
   },
 ];
@@ -67,25 +67,25 @@ const defaultSpecs = [
 const defaultRelatedProducts = [
   {
     name: 'Signature Container Pool 40FT',
-    price: 'R31,900',
+    price: '$1,725',
     href: '/products/signature-container-pool-40ft',
     image: 'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80',
   },
   {
     name: 'Summit Series Prefab Home',
-    price: 'R198,500',
+    price: '$10,720',
     href: '/products/summit-prefab-home',
     image: 'https://images.unsplash.com/photo-1600585154340-0ef3c08ba6b0?auto=format&fit=crop&w=1200&q=80',
   },
   {
     name: 'Executive Restroom Suite',
-    price: 'R21,900',
+    price: '$1,185',
     href: '/products/executive-restroom-suite',
     image: 'https://images.unsplash.com/photo-1529421306624-0f59bd09f1f8?auto=format&fit=crop&w=1200&q=80',
   },
   {
     name: 'Secure Storage Plus',
-    price: 'R10,200',
+    price: '$550',
     href: '/products/secure-storage-plus',
     image: 'https://images.unsplash.com/photo-1503389152951-9f343605f61e?auto=format&fit=crop&w=1200&q=80',
   },
@@ -184,7 +184,7 @@ const breadcrumbs = [
             <span class="text-3xl font-bold text-foreground">{product.price}</span>
             <span class="text-lg text-muted-foreground line-through">{product.originalPrice}</span>
           </div>
-          <p class="text-sm text-green-600">Save R79,000 compared to custom build-outs.</p>
+          <p class="text-sm text-green-600">Save $79,000 compared to custom build-outs.</p>
         </div>
 
         <p class="text-muted-foreground">{product.description}</p>

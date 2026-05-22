@@ -8,7 +8,12 @@ export default defineConfig({
   output: 'static',
   adapter: cloudflare(),
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    server: {
+      watch: {
+        ignored: ['**/scrape/**', '**/node_modules/**']
+      }
+    }
   },
 
 });

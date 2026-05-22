@@ -23,3 +23,6 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 check-products.mjs
+
+# scraper raw HTML cache (kept locally, not in repo)
+scrape/html/

@@ -138,5 +138,35 @@
     "image": {
       "src": "/images/products/ibc-plastic-pallet-super-heavy-duty-mesh/1.jpeg"
     }
+  },
+  {
+    "id": 100,
+    "name": "Utility Trailers",
+    "slug": "utility-trailers",
+    "description": "Built-tough utility trailers for everyday hauling \u2014 open-deck steel construction, 7K\u201314K GVWR.",
+    "count": 13,
+    "image": {
+      "src": "/images/products/trl-2025-friesen-83x16-utility-7k-sir-new-utility-trailer-decatu-4825863/1.jpg"
+    }
+  },
+  {
+    "id": 101,
+    "name": "Livestock Trailers",
+    "slug": "livestock-trailers",
+    "description": "Steel stock and gooseneck livestock trailers built for safe cattle and animal transport.",
+    "count": 7,
+    "image": {
+      "src": "/images/products/trl-2025-gooseneck-trailers-32x68-steel-stock-wcanvas-top-new-ca-4718003/1.jpg"
+    }
+  },
+  {
+    "id": 102,
+    "name": "Flatbed Trailers",
+    "slug": "flatbed-trailers",
+    "description": "Deck-over and gooseneck flatbed trailers for equipment, building materials, and heavy hauling.",
+    "count": 9,
+    "image": {
+      "src": "/images/products/trl-2024-pj-trailers-used-32-gn-low-pro-flatbed-25k-used-flatbed-4073729/1.jpg"
+    }
   }
 ]

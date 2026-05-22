@@ -1,14 +1,14 @@
 ---
 const year = new Date().getFullYear();
 const company = {
-  name: 'IronBox Containers',
-  legalName: 'IronBox Containers (Pty) Ltd',
-  phone: '+27 11 234 5678',
-  email: 'support@ironboxcontainers.com',
-  address: '15 Electron Avenue, Isando, Kempton Park, Gauteng, 1600',
-  hours: 'Mon-Fri: 8AM-6PM | Sat: 9AM-4PM',
-  regNumber: '2010/012345/07',
-  vatNumber: '4123456789',
+  name: 'IronBox Containers & Trailers',
+  legalName: 'IronBox Containers & Trailers, LLC',
+  phone: '+1 (940) 627-1717',
+  email: 'sales@ironboxcontainers.com',
+  address: '2401 S US-287, Decatur, TX 76234, USA',
+  hours: 'Mon-Fri: 8AM-6PM CT | Sat: 9AM-4PM CT',
+  regNumber: 'TX-LLC-32088234',
+  vatNumber: 'EIN 88-1234567',
   foundingYear: 2010,
   logo: '/images/branding/ironbox-logo.png',
 };
@@ -17,6 +17,9 @@ const shopLinks = [
   { label: 'Shop All Products', href: '/shop' },
   { label: '20ft Containers', href: '/categories/20ft-used-shipping-containers' },
   { label: '40ft Containers', href: '/categories/40ft-new-shipping-containers' },
+  { label: 'Utility Trailers', href: '/categories/utility-trailers' },
+  { label: 'Livestock Trailers', href: '/categories/livestock-trailers' },
+  { label: 'Flatbed Trailers', href: '/categories/flatbed-trailers' },
   { label: 'Guard Booths & Shacks', href: '/categories/guard-booths-shacks-houses' },
   { label: 'Modified Containers', href: '/categories/modified-containers' },
   { label: 'Portable Offices', href: '/categories/portable-site-office-containers' },
@@ -57,7 +60,7 @@ const paymentBadges = [
       <a href="/" class="inline-flex items-center" aria-label={company.name}>
         <img src={company.logo} alt={company.name} class="h-10 w-auto" />
       </a>
-      <p class="text-sm text-muted-foreground leading-relaxed">Premium shipping containers delivered across South Africa. Quality products, professional service, nationwide delivery.</p>
+      <p class="text-sm text-muted-foreground leading-relaxed">Premium shipping containers and trailers delivered across the United States. Quality products, professional service, nationwide delivery from Decatur, Texas.</p>
       <div class="space-y-3 text-sm">
         <div class="flex items-start gap-2.5">
           <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0 mt-0.5">
@@ -140,9 +143,9 @@ const paymentBadges = [
       <div class="flex flex-col items-center gap-2 text-center sm:flex-row sm:flex-wrap sm:justify-center sm:gap-3">
         <span class="text-xs sm:text-sm text-muted-foreground">&copy; {year} {company.legalName}. All rights reserved.</span>
         <span class="hidden sm:inline text-muted-foreground">|</span>
-        <span class="text-xs text-muted-foreground">Reg: {company.regNumber}</span>
+        <span class="text-xs text-muted-foreground">{company.regNumber}</span>
         <span class="hidden sm:inline text-muted-foreground">|</span>
-        <span class="text-xs text-muted-foreground">VAT: {company.vatNumber}</span>
+        <span class="text-xs text-muted-foreground">{company.vatNumber}</span>
         <span class="hidden sm:inline text-muted-foreground">|</span>
         <span class="text-xs text-muted-foreground">Est. {company.foundingYear}</span>
       </div>

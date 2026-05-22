@@ -54,7 +54,7 @@ const statusBadge = (status: string) => {
 };
 
 const formatCurrency = (value: number) =>
-  'R' + value.toLocaleString('en-ZA', {
+  '$' + value.toLocaleString('en-US', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });

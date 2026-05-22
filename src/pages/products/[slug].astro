@@ -43,7 +43,7 @@ const shippingInfo = {
   deliveryTime: '5-10 business days',
   shippingCost: 'Calculated at Checkout',
   shippingClass: shippingClassLabel,
-  locations: 'Ships Nationwide (South Africa)'
+  locations: 'Ships Nationwide (United States)'
 };
 
 // Build structured data for Google
@@ -62,7 +62,7 @@ const structuredData = {
   "offers": {
     "@type": "Offer",
     "url": `https://ironboxcontainers.com/products/${product.slug}`,
-    "priceCurrency": "ZAR",
+    "priceCurrency": "USD",
     "price": product.price,
     "availability": product.stock_status === 'instock' ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
     "seller": {

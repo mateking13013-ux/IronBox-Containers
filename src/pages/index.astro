@@ -37,8 +37,8 @@ const organizationSchema = {
   },
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "15 Electron Avenue, Isando",
-    "addressLocality": "Kempton Park",
+    "streetAddress": "2401 S US-287",
+    "addressLocality": "Decatur",
     "addressRegion": "GP",
     "postalCode": "1600",
     "addressCountry": "ZA"
@@ -84,7 +84,7 @@ const productSchemas = featuredProducts.map(product => ({
   "offers": {
     "@type": "Offer",
     "url": `${siteUrl}/products/${product.slug}`,
-    "priceCurrency": "ZAR",
+    "priceCurrency": "USD",
     "price": product.price,
     "availability": product.stock_status === 'instock' ? "https://schema.org/InStock" : "https://schema.org/PreOrder",
     "seller": {
@@ -97,7 +97,7 @@ const productSchemas = featuredProducts.map(product => ({
       "shippingRate": {
         "@type": "MonetaryAmount",
         "value": "300",
-        "currency": "ZAR"
+        "currency": "USD"
       },
       "shippingDestination": {
         "@type": "DefinedRegion",
@@ -150,8 +150,8 @@ const localBusinessSchema = {
   "telephone": "+27-11-234-5678",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "15 Electron Avenue, Isando",
-    "addressLocality": "Kempton Park",
+    "streetAddress": "2401 S US-287",
+    "addressLocality": "Decatur",
     "addressRegion": "GP",
     "postalCode": "1600",
     "addressCountry": "ZA"
@@ -162,18 +162,18 @@ const localBusinessSchema = {
     "longitude": "28.2340"
   },
   "openingHours": ["Mo-Fr 08:00-18:00", "Sa 09:00-16:00"],
-  "priceRange": "R180-R35,100",
+  "priceRange": "$10-$1,895",
   "paymentAccepted": ["Cash", "Credit Card", "Financing"],
-  "currenciesAccepted": "ZAR",
+  "currenciesAccepted": "USD",
   "serviceArea": {
     "@type": "AdministrativeArea",
-    "name": "South Africa"
+    "name": "United States"
   }
 };
 
 // Meta Tags
 const metaTitle = "IronBox Containers – Premium Container Solutions | Pools, Homes & Storage";
-const metaDescription = "Shop premium shipping containers, guard booths, portable offices & storage solutions. Nationwide delivery & installation. Containers starting from R180.";
+const metaDescription = "Shop premium shipping containers, guard booths, portable offices & storage solutions. Nationwide delivery & installation. Containers starting from $180.";
 const canonicalUrl = siteUrl + '/';
 ---
 
@@ -210,16 +210,16 @@ const canonicalUrl = siteUrl + '/';
     
     <!-- Geolocation and Business Meta Tags -->
     <meta name="geo.region" content="ZA-GP" />
-    <meta name="geo.placename" content="Kempton Park, Gauteng" />
+    <meta name="geo.placename" content="Decatur, Texas" />
     <meta name="geo.position" content="-26.1413;28.2340" />
     <meta name="ICBM" content="-26.1413, 28.2340" />
 
     <!-- Business Contact Meta -->
-    <meta name="business:contact_data:street_address" content="15 Electron Avenue, Isando" />
-    <meta name="business:contact_data:locality" content="Kempton Park" />
+    <meta name="business:contact_data:street_address" content="2401 S US-287" />
+    <meta name="business:contact_data:locality" content="Decatur" />
     <meta name="business:contact_data:region" content="GP" />
     <meta name="business:contact_data:postal_code" content="1600" />
-    <meta name="business:contact_data:country_name" content="South Africa" />
+    <meta name="business:contact_data:country_name" content="United States" />
     <meta name="business:contact_data:phone_number" content="+27-11-234-5678" />
     <meta name="business:contact_data:website" content={siteUrl} />
     
@@ -227,7 +227,7 @@ const canonicalUrl = siteUrl + '/';
     <meta name="product:category" content="Shipping Containers" />
     <meta name="product:brand" content="IronBox Containers" />
     <meta name="product:condition" content="new" />
-    <meta name="product:price:currency" content="ZAR" />
+    <meta name="product:price:currency" content="USD" />
     <meta name="product:price:amount" content="180" />
     <meta name="product:availability" content="in stock" />
     <meta name="product:retailer" content="IronBox Containers" />

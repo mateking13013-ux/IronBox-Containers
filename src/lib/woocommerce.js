@@ -14,7 +14,7 @@ export async function getAllProducts(params = {}) {
     );
   }
 
-  const perPage = parseInt(params.per_page) || 100;
+  const perPage = parseInt(params.per_page) || 1000;
   return products.slice(0, perPage);
 }
 
@@ -33,7 +33,7 @@ export async function getProductsByCategory(categoryId, params = {}) {
     p.categories.some(c => c.id === categoryId)
   );
 
-  const perPage = parseInt(params.per_page) || 100;
+  const perPage = parseInt(params.per_page) || 1000;
   return products.slice(0, perPage);
 }
 
@@ -50,7 +50,7 @@ export async function getProduct(id) {
 export function formatPrice(price) {
   if (!price) return '';
   const numPrice = parseFloat(price);
-  return 'R' + new Intl.NumberFormat('en-ZA', {
+  return '$' + new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(numPrice);
