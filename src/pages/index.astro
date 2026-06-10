@@ -31,7 +31,7 @@ const organizationSchema = {
   "foundingDate": "2010",
   "contactPoint": {
     "@type": "ContactPoint",
-    "telephone": "+27-11-234-5678",
+    "telephone": "+1 816 255 7461",
     "contactType": "customer service",
     "availableLanguage": ["English"]
   },
@@ -39,9 +39,9 @@ const organizationSchema = {
     "@type": "PostalAddress",
     "streetAddress": "2401 S US-287",
     "addressLocality": "Decatur",
-    "addressRegion": "GP",
-    "postalCode": "1600",
-    "addressCountry": "ZA"
+    "addressRegion": "TX",
+    "postalCode": "76234",
+    "addressCountry": "US"
   },
   "sameAs": [
     "https://facebook.com/ironboxcontainers",
@@ -101,7 +101,7 @@ const productSchemas = featuredProducts.map(product => ({
       },
       "shippingDestination": {
         "@type": "DefinedRegion",
-        "addressCountry": "ZA"
+        "addressCountry": "US"
       },
       "deliveryTime": {
         "@type": "ShippingDeliveryTime",
@@ -147,14 +147,14 @@ const localBusinessSchema = {
   "name": "IronBox Containers",
   "description": "Premium container solutions for residential and commercial use",
   "url": siteUrl,
-  "telephone": "+27-11-234-5678",
+  "telephone": "+1 816 255 7461",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "2401 S US-287",
     "addressLocality": "Decatur",
-    "addressRegion": "GP",
-    "postalCode": "1600",
-    "addressCountry": "ZA"
+    "addressRegion": "TX",
+    "postalCode": "76234",
+    "addressCountry": "US"
   },
   "geo": {
     "@type": "GeoCoordinates",
@@ -209,18 +209,18 @@ const canonicalUrl = siteUrl + '/';
     <meta name="bingbot" content="index, follow" />
     
     <!-- Geolocation and Business Meta Tags -->
-    <meta name="geo.region" content="ZA-GP" />
+    <meta name="geo.region" content="US-TX" />
     <meta name="geo.placename" content="Decatur, Texas" />
-    <meta name="geo.position" content="-26.1413;28.2340" />
-    <meta name="ICBM" content="-26.1413, 28.2340" />
+    <meta name="geo.position" content="33.2343;-97.5864" />
+    <meta name="ICBM" content="33.2343, -97.5864" />
 
     <!-- Business Contact Meta -->
     <meta name="business:contact_data:street_address" content="2401 S US-287" />
     <meta name="business:contact_data:locality" content="Decatur" />
-    <meta name="business:contact_data:region" content="GP" />
-    <meta name="business:contact_data:postal_code" content="1600" />
+    <meta name="business:contact_data:region" content="TX" />
+    <meta name="business:contact_data:postal_code" content="76234" />
     <meta name="business:contact_data:country_name" content="United States" />
-    <meta name="business:contact_data:phone_number" content="+27-11-234-5678" />
+    <meta name="business:contact_data:phone_number" content="+1 816 255 7461" />
     <meta name="business:contact_data:website" content={siteUrl} />
     
     <!-- Product and E-commerce Meta -->

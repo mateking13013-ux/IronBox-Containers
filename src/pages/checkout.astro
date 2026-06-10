@@ -190,7 +190,7 @@ import Footer from '../components/Footer.astro';
             <h3 class="font-medium text-sm">${item.name}</h3>
             <p class="text-sm text-gray-500">Qty: ${item.quantity}</p>
           </div>
-          <p class="font-medium">R${itemTotal.toLocaleString()}</p>
+          <p class="font-medium">$${itemTotal.toLocaleString()}</p>
         </div>
       `;
     }).join('');
@@ -198,8 +198,8 @@ import Footer from '../components/Footer.astro';
     const shipping = 300;
     const total = subtotal + shipping;
 
-    if (subtotalEl) subtotalEl.textContent = `R${subtotal.toLocaleString()}`;
-    if (totalEl) totalEl.textContent = `R${total.toLocaleString()}`;
+    if (subtotalEl) subtotalEl.textContent = `$${subtotal.toLocaleString()}`;
+    if (totalEl) totalEl.textContent = `$${total.toLocaleString()}`;
   }
 
   // Load payment gateways
@@ -256,10 +256,10 @@ import Footer from '../components/Footer.astro';
     const cartTotalField = document.getElementById('hidden-cart-total');
 
     if (cartItemsField) {
-      cartItemsField.value = cart.map(item => `${item.name} (Qty: ${item.quantity}) - R${(item.price * item.quantity).toLocaleString()}`).join(' | ');
+      cartItemsField.value = cart.map(item => `${item.name} (Qty: ${item.quantity}) - $${(item.price * item.quantity).toLocaleString()}`).join(' | ');
     }
     if (cartTotalField) {
-      cartTotalField.value = `R${total.toLocaleString()}`;
+      cartTotalField.value = `$${total.toLocaleString()}`;
     }
 
     // Clear cart after form submits
