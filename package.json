@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/generate-product-feed.mjs && astro build",
+    "feed": "node scripts/generate-product-feed.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

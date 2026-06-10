@@ -46,12 +46,19 @@ const shippingInfo = {
   locations: 'Ships Nationwide (United States)'
 };
 
-// Build structured data for Google
+// Build structured data for Google (kept consistent with the Merchant feed)
+const SITE_URL = 'https://ironboxcontainers.com';
+const toAbs = (src) => (src && src.startsWith('http') ? src : `${SITE_URL}${src}`);
+const conditionSchema = condition === 'New'
+  ? 'https://schema.org/NewCondition'
+  : condition === 'Refurbished'
+    ? 'https://schema.org/RefurbishedCondition'
+    : 'https://schema.org/UsedCondition';
 const structuredData = {
   "@context": "https://schema.org/",
   "@type": "Product",
   "name": product.name,
-  "image": product.images?.map(img => img.src) || [],
+  "image": product.images?.map(img => toAbs(img.src)) || [],
   "description": product.short_description?.replace(/<[^>]*>/g, '') || '',
   "sku": product.sku || `CONT-${product.id}`,
   "mpn": product.sku || `CONT-${product.id}`,
@@ -61,9 +68,11 @@ const structuredData = {
   },
   "offers": {
     "@type": "Offer",
-    "url": `https://ironboxcontainers.com/products/${product.slug}`,
+    "url": `${SITE_URL}/products/${product.slug}`,
     "priceCurrency": "USD",
     "price": product.price,
+    "priceValidUntil": "2026-12-31",
+    "itemCondition": conditionSchema,
     "availability": product.stock_status === 'instock' ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
     "seller": {
       "@type": "Organization",
