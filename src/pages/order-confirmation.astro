@@ -124,6 +124,7 @@ import Footer from '../components/Footer.astro';
       const order = JSON.parse(localStorage.getItem('lastOrder') || '{}');
       if (order.orderNumber) {
         displayOrder(order);
+        firePurchaseConversion(order.orderNumber);
       } else {
         window.location.href = '/shop';
       }
@@ -133,6 +134,9 @@ import Footer from '../components/Footer.astro';
     // Display order number from URL
     const orderNumberEl = document.getElementById('order-number');
     if (orderNumberEl) orderNumberEl.textContent = `Order #${orderId}`;
+
+    // Fire Google Ads Purchase conversion
+    firePurchaseConversion(orderId);
 
     // Display current date
     const orderDateEl = document.getElementById('order-date');
@@ -172,6 +176,18 @@ import Footer from '../components/Footer.astro';
     if (orderNumberEl) orderNumberEl.textContent = order.orderNumber;
     
     // ... rest of display logic
+  }
+
+  // Google Ads Purchase conversion event
+  let conversionFired = false;
+  function firePurchaseConversion(transactionId) {
+    if (conversionFired) return;
+    conversionFired = true;
+    if (typeof window.gtag !== 'function') return;
+    window.gtag('event', 'conversion', {
+      'send_to': 'AW-18158604325/anONCKLrnMQcEKWg2dJD',
+      'transaction_id': transactionId ? String(transactionId) : ''
+    });
   }
 
   // Load on page load
