@@ -6,104 +6,125 @@ import Footer from '../components/Footer.astro';
 
 <MainLayout title="Order Confirmation - IronBox Containers">
   <Header />
-  <main class="pt-32 pb-20 min-h-screen bg-gray-50">
+  <main class="pt-32 pb-20 min-h-screen bg-gray-50 print:bg-white print:pt-8">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-white rounded-lg shadow-sm p-8">
+      <div id="invoice" class="bg-white rounded-lg shadow-sm p-8 print:shadow-none print:p-0">
         <!-- Success Icon -->
-        <div class="text-center mb-6">
+        <div class="text-center mb-6 print:hidden">
           <div class="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
             <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
           </div>
           <h1 class="text-3xl font-bold text-gray-900 mb-2">Order Request Submitted!</h1>
-          <p class="text-gray-600">Thank you for your interest in our shipping containers.</p>
+          <p class="text-gray-600">Thank you — your order has been received and is now being processed.</p>
         </div>
 
-        <!-- Order Details -->
-        <div class="border-t border-b py-6 mb-6">
-          <div class="space-y-4">
-            <div>
-              <p class="text-sm text-gray-500 mb-1">Order Number</p>
-              <p class="font-semibold text-lg" id="order-number">-</p>
-            </div>
-            <div>
-              <p class="text-sm text-gray-500 mb-1">Submitted On</p>
-              <p class="font-medium" id="order-date">-</p>
-            </div>
+        <!-- Invoice header (print) -->
+        <div class="flex items-start justify-between border-b pb-6 mb-6">
+          <div>
+            <h2 class="text-2xl font-bold text-gray-900">IronBox Containers</h2>
+            <p class="text-sm text-gray-500">Order Invoice</p>
+          </div>
+          <div class="text-right">
+            <p class="text-sm text-gray-500">Order Number</p>
+            <p class="font-semibold text-lg" id="order-number">-</p>
+            <p class="text-sm text-gray-500 mt-1" id="order-date">-</p>
           </div>
         </div>
 
-        <!-- What's Next -->
-        <div class="mb-8">
-          <h2 class="text-xl font-semibold mb-4">What Happens Next?</h2>
-          <div class="space-y-4">
-            <div class="flex gap-4">
-              <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-sm font-semibold text-blue-600">1</div>
-              <div>
-                <h3 class="font-semibold mb-1">Order Review</h3>
-                <p class="text-gray-600 text-sm">Our team will review your order request within 1-2 business hours during normal business hours.</p>
-              </div>
-            </div>
-            <div class="flex gap-4">
-              <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-sm font-semibold text-blue-600">2</div>
-              <div>
-                <h3 class="font-semibold mb-1">Shipping Quote</h3>
-                <p class="text-gray-600 text-sm">We'll calculate shipping costs based on your location and send you a detailed quote.</p>
-              </div>
-            </div>
-            <div class="flex gap-4">
-              <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-sm font-semibold text-blue-600">3</div>
-              <div>
-                <h3 class="font-semibold mb-1">Final Confirmation</h3>
-                <p class="text-gray-600 text-sm">Once you approve the quote, we'll process your order and schedule delivery.</p>
-              </div>
+        <!-- Customer + Payment -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+          <div>
+            <h3 class="text-sm font-semibold text-gray-900 mb-1">Billed / Shipped To</h3>
+            <div id="customer-details" class="text-sm text-gray-600 leading-6">-</div>
+          </div>
+          <div>
+            <h3 class="text-sm font-semibold text-gray-900 mb-1">Payment Method</h3>
+            <p id="payment-method" class="text-sm text-gray-600 mb-3">-</p>
+            <!-- HIDDEN: bank details — restore by removing the `hidden` class below -->
+            <div class="hidden rounded-md bg-blue-50 border border-blue-100 p-3 text-sm text-gray-700 leading-6">
+              <span class="block font-semibold text-gray-900 mb-1">Bank Details</span>
+              <!-- TODO: replace the placeholders below with your real bank details -->
+              Bank: [BANK NAME]<br />
+              Account Name: IronBox Containers<br />
+              Account Number: [ACCOUNT NUMBER]<br />
+              Routing (ACH): [ROUTING NUMBER]<br />
+              Reference: <span id="bank-reference" class="font-medium">your order number</span>
             </div>
           </div>
         </div>
 
         <!-- Order Summary -->
-        <div class="bg-gray-50 rounded-lg p-6 mb-6">
-          <h2 class="text-lg font-semibold mb-4">Order Summary</h2>
-          <div id="order-items" class="space-y-3 mb-4">
-            <!-- Order items will be inserted here -->
+        <div class="mb-6">
+          <h3 class="text-lg font-semibold text-gray-900 mb-3">Order Summary</h3>
+          <div id="order-items" class="divide-y border rounded-lg overflow-hidden">
+            <!-- Order items inserted here -->
           </div>
-          <div class="border-t pt-4">
-            <div class="flex justify-between font-semibold">
-              <span>Subtotal</span>
-              <span id="order-total">$0.00</span>
+          <div class="mt-4 ml-auto max-w-xs space-y-2">
+            <div class="flex justify-between text-sm text-gray-600">
+              <span>Subtotal</span><span id="order-subtotal">$0.00</span>
             </div>
-            <p class="text-xs text-gray-500 mt-2">* Shipping costs will be calculated and included in your quote</p>
+            <div class="flex justify-between text-sm text-gray-600">
+              <span>Shipping (Flat Rate)</span><span id="order-shipping">$300.00</span>
+            </div>
+            <div class="flex justify-between font-semibold text-lg text-gray-900 border-t pt-2">
+              <span>Total Due</span><span id="order-total">$0.00</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- What's Next -->
+        <div class="mb-8 print:hidden">
+          <h2 class="text-xl font-semibold mb-4">What Happens Next?</h2>
+          <div class="space-y-4">
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-sm font-semibold text-blue-600">1</div>
+              <div>
+                <h3 class="font-semibold mb-1">Order Processing</h3>
+                <p class="text-gray-600 text-sm">Your order processing details will be sent to your email.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-sm font-semibold text-blue-600">2</div>
+              <div>
+                <h3 class="font-semibold mb-1">Order Review</h3>
+                <p class="text-gray-600 text-sm">Our team confirms your payment and prepares your order, then sends a shipping quote based on your location.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-sm font-semibold text-blue-600">3</div>
+              <div>
+                <h3 class="font-semibold mb-1">Delivery</h3>
+                <p class="text-gray-600 text-sm">Once everything is confirmed, we schedule delivery to your address.</p>
+              </div>
+            </div>
           </div>
         </div>
 
         <!-- Contact Information -->
-        <div class="bg-blue-50 rounded-lg p-6 mb-6">
+        <div class="bg-blue-50 rounded-lg p-6 mb-6 print:hidden">
           <h3 class="font-semibold mb-2">Need immediate assistance?</h3>
           <p class="text-sm text-gray-700 mb-3">Our sales team is available Monday-Friday, 9AM-6PM CST</p>
           <div class="space-y-2 text-sm">
             <div class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-              </svg>
+              <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
               <a href="tel:+18162557461" class="text-blue-600 hover:underline">+1 816 255 7461</a>
             </div>
             <div class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-              </svg>
+              <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
               <a href="mailto:sales@ironboxcontainers.com" class="text-blue-600 hover:underline">sales@ironboxcontainers.com</a>
             </div>
           </div>
         </div>
 
         <!-- Action Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4">
+        <div class="flex flex-col sm:flex-row gap-4 print:hidden">
           <a href="/shop" class="flex-1 text-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-200">
             Continue Shopping
           </a>
-          <button onclick="window.print()" class="flex-1 px-6 py-3 border-2 border-gray-300 text-gray-700 font-semibold rounded-md hover:bg-gray-50 transition duration-200">
-            Print Order
+          <button id="download-pdf" class="flex-1 px-6 py-3 border-2 border-gray-300 text-gray-700 font-semibold rounded-md hover:bg-gray-50 transition duration-200">
+            Download / Print Invoice (PDF)
           </button>
         </div>
       </div>
@@ -113,83 +134,104 @@ import Footer from '../components/Footer.astro';
 </MainLayout>
 
 <script>
-  // Load order details
-  function loadOrderConfirmation() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const orderId = urlParams.get('id');
-    const orderKey = urlParams.get('key');
+  function money(n) {
+    return `$${Number(n || 0).toLocaleString()}`;
+  }
 
-    if (!orderId) {
-      // Fallback to localStorage if no URL params (legacy support)
-      const order = JSON.parse(localStorage.getItem('lastOrder') || '{}');
-      if (order.orderNumber) {
-        displayOrder(order);
-        firePurchaseConversion(order.orderNumber);
-      } else {
-        window.location.href = '/shop';
-      }
-      return;
-    }
+  function renderOrder(order, fallbackId) {
+    const orderNumber = order?.orderNumber || fallbackId || '-';
 
-    // Display order number from URL
-    const orderNumberEl = document.getElementById('order-number');
-    if (orderNumberEl) orderNumberEl.textContent = `Order #${orderId}`;
+    const numEl = document.getElementById('order-number');
+    if (numEl) numEl.textContent = orderNumber;
 
-    // Fire Google Ads Purchase conversion
-    firePurchaseConversion(orderId);
+    const refEl = document.getElementById('bank-reference');
+    if (refEl && orderNumber !== '-') refEl.textContent = orderNumber;
 
-    // Display current date
-    const orderDateEl = document.getElementById('order-date');
-    if (orderDateEl) {
-      const date = new Date();
-      orderDateEl.textContent = date.toLocaleDateString('en-US', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
+    const dateEl = document.getElementById('order-date');
+    if (dateEl) {
+      const d = order?.orderDate ? new Date(order.orderDate) : new Date();
+      dateEl.textContent = d.toLocaleDateString('en-US', {
+        year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit',
       });
     }
 
-    // We don't have item details in URL, so we show a generic success message
-    // or try to recover from localStorage if it matches
-    const itemsContainer = document.getElementById('order-items');
+    const payEl = document.getElementById('payment-method');
+    if (payEl) payEl.textContent = order?.paymentMethod || 'Direct Bank Transfer';
+
+    const custEl = document.getElementById('customer-details');
+    if (custEl && order?.customer) {
+      const c = order.customer;
+      custEl.innerHTML = [
+        `${c.firstName || ''} ${c.lastName || ''}`.trim(),
+        c.address1,
+        `${c.city || ''}, ${c.state || ''} ${c.postcode || ''}`.trim(),
+        c.country,
+        c.email,
+        c.phone,
+      ].filter(Boolean).join('<br>');
+    }
+
+    const itemsEl = document.getElementById('order-items');
+    if (itemsEl) {
+      if (Array.isArray(order?.items) && order.items.length) {
+        itemsEl.innerHTML = order.items
+          .map(
+            (it) => `
+            <div class="flex items-center gap-4 p-3">
+              ${it.image
+                ? `<img src="${it.image}" alt="${it.name}" class="w-14 h-14 object-cover rounded print:hidden" />`
+                : ''}
+              <div class="flex-1">
+                ${it.link
+                  ? `<a href="${it.link}" class="font-medium text-sm text-blue-700 hover:underline">${it.name}</a>`
+                  : `<span class="font-medium text-sm text-gray-900">${it.name}</span>`}
+                <p class="text-xs text-gray-500">${it.sku ? `SKU: ${it.sku} · ` : ''}Qty ${it.quantity} × ${money(it.price)}</p>
+              </div>
+              <div class="font-medium text-sm text-gray-900">${money(it.lineTotal)}</div>
+            </div>`
+          )
+          .join('');
+      } else {
+        itemsEl.innerHTML = '<div class="p-4 text-center text-gray-500 text-sm">Order details have been emailed to you.</div>';
+      }
+    }
+
+    const subtotalEl = document.getElementById('order-subtotal');
+    const shippingEl = document.getElementById('order-shipping');
     const totalEl = document.getElementById('order-total');
-    
-    if (itemsContainer) {
-      itemsContainer.innerHTML = `
-        <div class="text-center py-4 text-gray-500">
-          <p>Order details have been emailed to you.</p>
-        </div>
-      `;
-    }
-    
-    if (totalEl) {
-      totalEl.textContent = 'Pending Payment Verification';
-    }
+    if (subtotalEl) subtotalEl.textContent = money(order?.subtotal);
+    if (shippingEl) shippingEl.textContent = money(order?.shipping ?? 300);
+    if (totalEl) totalEl.textContent = money(order?.total);
   }
 
-  function displayOrder(order) {
-    // ... (keep existing display logic if needed for fallback)
-    const orderNumberEl = document.getElementById('order-number');
-    if (orderNumberEl) orderNumberEl.textContent = order.orderNumber;
-    
-    // ... rest of display logic
-  }
-
-  // Google Ads Purchase conversion event
+  // Google Ads Purchase conversion event (fires once)
   let conversionFired = false;
   function firePurchaseConversion(transactionId) {
     if (conversionFired) return;
     conversionFired = true;
     if (typeof window.gtag !== 'function') return;
     window.gtag('event', 'conversion', {
-      'send_to': 'AW-18158604325/anONCKLrnMQcEKWg2dJD',
-      'transaction_id': transactionId ? String(transactionId) : ''
+      send_to: 'AW-18158604325/anONCKLrnMQcEKWg2dJD',
+      transaction_id: transactionId ? String(transactionId) : '',
     });
   }
 
-  // Load on page load
+  function loadOrderConfirmation() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const orderId = urlParams.get('id');
+    const order = JSON.parse(localStorage.getItem('lastOrder') || '{}');
+
+    // Need either a saved order or an id in the URL, otherwise nothing to show.
+    if (!order.orderNumber && !orderId) {
+      window.location.href = '/shop';
+      return;
+    }
+
+    renderOrder(order, orderId);
+    firePurchaseConversion(order.orderNumber || orderId);
+  }
+
+  document.getElementById('download-pdf')?.addEventListener('click', () => window.print());
+
   loadOrderConfirmation();
 </script>

@@ -2,6 +2,10 @@
 import MainLayout from '../layouts/MainLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+
+const inputClass =
+  'w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition';
+const labelClass = 'block text-sm font-medium text-gray-700 mb-1.5';
 ---
 
 <MainLayout title="Checkout - IronBox Containers">
@@ -11,103 +15,132 @@ import Footer from '../components/Footer.astro';
       <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
       <p class="mt-4 text-gray-600">Loading checkout...</p>
     </div>
-    
+
     <div id="checkout-content" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 hidden">
       <h1 class="text-3xl font-bold text-gray-900 mb-8">Secure Checkout</h1>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <!-- Checkout Form -->
-        <div class="bg-white rounded-lg shadow-sm p-6">
-          <form id="checkout-form" method="POST" action="https://submit-form.com/giqYy9VTp">
-            <input type="hidden" name="_redirect" value="/order-confirmation" />
-            <input type="hidden" name="formType" value="checkout" />
-            <input type="hidden" name="cartItems" id="hidden-cart-items" value="" />
-            <input type="hidden" name="cartTotal" id="hidden-cart-total" value="" />
+        <div class="bg-white rounded-xl shadow-sm ring-1 ring-gray-100 p-6 sm:p-8">
+          <form id="checkout-form" novalidate>
             <!-- Contact Information -->
-            <div class="mb-6">
-              <h2 class="text-xl font-semibold mb-4">Contact Information</h2>
-              <div class="space-y-4">
+            <section class="mb-8">
+              <h2 class="text-lg font-semibold text-gray-900 mb-1">Contact Information</h2>
+              <p class="text-sm text-gray-500 mb-4">We'll email your invoice and order updates here.</p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                  <input type="email" id="email" name="email" required
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <label for="email" class={labelClass}>Email</label>
+                  <input type="email" id="email" name="email" required placeholder="you@email.com" class={inputClass} />
                 </div>
                 <div>
-                  <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                  <input type="tel" id="phone" name="phone" required
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <label for="phone" class={labelClass}>Phone</label>
+                  <input type="tel" id="phone" name="phone" required placeholder="+1 816 255 7461" class={inputClass} />
                 </div>
               </div>
-            </div>
+            </section>
 
             <!-- Shipping Address -->
-            <div class="mb-6">
-              <h2 class="text-xl font-semibold mb-4">Shipping Address</h2>
+            <section class="mb-8">
+              <h2 class="text-lg font-semibold text-gray-900 mb-4">Shipping Address</h2>
               <div class="space-y-4">
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
-                    <input type="text" id="firstName" name="firstName" required
-                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <label for="firstName" class={labelClass}>First Name</label>
+                    <input type="text" id="firstName" name="firstName" required placeholder="John" class={inputClass} />
                   </div>
                   <div>
-                    <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" required
-                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <label for="lastName" class={labelClass}>Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required placeholder="Smith" class={inputClass} />
                   </div>
                 </div>
+
                 <div>
-                  <label for="address1" class="block text-sm font-medium text-gray-700 mb-1">Street Address</label>
-                  <input type="text" id="address1" name="address1" required
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <label for="address1" class={labelClass}>Street Address</label>
+                  <input type="text" id="address1" name="address1" required placeholder="123 Main St" class={inputClass} />
                 </div>
-                <div class="grid grid-cols-2 gap-4">
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label for="city" class="block text-sm font-medium text-gray-700 mb-1">City</label>
-                    <input type="text" id="city" name="city" required
-                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <label for="city" class={labelClass}>City</label>
+                    <input type="text" id="city" name="city" required placeholder="Kansas City" class={inputClass} />
                   </div>
-                  <div>
-                    <label for="state" class="block text-sm font-medium text-gray-700 mb-1">Province</label>
-                    <select id="state" name="state" required
-                      class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                      <option value="">Select Province</option>
-                      <option value="EC">Florida</option>
-                      <option value="FS">Oklahoma</option>
-                      <option value="GP">Texas</option>
-                      <option value="KZN">Georgia</option>
-                      <option value="LP">Alabama</option>
-                      <option value="MP">Louisiana</option>
-                      <option value="NW">North West</option>
-                      <option value="NC">New Mexico</option>
-                      <option value="WC">California</option>
-                    </select>
+
+                  <!-- Searchable State combobox -->
+                  <div class="relative">
+                    <label for="state-search" class={labelClass}>State</label>
+                    <input
+                      type="text"
+                      id="state-search"
+                      autocomplete="off"
+                      required
+                      placeholder="Search state..."
+                      role="combobox"
+                      aria-autocomplete="list"
+                      aria-expanded="false"
+                      aria-controls="state-list"
+                      class={inputClass}
+                    />
+                    <input type="hidden" id="state" name="state" />
+                    <ul
+                      id="state-list"
+                      role="listbox"
+                      class="absolute z-30 mt-1 w-full max-h-60 overflow-auto rounded-lg bg-white border border-gray-200 shadow-lg hidden"
+                    ></ul>
                   </div>
                 </div>
+
                 <div>
-                  <label for="postcode" class="block text-sm font-medium text-gray-700 mb-1">Postal Code</label>
-                  <input type="text" id="postcode" name="postcode" required
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <label for="postcode" class={labelClass}>ZIP / Postal Code</label>
+                  <input type="text" id="postcode" name="postcode" required placeholder="64101" class={inputClass} />
                 </div>
               </div>
-            </div>
+            </section>
 
             <!-- Payment Method -->
-            <div class="mb-6">
-              <h2 class="text-xl font-semibold mb-4">Payment Method</h2>
-              <div id="payment-methods-container" class="space-y-3">
-                <!-- Loading State -->
-                <div class="animate-pulse space-y-3">
-                  <div class="h-12 bg-gray-200 rounded"></div>
-                  <div class="h-12 bg-gray-200 rounded"></div>
-                </div>
-              </div>
-            </div>
+            <section class="mb-6">
+              <h2 class="text-lg font-semibold text-gray-900 mb-4">Payment Method</h2>
+              <div class="space-y-3">
+                <!-- Direct Bank Transfer (default, auto-selected) -->
+                <label class="block border-2 border-blue-500 bg-blue-50/60 rounded-lg p-4 cursor-pointer">
+                  <div class="flex items-start">
+                    <input type="radio" name="paymentMethod" value="Direct Bank Transfer" checked
+                      class="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300" />
+                    <div class="ml-3">
+                      <span class="block text-sm font-semibold text-gray-900">Direct Bank Transfer (Bank Account)</span>
+                      <span class="block mt-1 text-sm text-gray-600">
+                        Place your order and you'll receive your order processing details by email.
+                      </span>
+                      <!-- HIDDEN: bank details — restore by removing the `hidden` class below -->
+                      <div class="hidden mt-3 rounded-md bg-white border border-blue-200 p-3 text-sm text-gray-700 leading-6">
+                        <span class="block font-semibold text-gray-900 mb-1">Bank Details</span>
+                        <!-- TODO: replace the placeholders below with your real bank details -->
+                        Bank: [BANK NAME]<br />
+                        Account Name: IronBox Containers<br />
+                        Account Number: [ACCOUNT NUMBER]<br />
+                        Routing (ACH): [ROUTING NUMBER]<br />
+                        Reference: Your order number
+                      </div>
+                    </div>
+                  </div>
+                </label>
 
-            <div id="error-message" class="hidden mb-4 p-4 bg-red-50 text-red-700 rounded-md text-sm"></div>
+                <!-- HIDDEN: Credit / Debit Card (coming soon) — restore by removing the `hidden` class below -->
+                <label class="hidden border border-gray-200 rounded-lg p-4 opacity-60 cursor-not-allowed">
+                  <div class="flex items-center">
+                    <input type="radio" name="paymentMethod" value="Credit Card" disabled
+                      class="h-4 w-4 text-blue-600 border-gray-300" />
+                    <span class="ml-3 text-sm font-medium text-gray-500">
+                      Credit / Debit Card <span class="text-xs font-normal">(coming soon)</span>
+                    </span>
+                  </div>
+                </label>
+              </div>
+            </section>
+
+            <div id="error-message" class="hidden mb-4 p-4 bg-red-50 text-red-700 rounded-lg text-sm"></div>
 
             <button type="submit" id="submit-button"
-              class="w-full bg-green-600 text-white py-4 px-6 rounded-md font-bold text-lg hover:bg-green-700 transition duration-200 shadow-md">
+              class="w-full bg-green-600 text-white py-4 px-6 rounded-lg font-bold text-lg hover:bg-green-700 disabled:opacity-60 disabled:cursor-not-allowed transition duration-200 shadow-md">
               Place Order
             </button>
           </form>
@@ -115,22 +148,22 @@ import Footer from '../components/Footer.astro';
 
         <!-- Order Summary -->
         <div>
-          <div class="bg-white rounded-lg shadow-sm p-6 sticky top-32">
-            <h2 class="text-xl font-semibold mb-4">Order Summary</h2>
+          <div class="bg-white rounded-xl shadow-sm ring-1 ring-gray-100 p-6 sm:p-8 sticky top-32">
+            <h2 class="text-lg font-semibold text-gray-900 mb-4">Order Summary</h2>
             <div id="checkout-items" class="space-y-4 mb-6">
               <!-- Cart items will be inserted here -->
             </div>
             <div class="border-t pt-4 space-y-2">
-              <div class="flex justify-between text-sm">
+              <div class="flex justify-between text-sm text-gray-600">
                 <span>Subtotal</span>
                 <span id="checkout-subtotal">$0.00</span>
               </div>
-              <div class="flex justify-between text-sm">
+              <div class="flex justify-between text-sm text-gray-600">
                 <span>Shipping (Flat Rate)</span>
                 <span>$300.00</span>
               </div>
-              <div class="border-t pt-2 mt-2">
-                <div class="flex justify-between font-semibold text-lg">
+              <div class="border-t pt-3 mt-2">
+                <div class="flex justify-between font-semibold text-lg text-gray-900">
                   <span>Total</span>
                   <span id="checkout-total">$0.00</span>
                 </div>
@@ -150,8 +183,119 @@ import Footer from '../components/Footer.astro';
 
 <script>
   const STORAGE_KEY = 'ironbox_cart';
+  const SHIPPING_FLAT = 300;
 
-  // Load cart items
+  // FormSpark form ID — swap this single value when you provide the new credentials.
+  const FORMSPARK_FORM_ID = 'giqYy9VTp';
+  const FORMSPARK_URL = `https://submit-form.com/${FORMSPARK_FORM_ID}`;
+
+  const US_STATES = [
+    'Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware',
+    'District of Columbia','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa',
+    'Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota',
+    'Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey',
+    'New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon',
+    'Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah',
+    'Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'
+  ];
+
+  /* ---------------- Searchable State combobox ---------------- */
+  function initStateCombobox() {
+    const search = document.getElementById('state-search');
+    const hidden = document.getElementById('state');
+    const list = document.getElementById('state-list');
+    if (!search || !hidden || !list) return;
+
+    let activeIdx = -1;
+
+    function render(filter) {
+      const f = (filter || '').trim().toLowerCase();
+      const matches = US_STATES.filter((s) => s.toLowerCase().includes(f));
+      activeIdx = -1;
+      if (matches.length === 0) {
+        list.innerHTML = '<li class="px-3 py-2 text-sm text-gray-400">No states found</li>';
+      } else {
+        list.innerHTML = matches
+          .map(
+            (s) =>
+              `<li role="option" data-value="${s}" class="state-option px-3 py-2 text-sm cursor-pointer hover:bg-blue-50">${s}</li>`
+          )
+          .join('');
+      }
+      list.classList.remove('hidden');
+      search.setAttribute('aria-expanded', 'true');
+    }
+
+    function close() {
+      list.classList.add('hidden');
+      search.setAttribute('aria-expanded', 'false');
+    }
+
+    function options() {
+      return Array.from(list.querySelectorAll('.state-option'));
+    }
+
+    function setActive(idx) {
+      const opts = options();
+      opts.forEach((o) => o.classList.remove('bg-blue-100'));
+      if (idx >= 0 && idx < opts.length) {
+        opts[idx].classList.add('bg-blue-100');
+        opts[idx].scrollIntoView({ block: 'nearest' });
+      }
+      activeIdx = idx;
+    }
+
+    function select(value) {
+      search.value = value;
+      hidden.value = value;
+      search.setCustomValidity('');
+      close();
+    }
+
+    search.addEventListener('focus', () => render(search.value));
+    search.addEventListener('input', () => {
+      hidden.value = '';
+      search.setCustomValidity('');
+      render(search.value);
+    });
+
+    search.addEventListener('keydown', (e) => {
+      const opts = options();
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (list.classList.contains('hidden')) render(search.value);
+        setActive(Math.min(activeIdx + 1, opts.length - 1));
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        setActive(Math.max(activeIdx - 1, 0));
+      } else if (e.key === 'Enter') {
+        if (!list.classList.contains('hidden') && activeIdx >= 0) {
+          e.preventDefault();
+          select(opts[activeIdx].getAttribute('data-value'));
+        }
+      } else if (e.key === 'Escape') {
+        close();
+      }
+    });
+
+    // mousedown fires before blur so the selection isn't lost
+    list.addEventListener('mousedown', (e) => {
+      const li = e.target.closest('.state-option');
+      if (!li) return;
+      e.preventDefault();
+      select(li.getAttribute('data-value'));
+    });
+
+    search.addEventListener('blur', () => {
+      setTimeout(() => {
+        const exact = US_STATES.find((s) => s.toLowerCase() === search.value.trim().toLowerCase());
+        if (exact) select(exact);
+        close();
+      }, 150);
+    });
+  }
+
+  /* ---------------- Order summary ---------------- */
   function loadCheckoutSummary() {
     const cart = JSON.parse(localStorage.getItem(STORAGE_KEY) || localStorage.getItem('cart') || '[]');
     const itemsContainer = document.getElementById('checkout-items');
@@ -163,111 +307,170 @@ import Footer from '../components/Footer.astro';
     if (!itemsContainer) return;
 
     if (cart.length === 0) {
-      setTimeout(() => {
-        window.location.href = '/cart';
-      }, 100);
+      setTimeout(() => { window.location.href = '/cart'; }, 100);
       return;
     }
 
-    // Show content, hide loading
     if (loadingEl) loadingEl.classList.add('hidden');
     if (contentEl) contentEl.classList.remove('hidden');
 
     let subtotal = 0;
+    itemsContainer.innerHTML = cart
+      .map((item) => {
+        const itemTotal = parseFloat(item.price) * item.quantity;
+        subtotal += itemTotal;
+        return `
+          <div class="flex items-center space-x-4">
+            ${item.image
+              ? `<img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg" />`
+              : `<div class="w-16 h-16 bg-gray-200 rounded-lg"></div>`}
+            <div class="flex-1">
+              <h3 class="font-medium text-sm text-gray-900">${item.name}</h3>
+              <p class="text-sm text-gray-500">Qty: ${item.quantity}</p>
+            </div>
+            <p class="font-medium text-gray-900">$${itemTotal.toLocaleString()}</p>
+          </div>`;
+      })
+      .join('');
 
-    itemsContainer.innerHTML = cart.map(item => {
-      const itemTotal = item.price * item.quantity;
-      subtotal += itemTotal;
-
-      return `
-        <div class="flex items-center space-x-4">
-          ${item.image ? `
-            <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded">
-          ` : `
-            <div class="w-16 h-16 bg-gray-200 rounded"></div>
-          `}
-          <div class="flex-1">
-            <h3 class="font-medium text-sm">${item.name}</h3>
-            <p class="text-sm text-gray-500">Qty: ${item.quantity}</p>
-          </div>
-          <p class="font-medium">$${itemTotal.toLocaleString()}</p>
-        </div>
-      `;
-    }).join('');
-
-    const shipping = 300;
-    const total = subtotal + shipping;
-
+    const total = subtotal + SHIPPING_FLAT;
     if (subtotalEl) subtotalEl.textContent = `$${subtotal.toLocaleString()}`;
     if (totalEl) totalEl.textContent = `$${total.toLocaleString()}`;
   }
 
-  // Load payment gateways
-  async function loadPaymentGateways() {
-    const container = document.getElementById('payment-methods-container');
-    if (!container) return;
+  /* ---------------- Submit → FormSpark ---------------- */
+  function generateOrderNumber() {
+    const d = new Date();
+    const pad = (n) => String(n).padStart(2, '0');
+    const datePart = `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`;
+    const rand = Math.floor(1000 + Math.random() * 9000);
+    return `IBX-${datePart}-${rand}`;
+  }
 
-    try {
-      const response = await fetch('/api/payment-gateways');
-      if (!response.ok) throw new Error('Failed to load payment methods');
-      
-      const gateways = await response.json();
-      
-      if (gateways.length === 0) {
-        container.innerHTML = '<p class="text-red-500">No payment methods available.</p>';
+  function handleSubmit() {
+    const form = document.getElementById('checkout-form');
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const submitBtn = document.getElementById('submit-button');
+      const errorBox = document.getElementById('error-message');
+      const stateSearch = document.getElementById('state-search');
+      const stateHidden = document.getElementById('state');
+      errorBox.classList.add('hidden');
+
+      // Validate the searchable state before native validation
+      if (!stateHidden.value) {
+        stateSearch.setCustomValidity('Please select a state from the list.');
+      } else {
+        stateSearch.setCustomValidity('');
+      }
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
         return;
       }
 
-      container.innerHTML = gateways.map((gateway, index) => `
-        <div class="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
-          <div class="flex items-center">
-            <input 
-              id="payment-${gateway.id}" 
-              name="paymentMethod" 
-              type="radio" 
-              value="${gateway.id}" 
-              ${index === 0 ? 'checked' : ''}
-              class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
-            >
-            <label for="payment-${gateway.id}" class="ml-3 block text-sm font-medium text-gray-700 cursor-pointer">
-              ${gateway.title}
-            </label>
-          </div>
-          ${gateway.description ? `
-            <p class="mt-2 ml-7 text-sm text-gray-500">${gateway.description}</p>
-          ` : ''}
-        </div>
-      `).join('');
+      const cart = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      if (cart.length === 0) {
+        window.location.href = '/cart';
+        return;
+      }
 
-    } catch (error) {
-      console.error('Error loading gateways:', error);
-      container.innerHTML = '<p class="text-red-500">Error loading payment options. Please refresh.</p>';
-    }
+      const fd = new FormData(form);
+      const subtotal = cart.reduce((s, it) => s + parseFloat(it.price) * it.quantity, 0);
+      const total = subtotal + SHIPPING_FLAT;
+      const orderNumber = generateOrderNumber();
+      const origin = window.location.origin;
+
+      const items = cart.map((it) => ({
+        name: it.name,
+        sku: it.sku || '',
+        slug: it.slug || '',
+        link: it.slug ? `${origin}/products/${it.slug}` : '',
+        price: parseFloat(it.price),
+        quantity: it.quantity,
+        lineTotal: parseFloat(it.price) * it.quantity,
+        image: it.image || '',
+      }));
+
+      const customer = {
+        firstName: fd.get('firstName'),
+        lastName: fd.get('lastName'),
+        email: fd.get('email'),
+        phone: fd.get('phone'),
+        address1: fd.get('address1'),
+        city: fd.get('city'),
+        state: fd.get('state'),
+        postcode: fd.get('postcode'),
+        country: 'United States',
+      };
+      const paymentMethod = fd.get('paymentMethod') || 'Direct Bank Transfer';
+
+      const order = {
+        orderNumber,
+        orderDate: new Date().toISOString(),
+        paymentMethod,
+        customer,
+        items,
+        subtotal,
+        shipping: SHIPPING_FLAT,
+        total,
+      };
+
+      // Persist for the confirmation page + print/PDF
+      localStorage.setItem('lastOrder', JSON.stringify(order));
+
+      // Human-readable itemized summary for the FormSpark notification + auto-response email
+      const itemsSummary = items
+        .map(
+          (it) =>
+            `• ${it.name}${it.sku ? ` (SKU: ${it.sku})` : ''} — Qty ${it.quantity} x $${it.price.toLocaleString()} = $${it.lineTotal.toLocaleString()}${it.link ? `\n  ${it.link}` : ''}`
+        )
+        .join('\n');
+
+      const payload = {
+        orderNumber,
+        orderDate: new Date().toLocaleString('en-US'),
+        paymentMethod,
+        name: `${customer.firstName} ${customer.lastName}`,
+        email: customer.email,
+        phone: customer.phone,
+        shippingAddress: `${customer.address1}, ${customer.city}, ${customer.state} ${customer.postcode}, ${customer.country}`,
+        orderSummary: itemsSummary,
+        productLinks: items.map((it) => it.link).filter(Boolean).join('\n'),
+        subtotal: `$${subtotal.toLocaleString()}`,
+        shipping: `$${SHIPPING_FLAT.toLocaleString()}`,
+        total: `$${total.toLocaleString()}`,
+      };
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Placing Order...';
+
+      try {
+        const res = await fetch(FORMSPARK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) throw new Error(`Submit failed: ${res.status}`);
+
+        localStorage.removeItem(STORAGE_KEY);
+        window.dispatchEvent(new Event('cartUpdated'));
+        window.location.href = `/order-confirmation?id=${encodeURIComponent(orderNumber)}`;
+      } catch (err) {
+        console.error('Order submission error:', err);
+        errorBox.textContent =
+          'Sorry, we could not place your order. Please check your connection and try again, or call us at +1 816 255 7461.';
+        errorBox.classList.remove('hidden');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Place Order';
+      }
+    });
   }
 
-  // Handle form submission - populate hidden fields before submit
-  document.getElementById('checkout-form')?.addEventListener('submit', (e) => {
-    const cart = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const total = subtotal + 300;
-
-    // Populate hidden fields with cart data
-    const cartItemsField = document.getElementById('hidden-cart-items');
-    const cartTotalField = document.getElementById('hidden-cart-total');
-
-    if (cartItemsField) {
-      cartItemsField.value = cart.map(item => `${item.name} (Qty: ${item.quantity}) - $${(item.price * item.quantity).toLocaleString()}`).join(' | ');
-    }
-    if (cartTotalField) {
-      cartTotalField.value = `$${total.toLocaleString()}`;
-    }
-
-    // Clear cart after form submits
-    localStorage.removeItem(STORAGE_KEY);
-    window.dispatchEvent(new Event('cartUpdated'));
-  });
-
-  // Load on page load
+  initStateCombobox();
   loadCheckoutSummary();
-  loadPaymentGateways();
+  handleSubmit();
 </script>
