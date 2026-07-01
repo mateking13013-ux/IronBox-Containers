@@ -206,13 +206,21 @@ import Footer from '../components/Footer.astro';
 
   // Google Ads Purchase conversion event (fires once)
   let conversionFired = false;
-  function firePurchaseConversion(transactionId) {
+  function firePurchaseConversion(transactionId, value) {
     if (conversionFired) return;
     conversionFired = true;
     if (typeof window.gtag !== 'function') return;
+    const txId = transactionId ? String(transactionId) : '';
     window.gtag('event', 'conversion', {
       send_to: 'AW-18158604325/anONCKLrnMQcEKWg2dJD',
-      transaction_id: transactionId ? String(transactionId) : '',
+      transaction_id: txId,
+    });
+    // Purchase (1) conversion
+    window.gtag('event', 'conversion', {
+      send_to: 'AW-18158604325/nXJlCNaey8gcEKWg2dJD',
+      value: typeof value === 'number' && value > 0 ? value : 1.0,
+      currency: 'ZAR',
+      transaction_id: txId,
     });
   }
 
@@ -228,7 +236,7 @@ import Footer from '../components/Footer.astro';
     }
 
     renderOrder(order, orderId);
-    firePurchaseConversion(order.orderNumber || orderId);
+    firePurchaseConversion(order.orderNumber || orderId, Number(order?.total));
   }
 
   document.getElementById('download-pdf')?.addEventListener('click', () => window.print());
