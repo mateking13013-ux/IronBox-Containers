@@ -16,7 +16,7 @@ const errorMessage = '';
       <div class="mt-6 rounded-xl border border-destructive bg-destructive/10 p-3 text-sm text-destructive">{errorMessage}</div>
     )}
 
-    <form class="mt-8 space-y-4" method="POST" action="https://submit-form.com/giqYy9VTp">
+    <form id="register-form" class="mt-8 space-y-4" method="POST" action="https://submit-form.com/giqYy9VTp">
       <input type="hidden" name="_redirect" value="https://submit-form.com/giqYy9VTp/thank-you" />
       <input type="hidden" name="formType" value="register" />
       <div class="space-y-2">
@@ -46,3 +46,18 @@ const errorMessage = '';
     </div>
   </div>
 </section>
+
+<script>
+  import { wireFormspark } from '../../lib/formspark.js';
+
+  const form = document.getElementById('register-form');
+  wireFormspark(form, {
+    validate: (data) => {
+      if (data.password && data.confirmPassword && data.password !== data.confirmPassword) {
+        return 'Passwords do not match. Please re-enter them.';
+      }
+      return null;
+    },
+    successMessage: "Thanks — your request was received. We'll follow up by email shortly.",
+  });
+</script>

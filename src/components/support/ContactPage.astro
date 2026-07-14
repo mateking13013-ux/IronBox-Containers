@@ -42,7 +42,7 @@ const faqs = [
     <div class="space-y-6 rounded-3xl border border-border bg-card p-6 shadow-sm">
       <h2 class="text-lg font-semibold">Project intake form</h2>
       <p class="text-sm text-muted-foreground">Share a few details and we’ll pair you with the right specialist—pool, prefab home, hospitality suite, or custom build.</p>
-      <form class="space-y-4 text-sm" method="POST" action="https://submit-form.com/giqYy9VTp">
+      <form id="support-intake-form" class="space-y-4 text-sm" method="POST" action="https://submit-form.com/giqYy9VTp">
         <input type="hidden" name="_redirect" value="https://submit-form.com/giqYy9VTp/thank-you" />
         <div class="grid gap-4 md:grid-cols-2">
           <div class="space-y-2">
@@ -116,3 +116,13 @@ const faqs = [
     </div>
   </div>
 </section>
+
+<script>
+  import { wireFormspark } from '../../lib/formspark.js';
+
+  const form = document.getElementById('support-intake-form');
+  wireFormspark(form, {
+    transform: (data) => ({ ...data, formType: 'project-intake', source: 'support-contact' }),
+    successMessage: "Thanks! Your project intake was received — a specialist will reach out within 48 hours.",
+  });
+</script>

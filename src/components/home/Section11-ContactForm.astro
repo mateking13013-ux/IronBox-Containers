@@ -238,3 +238,13 @@ const iconMap = {
   </div>
 </section>
 
+<script>
+  import { wireFormspark } from '../../lib/formspark.js';
+
+  const form = document.getElementById('contact-form');
+  wireFormspark(form, {
+    transform: (data) => ({ ...data, formType: 'contact', source: 'home-contact' }),
+    successMessage: "Thanks! Your message has been sent — we'll be in touch shortly.",
+  });
+</script>
+
