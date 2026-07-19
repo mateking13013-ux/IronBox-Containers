@@ -378,7 +378,7 @@ This template is designed for programmatic SEO, allowing you to generate hundred
 - **Field Name**: `mid_cta_primary_text`
 - **Field Type**: Text
 - **Required**: No
-- **Default**: "Call Now: (555) 123-4567"
+- **Default**: "Call Now: (816) 255-7461"
 - **Description**: Primary CTA button text
 
 - **Field Name**: `mid_cta_secondary_text`
@@ -402,7 +402,7 @@ This template is designed for programmatic SEO, allowing you to generate hundred
 - **Field Name**: `final_cta_primary_text`
 - **Field Type**: Text
 - **Required**: No
-- **Default**: "Call (555) 123-4567"
+- **Default**: "Call (816) 255-7461"
 - **Description**: Final primary CTA text
 
 - **Field Name**: `final_cta_secondary_text`

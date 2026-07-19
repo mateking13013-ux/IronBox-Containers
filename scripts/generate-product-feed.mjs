@@ -2,7 +2,7 @@
 /**
  * Generate a Google Merchant Center product feed (RSS 2.0 + g: namespace)
  * from src/data/products.json and write it to public/product-feed.xml so it
- * is served at https://ironboxcontainers.com/product-feed.xml
+ * is served at https://ironboxcontainerz.com/product-feed.xml
  *
  * Run: node scripts/generate-product-feed.mjs
  *
@@ -18,7 +18,7 @@ const ROOT = join(__dirname, '..');
 const DATA_PATH = join(ROOT, 'src', 'data', 'products.json');
 const OUT_PATH = join(ROOT, 'public', 'product-feed.xml');
 
-const SITE_URL = 'https://ironboxcontainers.com';
+const SITE_URL = 'https://ironboxcontainerz.com';
 const BRAND = 'IronBox Containers';
 const CURRENCY = 'USD';
 const FEED_TITLE = 'IronBox Containers — Product Feed';

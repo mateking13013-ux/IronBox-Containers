@@ -17,26 +17,26 @@
 - ✅ `src/components/support/TermsPage.astro`
 
 ### 2. ✅ Phone Number Consistency - FIXED
-**Updated to:** `(415) 625-3493`
+**Updated to:** `(816) 255-7461`
 
 **Files Updated:**
 - ✅ `src/components/Footer.astro`
 - ✅ `src/components/Header.astro` (project hotline)
 - ✅ `src/components/support/ContactPage.astro`
-- ✅ `src/pages/index.astro` (schema: +1-415-625-3493)
+- ✅ `src/pages/index.astro` (schema: +1-816-255-7461)
 - ✅ `src/pages/return-policy.astro`
 - ✅ `src/components/support/ShippingPolicyPage.astro`
 
 ### 3. ✅ Email Domain Consistency - FIXED
-**Standardized to:** `@ironboxcontainers.com`
+**Standardized to:** `@ironboxcontainerz.com`
 
 **Updated Emails:**
-- ✅ concierge@ironboxcontainers.com
-- ✅ support@ironboxcontainers.com
-- ✅ warranty@ironboxcontainers.com
-- ✅ logistics@ironboxcontainers.com
-- ✅ privacy@ironboxcontainers.com
-- ✅ legal@ironboxcontainers.com
+- ✅ concierge@ironboxcontainerz.com
+- ✅ support@ironboxcontainerz.com
+- ✅ warranty@ironboxcontainerz.com
+- ✅ logistics@ironboxcontainerz.com
+- ✅ privacy@ironboxcontainerz.com
+- ✅ legal@ironboxcontainerz.com
 
 ### 4. ✅ Product SKUs - ALL FIXED
 **Total Products:** 87
@@ -96,7 +96,7 @@
 ### ✅ PASSED Requirements
 - [x] **Business Address** - Consistent across all pages
 - [x] **Phone Number** - Consistent across all pages
-- [x] **Email Addresses** - Single domain (@ironboxcontainers.com)
+- [x] **Email Addresses** - Single domain (@ironboxcontainerz.com)
 - [x] **Product Count** - 87 products (exceeds 50 minimum)
 - [x] **Product SKUs** - All 87 products have unique SKUs
 - [x] **Policy Pages** - All present and complete
@@ -114,8 +114,8 @@
 1. **Deploy to Production with HTTPS**
    - [ ] Deploy site to production server
    - [ ] Ensure SSL certificate is active
-   - [ ] Test: https://ironboxcontainers.com
-   - [ ] Test: https://www.ironboxcontainers.com
+   - [ ] Test: https://ironboxcontainerz.com
+   - [ ] Test: https://www.ironboxcontainerz.com
    - [ ] Verify both redirect to same URL
 
 2. **Add Product Schema Markup**
@@ -246,8 +246,8 @@ Examples:
 ### Contact Information
 **Your Official Business Info:**
 - Address: 410 E Airport Fwy, Irving, Texas, 75062 United States
-- Phone: (415) 625-3493
-- Email Domain: @ironboxcontainers.com
+- Phone: (816) 255-7461
+- Email Domain: @ironboxcontainerz.com
 
 **IMPORTANT:** Always use this exact info everywhere:
 - Google Business Profile
@@ -267,20 +267,20 @@ To verify the changes:
 ### Check Products Have SKUs
 ```bash
 curl -s -u "ck_...:cs_..." \
-  "https://cms.ironboxcontainers.com/wp-json/wc/v3/products/1543" | \
+  "https://cms.ironboxcontainerz.com/wp-json/wc/v3/products/1543" | \
   jq '{name: .name, sku: .sku}'
 ```
 
 ### Check Total Products
 ```bash
 curl -s -I -u "ck_...:cs_..." \
-  "https://cms.ironboxcontainers.com/wp-json/wc/v3/products?per_page=1" | \
+  "https://cms.ironboxcontainerz.com/wp-json/wc/v3/products?per_page=1" | \
   grep x-wp-total
 ```
 
 ### Test Site is Live
 ```bash
-curl -I https://ironboxcontainers.com
+curl -I https://ironboxcontainerz.com
 # Should return 200 OK with HTTPS
 ```
 
@@ -312,7 +312,7 @@ curl -I https://ironboxcontainers.com
 ### Need to Update More Products?
 
 Use WooCommerce admin panel:
-1. Login: https://cms.ironboxcontainers.com/wp-admin
+1. Login: https://cms.ironboxcontainerz.com/wp-admin
 2. Products → All Products
 3. Click product to edit
 4. Add SKU in format: IBC-[CATEGORY]-[SIZE]-[###]

@@ -277,7 +277,7 @@ GET /wp-json/wp/v2/location_pages/123?_embed=acf
 3. **Fill in all ACF fields:**
    - Location Name: "Chicago"
    - Hero Headline: "Buy Shipping Containers in Chicago"
-   - Phone Number: "(555) 123-4567"
+   - Phone Number: "(816) 255-7461"
    - Container Products: [add products]
    - FAQ Items: [add FAQs]
    - etc.

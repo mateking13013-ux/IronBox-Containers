@@ -1,5 +1,5 @@
 # Google Merchant Center Approval Plan
-**IronBox Containers - ironboxcontainers.com**
+**IronBox Containers - ironboxcontainerz.com**
 
 ---
 
@@ -38,15 +38,15 @@
    - `src/components/support/TermsPage.astro` (line 73)
 
 ### 2. Fix Phone Number (HIGH PRIORITY)
-**Problem:** Footer has placeholder: `+1 (000) 000-0000`
+**Problem:** Footer has placeholder: `+1 816 255 7461`
 
 **Action:**
 1. Open `src/components/Footer.astro`
-2. Line 6: Change `'+1 (000) 000-0000'` to your real phone
+2. Line 6: Change `'+1 816 255 7461'` to your real phone
 3. Use (512) 555-6720 (already used in header) OR your actual number
 
 ### 3. Fix Email Domains (MEDIUM PRIORITY)
-**Problem:** Mixing @ironboxcontainers.com and @ironboxcontainers.com
+**Problem:** Mixing @ironboxcontainerz.com and @ironboxcontainerz.com
 
 **Action:**
 1. Pick ONE domain for all emails
@@ -57,7 +57,7 @@
 **Problem:** At least 1 product has no SKU
 
 **Action:**
-1. Login to WordPress admin: https://cms.ironboxcontainers.com/wp-admin
+1. Login to WordPress admin: https://cms.ironboxcontainerz.com/wp-admin
 2. Go to Products → All Products
 3. Find product "Refurbished 10ft Open Top Shipping Container - Steel Floor"
 4. Add unique SKU (example: BCG214189)
@@ -70,7 +70,7 @@
 1. Deploy site to production server
 2. Ensure SSL certificate is installed
 3. Verify both www and non-www work
-4. Test: https://ironboxcontainers.com
+4. Test: https://ironboxcontainerz.com
 
 ---
 
@@ -196,7 +196,7 @@
 5. Business name: **IronBox Containers** (exact match)
 
 ### Step 2: Verify Website
-1. Add website URL: https://ironboxcontainers.com
+1. Add website URL: https://ironboxcontainerz.com
 2. Choose verification method: HTML tag (easiest)
 3. Copy the meta tag Google provides
 4. Add to `src/layouts/MainLayout.astro` in `<head>` section
@@ -208,8 +208,8 @@ Go to Settings → Business Information:
 - Business name: IronBox Containers
 - Address: [YOUR REAL ADDRESS - must match website]
 - Phone: [YOUR REAL PHONE - must match website]
-- Customer service email: support@ironboxcontainers.com
-- Website URL: https://ironboxcontainers.com
+- Customer service email: support@ironboxcontainerz.com
+- Website URL: https://ironboxcontainerz.com
 
 ### Step 4: Configure Shipping
 Go to Settings → Shipping and Returns:

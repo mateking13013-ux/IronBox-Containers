@@ -39,7 +39,7 @@ The site features robust, transparent, and consistent policy pages, clear contac
     *   ✅ Phone number is visible.
 *   **Footer:**
     *   ✅ **Critical:** Contains full physical address (`410 E Airport Fwy, Irving, Texas, 75062`).
-    *   ✅ **Critical:** Contains phone (`(415) 625-3493`) and email (`support@ironboxcontainers.com`).
+    *   ✅ **Critical:** Contains phone (`(816) 255-7461`) and email (`support@ironboxcontainerz.com`).
     *   ✅ Links to Shipping, Return, Privacy, and Terms are present and working.
     *   ✅ Payment badges (Visa, PayPal, etc.) are displayed.
 

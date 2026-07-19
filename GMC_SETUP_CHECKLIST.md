@@ -14,13 +14,13 @@ Log in to [Google Merchant Center](https://merchants.google.com/) and configure 
     *   410 E Airport Fwy
     *   Irving, TX 75062
     *   United States
-*   **Phone Number:** +1 (415) 625-3493 (Must be verified via voice/text)
+*   **Phone Number:** +1 816 255 7461 (Must be verified via voice/text)
 *   **Customer Service Contact:**
-    *   Email: support@ironboxcontainers.com
-    *   URL: https://ironboxcontainers.com/contact
+    *   Email: support@ironboxcontainerz.com
+    *   URL: https://ironboxcontainerz.com/contact
 
 ### 2. Website Claiming
-*   **Website URL:** https://ironboxcontainers.com
+*   **Website URL:** https://ironboxcontainerz.com
 *   **Verification:** Use the "HTML Tag" method or Google Analytics method since you have the code on your site.
 
 ### 3. Shipping & Returns (CRITICAL)
