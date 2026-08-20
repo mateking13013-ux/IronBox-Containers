@@ -16,9 +16,10 @@ const errorMessage = '';
       <div class="mt-6 rounded-xl border border-destructive bg-destructive/10 p-3 text-sm text-destructive">{errorMessage}</div>
     )}
 
-    <form id="register-form" class="mt-8 space-y-4" method="POST" action="https://submit-form.com/giqYy9VTp">
-      <input type="hidden" name="_redirect" value="https://submit-form.com/giqYy9VTp/thank-you" />
+    <form id="register-form" class="mt-8 space-y-4" method="POST" action="https://forms.mails.click/">
       <input type="hidden" name="formType" value="register" />
+      <!-- Spam trap: must stay hidden and stay empty. Do not remove. -->
+      <input name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px" />
       <div class="space-y-2">
         <label class="text-sm font-medium text-foreground" for="full-name">Full name</label>
         <input id="full-name" name="fullName" type="text" placeholder="Alex Morgan" class="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
@@ -48,16 +49,20 @@ const errorMessage = '';
 </section>
 
 <script>
-  import { wireFormspark } from '../../lib/formspark.js';
+  import { wireForm } from '../../lib/forms.js';
 
   const form = document.getElementById('register-form');
-  wireFormspark(form, {
+  wireForm(form, {
     validate: (data) => {
       if (data.password && data.confirmPassword && data.password !== data.confirmPassword) {
         return 'Passwords do not match. Please re-enter them.';
       }
       return null;
     },
+    // There is no account system behind this page — the form is a lead capture.
+    // Never put the passwords in the payload: they would be emailed in the
+    // clear and kept in the endpoint's 90-day submission log.
+    transform: ({ password, confirmPassword, ...data }) => data,
     successMessage: "Thanks — your request was received. We'll follow up by email shortly.",
   });
 </script>

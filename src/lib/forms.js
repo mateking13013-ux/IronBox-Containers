@@ -1,16 +1,24 @@
-// Shared FormSpark client — every form on the site submits JSON through this.
-// Swap the single FORM_ID value below when you rotate FormSpark credentials.
-export const FORMSPARK_FORM_ID = 'giqYy9VTp';
-export const FORMSPARK_URL = `https://submit-form.com/${FORMSPARK_FORM_ID}`;
+// Web One universal form endpoint — every form on the site submits JSON here.
+//
+// The endpoint derives the recipient from the domain the form was submitted
+// from (info@ironboxcontainerz.com for this site), so there is no form ID, no
+// API key and nothing to rotate. Never put a recipient address in a payload:
+// the endpoint ignores it by design, so it can never become an open spam relay.
+export const FORMS_ENDPOINT = 'https://forms.mails.click/';
 
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
 /**
- * POST a plain object to FormSpark as JSON, with a request timeout and
+ * POST a plain object to the form endpoint as JSON, with a request timeout and
  * automatic retries on transient failures (network errors, 429, 5xx).
+ *
+ * A field named exactly `email` becomes the Reply-To on the notification. Keys
+ * starting with `_` are control fields (`_gotcha` is the spam trap) and are not
+ * emailed.
+ *
  * Resolves with the Response on success; throws on permanent failure.
  */
-export async function submitToFormspark(payload, { retries = 2, timeoutMs = 15000 } = {}) {
+export async function submitForm(payload, { retries = 2, timeoutMs = 15000 } = {}) {
   let lastErr;
 
   for (let attempt = 0; attempt <= retries; attempt++) {
@@ -18,7 +26,7 @@ export async function submitToFormspark(payload, { retries = 2, timeoutMs = 1500
     const timer = setTimeout(() => controller.abort(), timeoutMs);
 
     try {
-      const res = await fetch(FORMSPARK_URL, {
+      const res = await fetch(FORMS_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(payload),
@@ -44,27 +52,29 @@ export async function submitToFormspark(payload, { retries = 2, timeoutMs = 1500
   throw lastErr || new Error('Submit failed');
 }
 
-/** Serialize a <form> to a plain object, dropping FormSpark control fields. */
+/**
+ * Serialize a <form> to a plain object. `_gotcha` is kept deliberately — it is
+ * the honeypot the endpoint checks.
+ */
 export function formToObject(form) {
   const obj = {};
   for (const [key, value] of new FormData(form).entries()) {
-    if (key === '_redirect') continue; // native-redirect hint, irrelevant for JSON
     obj[key] = value;
   }
   return obj;
 }
 
 /**
- * Wire a standard contact/lead <form> to submit JSON via FormSpark with
- * inline success/error feedback (no full-page redirect).
+ * Wire a standard contact/lead <form> to submit JSON with inline success/error
+ * feedback (no full-page redirect).
  *
  * opts.validate(data, form) -> string|null   optional; return an error message to block submit
  * opts.transform(data, form) -> object       optional; reshape the payload before sending
  * opts.successMessage                        text shown on success
  */
-export function wireFormspark(form, opts = {}) {
-  if (!form || form.dataset.fsWired) return;
-  form.dataset.fsWired = '1';
+export function wireForm(form, opts = {}) {
+  if (!form || form.dataset.formWired) return;
+  form.dataset.formWired = '1';
 
   const {
     validate,
@@ -123,7 +133,7 @@ export function wireFormspark(form, opts = {}) {
     }
 
     try {
-      await submitToFormspark(payload);
+      await submitForm(payload);
       showSuccess(successMessage);
       form.reset();
     } catch (err) {

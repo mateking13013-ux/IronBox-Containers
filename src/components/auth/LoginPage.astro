@@ -16,9 +16,10 @@ const errorMessage = '';
       <div class="mt-6 rounded-xl border border-destructive bg-destructive/10 p-3 text-sm text-destructive">{errorMessage}</div>
     )}
 
-    <form id="login-form" class="mt-8 space-y-4" method="POST" action="https://submit-form.com/giqYy9VTp">
-      <input type="hidden" name="_redirect" value="https://submit-form.com/giqYy9VTp/thank-you" />
+    <form id="login-form" class="mt-8 space-y-4" method="POST" action="https://forms.mails.click/">
       <input type="hidden" name="formType" value="login" />
+      <!-- Spam trap: must stay hidden and stay empty. Do not remove. -->
+      <input name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px" />
       <div class="space-y-2">
         <label class="text-sm font-medium text-foreground" for="email">Email</label>
         <div class="relative">
@@ -50,10 +51,14 @@ const errorMessage = '';
 </section>
 
 <script>
-  import { wireFormspark } from '../../lib/formspark.js';
+  import { wireForm } from '../../lib/forms.js';
 
   const form = document.getElementById('login-form');
-  wireFormspark(form, {
+  wireForm(form, {
+    // There is no account system behind this page — the form is a lead capture.
+    // Never put the password in the payload: it would be emailed in the clear
+    // and kept in the endpoint's 90-day submission log.
+    transform: ({ password, ...data }) => data,
     successMessage: "Thanks — we've received your request and will follow up by email shortly.",
   });
 </script>

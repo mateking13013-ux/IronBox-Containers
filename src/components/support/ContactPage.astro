@@ -42,8 +42,9 @@ const faqs = [
     <div class="space-y-6 rounded-3xl border border-border bg-card p-6 shadow-sm">
       <h2 class="text-lg font-semibold">Project intake form</h2>
       <p class="text-sm text-muted-foreground">Share a few details and we’ll pair you with the right specialist—pool, prefab home, hospitality suite, or custom build.</p>
-      <form id="support-intake-form" class="space-y-4 text-sm" method="POST" action="https://submit-form.com/giqYy9VTp">
-        <input type="hidden" name="_redirect" value="https://submit-form.com/giqYy9VTp/thank-you" />
+      <form id="support-intake-form" class="space-y-4 text-sm" method="POST" action="https://forms.mails.click/">
+        <!-- Spam trap: must stay hidden and stay empty. Do not remove. -->
+        <input name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px" />
         <div class="grid gap-4 md:grid-cols-2">
           <div class="space-y-2">
             <label class="font-medium text-muted-foreground" for="name">Name</label>
@@ -118,10 +119,10 @@ const faqs = [
 </section>
 
 <script>
-  import { wireFormspark } from '../../lib/formspark.js';
+  import { wireForm } from '../../lib/forms.js';
 
   const form = document.getElementById('support-intake-form');
-  wireFormspark(form, {
+  wireForm(form, {
     transform: (data) => ({ ...data, formType: 'project-intake', source: 'support-contact' }),
     successMessage: "Thanks! Your project intake was received — a specialist will reach out within 48 hours.",
   });

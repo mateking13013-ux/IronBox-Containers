@@ -34,8 +34,9 @@ const iconMap = {
     <div class="grid gap-8 lg:grid-cols-2">
       <!-- Contact Form -->
       <div class="rounded-2xl bg-white p-8 shadow-lg border border-gray-200">
-        <form class="space-y-6" method="POST" action="https://submit-form.com/giqYy9VTp" id="contact-form">
-          <input type="hidden" name="_redirect" value="https://submit-form.com/giqYy9VTp/thank-you" />
+        <form class="space-y-6" method="POST" action="https://forms.mails.click/" id="contact-form">
+        <!-- Spam trap: must stay hidden and stay empty. Do not remove. -->
+        <input name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px" />
           <div class="grid gap-6 md:grid-cols-2">
             <div>
               <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">
@@ -239,10 +240,10 @@ const iconMap = {
 </section>
 
 <script>
-  import { wireFormspark } from '../../lib/formspark.js';
+  import { wireForm } from '../../lib/forms.js';
 
   const form = document.getElementById('contact-form');
-  wireFormspark(form, {
+  wireForm(form, {
     transform: (data) => ({ ...data, formType: 'contact', source: 'home-contact' }),
     successMessage: "Thanks! Your message has been sent — we'll be in touch shortly.",
   });
