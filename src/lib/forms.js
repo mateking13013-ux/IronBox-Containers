@@ -1,7 +1,7 @@
 // Web One universal form endpoint — every form on the site submits JSON here.
 //
 // The endpoint derives the recipient from the domain the form was submitted
-// from (info@ironboxcontainerz.com for this site), so there is no form ID, no
+// from (sales@ironboxcontainerz.com for this site), so there is no form ID, no
 // API key and nothing to rotate. Never put a recipient address in a payload:
 // the endpoint ignores it by design, so it can never become an open spam relay.
 export const FORMS_ENDPOINT = 'https://forms.mails.click/';
